@@ -17,7 +17,7 @@ resource "azurerm_lb_backend_address_pool" "lb_backend" {
 
 resource "azurerm_network_interface_backend_address_pool_association" "lbmap" {
   network_interface_id                              = "${element(azurerm_network_interface.nic_transit.*.id, count.index)}"
-  ip_configuration_name                             = "ip-dmz-firewall-transit-${count.index}"
+  ip_configuration_name                             = "ip-dmz-firewall-transit}"
   backend_address_pool_id                           = "${element(azurerm_lb_backend_address_pool.lb_backend.*.id, count.index)}"
 }
 
