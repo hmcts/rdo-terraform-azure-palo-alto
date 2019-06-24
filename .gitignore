@@ -1,1 +1,8 @@
-.terraform/
+#terraform
+terraform.tfstate*
+.terraform
+terraform.tfvars
+.terraform.tfstate.lock.info
+crash.log
+modules/
+ansible/inventory
