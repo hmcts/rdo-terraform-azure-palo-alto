@@ -29,3 +29,7 @@ variable "vm_username" {
 variable "vm_password" {
   description                                       = "Password to provision the VM with"
 }
+
+variable "environment" {
+  description                                       = "Environment like sbox / nonprod and prod"
+}
