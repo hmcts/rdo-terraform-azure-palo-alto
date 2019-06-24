@@ -14,8 +14,12 @@ variable "subnet_management_id" {
   description                                       = "Subnet to add the management nic to"
 }
 
-variable "subnet_transit_id" {
-  description                                       = "Subnet to add the transit nic to"
+variable "subnet_transit_private_id" {
+  description                                       = "Subnet to add the transit private nic to"
+}
+
+variable "subnet_transit_public_id" {
+  description                                       = "Subnet to add the transit public nic to"
 }
 
 variable "vm_name_prefix" {

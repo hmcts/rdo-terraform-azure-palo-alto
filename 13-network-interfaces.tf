@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "nic_transit_public" {
 
   ip_configuration {
     name                                            = "${azurerm_network_interface.nic_transit_public.name}-${count.index}"
-    subnet_id                                       = "${var.subnet_transit_id}"
+    subnet_id                                       = "${var.subnet_transit_public_id}"
     private_ip_address_allocation                   = "dynamic"
   }
 }
@@ -35,7 +35,7 @@ resource "azurerm_network_interface" "nic_transit_private" {
 
   ip_configuration {
     name                                            = "${azurerm_network_interface.nic_transit_private.name}-${count.index}"
-    subnet_id                                       = "${var.subnet_transit_id}"
+    subnet_id                                       = "${var.subnet_transit_private_id}"
     private_ip_address_allocation                   = "dynamic"
   }
 }
