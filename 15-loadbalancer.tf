@@ -5,7 +5,7 @@ resource "azurerm_lb" "lb" {
   sku                                               = "Standard"
   frontend_ip_configuration {
     name                                            = "frontend"
-    subnet_id                                       = "${var.subnet_transit_id}"
+    subnet_id                                       = "${var.subnet_transit__id}"
   }
 }
 
