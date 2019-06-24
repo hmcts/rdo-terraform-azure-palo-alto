@@ -13,7 +13,7 @@ resource "azurerm_lb" "lb" {
 resource "azurerm_lb_backend_address_pool" "lb_backend" {
   name                                              = "lbb-dmz-firewall"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  loadbalancer_id                                   = "${element(azurerm_lb.lb.*.id, count.index)}"
+  loadbalancer_id                                   = "${azurerm_lb.lb.id}"  #"${element(azurerm_lb.lb.*.id, count.index)}"
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "lbmap" {
@@ -25,7 +25,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "lbmap" {
 
 resource "azurerm_lb_probe" "lb_probe" {
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  loadbalancer_id                                   = "${element(azurerm_lb.lb.*.id, count.index)}"
+  loadbalancer_id                                   = "${azurerm_lb.lb.id}"  #"${element(azurerm_lb.lb.*.id, count.index)}"
   name                                              = "probe-https"
   port                                              = "443"
   protocol                                          = "Tcp"
@@ -33,7 +33,7 @@ resource "azurerm_lb_probe" "lb_probe" {
 
 resource "azurerm_lb_rule" "lb_rule" {
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  loadbalancer_id                                   = "${element(azurerm_lb.lb.*.id, count.index)}"
+  loadbalancer_id                                   = "${azurerm_lb.lb.id}"  #"${element(azurerm_lb.lb.*.id, count.index)}"
   name                                              = "lbrule-firewalls"
   frontend_port                                     = "0"
   frontend_ip_configuration_name                    = "frontend"
