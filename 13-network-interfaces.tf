@@ -19,7 +19,7 @@ resource "azurerm_network_interface" "nic_transit_public" {
   enable_ip_forwarding                              = "true"
 
   ip_configuration {
-    name                                            = "${azurerm_network_interface.nic_transit_public.name}-${count.index}"
+    name                                            = "firewall-${var.environment}-nic-transit-public-ip-${count.index}"
     subnet_id                                       = "${var.subnet_transit_public_id}"
     private_ip_address_allocation                   = "dynamic"
   }
@@ -34,7 +34,7 @@ resource "azurerm_network_interface" "nic_transit_private" {
   enable_ip_forwarding                              = "true"
 
   ip_configuration {
-    name                                            = "${azurerm_network_interface.nic_transit_private.name}-${count.index}"
+    name                                            = "firewall-${var.environment}-nic-transit-private-ip-${count.index}"
     subnet_id                                       = "${var.subnet_transit_private_id}"
     private_ip_address_allocation                   = "dynamic"
   }
