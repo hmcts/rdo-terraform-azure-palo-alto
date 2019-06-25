@@ -49,7 +49,7 @@ data "template_file" "inventory" {
     template                                        = "${file("${path.module}/templates/inventory.tpl")}"
 
     depends_on                                      = [
-                                                        "azurerm_virtual_machine.vm"
+                                                        "azurerm_virtual_machine.pan_vm"
                                                       ]
 
     vars {
@@ -66,7 +66,7 @@ resource "null_resource" "update_inventory" {
     }
 
     provisioner "local-exec" {
-        command                                       = "echo '${data.template_file.inventory.rendered}' > ${path.module}/ansible/inventory"
+        command                                      = "echo '${data.template_file.inventory.rendered}' > ${path.module}/ansible/inventory"
     }
 }
 
