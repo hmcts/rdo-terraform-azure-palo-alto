@@ -1,5 +1,5 @@
 resource "azurerm_lb" "lb" {
-  name                                              = "lb-dmz-firewall-${count.index}"
+  name                                              = "firewall-${var.environment}-lb-${count.index}"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   sku                                               = "Standard"
