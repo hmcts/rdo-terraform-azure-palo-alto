@@ -35,7 +35,8 @@ resource "azurerm_virtual_machine" "pan_vm" {
   primary_network_interface_id                      = "${element(azurerm_network_interface.nic_mgmt.*.id, count.index)}"
   network_interface_ids                             = [
                                                         "${element(azurerm_network_interface.nic_mgmt.*.id, count.index)}",
-                                                        "${element(azurerm_network_interface.nic_transit_public.*.id, count.index)}"
+                                                        "${element(azurerm_network_interface.nic_transit_public.*.id, count.index)}",
+                                                        "${element(azurerm_network_interface.nic_transit_private.*.id, count.index)}"
                                                       ]
 
   os_profile_linux_config {
