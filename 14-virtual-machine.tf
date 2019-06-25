@@ -43,3 +43,55 @@ resource "azurerm_virtual_machine" "pan_vm" {
     disable_password_authentication                 = false
   }
 }
+
+
+data "template_file" "inventory" {
+    template                                        = "${file("${path.module}/templates/inventory.tpl")}"
+
+    depends_on                                      = [
+                                                        "azurerm_virtual_machine.vm"
+                                                      ]
+
+    vars {
+        admin_username                              = "${var.vm_username}"
+        admin_password                              = "${var.vm_password}"
+        public_ip                                   = "${azurerm_public_ip.pip_mgmt.ip_address}"
+    }
+}
+
+resource "null_resource" "update_inventory" {
+
+    triggers {
+        template                                     = "${data.template_file.inventory.rendered}"
+    }
+
+    provisioner "local-exec" {
+        command                                       = "echo '${data.template_file.inventory.rendered}' > ${path.module}/ansible/inventory"
+    }
+}
+
+resource "null_resource" "ansible-runs" {
+    triggers = {
+      always_run                                      = "${timestamp()}"
+    }
+
+    depends_on                                        = [
+                                                          "azurerm_virtual_machine.pan_vm",
+                                                          "azurerm_network_interface.nic_mgmt",
+                                                          "azurerm_public_ip.pip_mgmt"
+                                                      ]
+
+  provisioner "local-exec" {
+    command = <<EOF
+      echo "hello world"
+      #git clone https://github.com/hmcts/rdo-terraform-module-azure-f5.git;
+      #cd rdo-terraform-module-azure-f5/ansible;
+      #git clone https://github.com/f5devcentral/f5-asm-policy-template-v13.git;
+      #sleep 30;
+      #az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+      #az storage blob download-batch -d . --pattern star*.* -s certs --account-name dmzsandbox01
+      #ansible-galaxy install -f f5devcentral.f5ansible
+      #ansible-playbook -i ${path.module}/ansible/inventory -vvvvvvv ${path.module}/ansible/f5.yml --extra-vars '{"provider":{"server": "${azurerm_public_ip.pip_mgmt.ip_address}", "server_port":"443", "user":"${var.vm_username}", "password":"${var.vm_password}", "validate_certs":"no", "timeout":"300"}}' --extra-vars 'f5_selfip="${var.selfip_private_ip}"' --extra-vars 'f5_selfsubnet="${var.selfip_subnet}"' --extra-vars 'as3_username="${var.as3_username}"' --extra-vars 'as3_password="${var.as3_password}"' --extra-vars 'default_gateway="${local.default_gateway}"'
+      EOF
+  }
+}
