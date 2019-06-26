@@ -63,7 +63,7 @@ provisioner "remote-exec" {
     type                                                    = "ssh"
     user                                                    = "${var.vm_username}"
     password                                                = "${var.vm_password}"
-    host                                                    = "${azurerm_public_ip.pip-ansible.*.ip_address}"
+    host                                                    = "${self.network.0.ip}"
 
  }
 }
