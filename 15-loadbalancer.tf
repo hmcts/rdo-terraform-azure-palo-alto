@@ -2,7 +2,7 @@ resource "azurerm_lb" "lb" {
   name                                              = "fw-${var.environment}-lb"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  sku                                               = "Basic"
+  sku                                               = "Standard"
   frontend_ip_configuration {
     name                                            = "frontend"
     subnet_id                                       = "${var.subnet_transit_public_id}"
