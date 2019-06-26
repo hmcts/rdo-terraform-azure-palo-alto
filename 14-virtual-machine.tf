@@ -4,6 +4,7 @@ resource "azurerm_virtual_machine" "pan_vm" {
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   availability_set_id                               = "${azurerm_availability_set.availability_set.id}"
   vm_size                                           = "${var.vm_size}"
+  delete_os_disk_on_termination                     = true
   count                                             = "${var.replicas}"
 
   plan {
