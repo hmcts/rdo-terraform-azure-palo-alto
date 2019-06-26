@@ -63,7 +63,7 @@ provisioner "remote-exec" {
     type                                                    = "ssh"
     user                                                    = "${var.vm_username}"
     password                                                = "${var.vm_password}"
-    host                                                    = "${self.network.0.ip}"
+    host                                                    = "${self.private_ip}"
 
  }
 }
