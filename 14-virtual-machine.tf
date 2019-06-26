@@ -53,7 +53,7 @@ data "template_file" "inventory" {
                                                         "azurerm_virtual_machine.pan_vm"
                                                       ]
 
-    vars {
+    vars = {
         admin_username                              = "${var.vm_username}"
         admin_password                              = "${var.vm_password}"
         public_ip                                   = "${azurerm_public_ip.pip_mgmt.ip_address}"
