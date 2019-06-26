@@ -1,25 +1,25 @@
 data "template_file" "inventory" {
-    template                                        = "${file("${path.module}/templates/inventory.tpl")}"
+    template                                                = "${file("${path.module}/templates/inventory.tpl")}"
 
-    depends_on                                      = [
-                                                        "azurerm_virtual_machine.pan_vm"
-                                                      ]
+    depends_on                                              = [
+                                                                "azurerm_virtual_machine.pan_vm"
+                                                            ]
 
     vars = {
-        admin_username                              = "${var.vm_username}"
-        admin_password                              = "${var.vm_password}"
-        public_ip                                   = "${azurerm_network_interfac.nic_mgmt.private_ip_address}"
+        admin_username                                      = "${var.vm_username}"
+        admin_password                                      = "${var.vm_password}"
+        public_ip                                           = "${element(azurerm_network_interfac.nic_mgmt.*.private_ip_address, count.index)}"
     }
 }
 
 resource "null_resource" "update_inventory" {
 
     triggers = {
-        template                                     = "${data.template_file.inventory.rendered}"
+        template                                            = "${data.template_file.inventory.rendered}"
     }
 
     provisioner "local-exec" {
-        command                                      = "echo '${data.template_file.inventory.rendered}' > ${path.module}/ansible/inventory"
+        command                                             = "echo '${data.template_file.inventory.rendered}' > ${path.module}/ansible/inventory"
     }
 }
 
@@ -63,6 +63,8 @@ provisioner "remote-exec" {
     type                                                    = "ssh"
     user                                                    = "${var.vm_username}"
     password                                                = "${var.vm_password}"
+    host                                                    = "${azurerm_public_ip.pip-ansible.*.ip_address}"
+
  }
 }
 
@@ -109,7 +111,7 @@ resource "azurerm_network_interface" "ansible_server_nic" {
         name                                                = "fw-${var.environment}-ansible-ip"
         subnet_id                                           = "${var.subnet_management_id}"
         private_ip_address_allocation                       = "dynamic"
-        public_ip_address_id                                = "${element(azurerm_public_ip.pip-ansible.*.id, count.index)}"
+        public_ip_address_id                                = "${azurerm_public_ip.pip-ansible.id}"
     }
 }
 
