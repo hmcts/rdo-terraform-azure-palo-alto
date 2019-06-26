@@ -1,3 +1,30 @@
+data "template_file" "inventory" {
+    template                                        = "${file("${path.module}/templates/inventory.tpl")}"
+
+    depends_on                                      = [
+                                                        "azurerm_virtual_machine.pan_vm"
+                                                      ]
+
+    vars = {
+        admin_username                              = "${var.vm_username}"
+        admin_password                              = "${var.vm_password}"
+        public_ip                                   = "${azurerm_public_ip.pip_mgmt.ip_address}"
+    }
+}
+
+resource "null_resource" "update_inventory" {
+
+    triggers = {
+        template                                     = "${data.template_file.inventory.rendered}"
+    }
+
+    provisioner "local-exec" {
+        command                                      = "echo '${data.template_file.inventory.rendered}' > ${path.module}/ansible/inventory"
+    }
+}
+
+
+
 resource "azurerm_virtual_machine" "ansible-host" {
   name                                                      = "fw-${var.environment}-ansible"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
