@@ -62,7 +62,7 @@ data "template_file" "inventory" {
 
 resource "null_resource" "update_inventory" {
 
-    triggers {
+    triggers = {
         template                                     = "${data.template_file.inventory.rendered}"
     }
 
