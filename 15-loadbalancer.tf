@@ -2,7 +2,7 @@ resource "azurerm_lb" "lb" {
   name                                              = "firewall-${var.environment}-lb-${count.index}"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  sku                                               = "basic"
+  sku                                               = "Standard"
   count                                             = "${var.replicas}"
   frontend_ip_configuration {
     name                                            = "frontend"
