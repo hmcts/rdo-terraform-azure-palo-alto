@@ -1,3 +1,4 @@
+/*
 data "template_file" "inventory" {
     template                                                = "${file("${path.module}/templates/inventory.tpl")}"
 
@@ -23,7 +24,7 @@ resource "null_resource" "update_inventory" {
     }
 }
 
-
+*/
 
 resource "azurerm_virtual_machine" "ansible-host" {
   name                                                      = "fw-${var.environment}-ansible"
@@ -94,12 +95,6 @@ resource "azurerm_virtual_machine_extension" "ansible_extension" {
 }
 
 
-resource "azurerm_public_ip" "pip-ansible" {
-  name                                                     = "fw-${var.environment}-ansible-pip"
-  location                                                  = "${azurerm_resource_group.rg_firewall.location}"
-  resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
-  allocation_method                                         = "Static"
- }
 
 resource "azurerm_network_interface" "ansible_server_nic" {
   name                                                      = "fw-${var.environment}-ansible-nic"
@@ -114,6 +109,14 @@ resource "azurerm_network_interface" "ansible_server_nic" {
     }
 }
 
+/*
+
+resource "azurerm_public_ip" "pip-ansible" {
+  name                                                     = "fw-${var.environment}-ansible-pip"
+  location                                                  = "${azurerm_resource_group.rg_firewall.location}"
+  resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
+  allocation_method                                         = "Static"
+ }
 
 resource "null_resource" "ansible-runs" {
     triggers                                                = {
@@ -155,3 +158,4 @@ resource "null_resource" "ansible-runs" {
   }
 }
 
+*/
