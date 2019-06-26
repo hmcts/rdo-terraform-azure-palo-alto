@@ -1,11 +1,3 @@
-resource "azurerm_public_ip" "pip_mgmt" {
-  name                                              = "fw-${var.environment}-pip"
-  location                                          = "${azurerm_resource_group.rg_firewall.location}"
-  resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  allocation_method                                 = "Static"
-}
-
-
 resource "azurerm_network_interface" "nic_mgmt" {
   name                                              = "fw-${var.environment}-nic-mgmt-${count.index}"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
