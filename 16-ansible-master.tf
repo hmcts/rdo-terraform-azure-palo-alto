@@ -107,7 +107,7 @@ resource "azurerm_network_interface" "ansible_server_nic" {
 
     ip_configuration {
         name                                                = "fw-${var.environment}-ansible-ip"
-        subnet_id                                           = "${azurerm_subnet.subnet_public.id}"
+        subnet_id                                           = "${var.subnet_management_id}"
         private_ip_address_allocation                       = "dynamic"
         public_ip_address_id                                = "${element(azurerm_public_ip.pip-ansible.*.id, count.index)}"
     }
