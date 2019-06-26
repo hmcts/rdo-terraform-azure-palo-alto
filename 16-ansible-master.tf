@@ -29,17 +29,10 @@ resource "azurerm_virtual_machine" "ansible-host" {
   name                                                      = "fw-${var.environment}-ansible"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
-  network_interface_ids                                     = ["${element(azurerm_network_interface.ansible_server_nic.*.id, count.index)}"]
+  network_interface_ids                                     = ["${element(azurerm_network_interface.nic_mgmt.*.id, count.index)}"]
   vm_size                                                   = "Basic_A0"
   count                                                     = 1
   delete_os_disk_on_termination                             = true
-
-#   storage_image_reference {
-#     publisher = "center-for-internet-security-inc"
-#     offer     = "cis-ubuntu-linux-1804-l1"
-#     sku       = "cis-ubuntu1804-l1"
-#     version   = "latest"
-#   }
   
   storage_image_reference {
     publisher                                               = "Canonical"
