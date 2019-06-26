@@ -3,7 +3,7 @@ resource "azurerm_lb" "lb" {
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   sku                                               = "Standard"
-  #count                                             = "${var.replicas}"
+  count                                             = "${var.replicas}"
   frontend_ip_configuration {
     name                                            = "frontend"
     subnet_id                                       = "${var.subnet_transit_public_id}"
