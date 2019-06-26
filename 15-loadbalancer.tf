@@ -1,5 +1,5 @@
 resource "azurerm_lb" "lb" {
-  name                                              = "firewall-${var.environment}-lb}"
+  name                                              = "firewall_${var.environment}_lb}"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   sku                                               = "Standard"
@@ -10,7 +10,7 @@ resource "azurerm_lb" "lb" {
 }
 
 resource "azurerm_lb_backend_address_pool" "lb_backend" {
-  name                                              = "firewall-${var.environment}-lb-backend"
+  name                                              = "firewall_${var.environment}_lb_backend"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   loadbalancer_id                                   = "${azurerm_lb.lb.id}"  #"${element(azurerm_lb.lb.*.id, count.index)}"
 }
@@ -24,9 +24,9 @@ resource "azurerm_lb_probe" "lb_probe" {
 }
 
 resource "azurerm_lb_rule" "lb_rule" {
+  name                                              = "firewall_${var.environment}_lbrules"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   loadbalancer_id                                   = "${azurerm_lb.lb.id}"  #"${element(azurerm_lb.lb.*.id, count.index)}"
-  name                                              = "firewall-${var.environment}-lbrules"
   frontend_port                                     = "0"
   frontend_ip_configuration_name                    = "frontend"
   backend_address_pool_id                           = "${azurerm_lb_backend_address_pool.lb_backend.id}"

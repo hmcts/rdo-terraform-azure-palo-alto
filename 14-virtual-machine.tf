@@ -1,5 +1,5 @@
 resource "azurerm_virtual_machine" "pan_vm" {
-  name                                              = "firewall-${var.environment}-vm-${count.index}"
+  name                                              = "firewall_${var.environment}_vm_${count.index}"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   availability_set_id                               = "${azurerm_availability_set.availability_set.id}"
@@ -21,14 +21,14 @@ resource "azurerm_virtual_machine" "pan_vm" {
   }
 
   storage_os_disk {
-    name                                            = "firewall-${var.environment}-os-${count.index}"
+    name                                            = "firewall_${var.environment}_os_${count.index}"
     managed_disk_type                               = "Standard_LRS"
     caching                                         = "ReadWrite"
     create_option                                   = "FromImage"
   }
 
   os_profile {
-    computer_name                                   = "firewall-${var.environment}-vm-${count.index}"
+    computer_name                                   = "firewall_${var.environment}_vm_${count.index}"
     admin_username                                  = "${var.vm_username}"
     admin_password                                  = "${var.vm_password}"
   }
