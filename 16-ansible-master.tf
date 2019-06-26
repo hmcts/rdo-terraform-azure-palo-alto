@@ -8,7 +8,7 @@ data "template_file" "inventory" {
     vars = {
         admin_username                                      = "${var.vm_username}"
         admin_password                                      = "${var.vm_password}"
-        public_ip                                           = "${azurerm_network_interface.nic_mgmt.*.private_ip_address}"
+        public_ip                                           = ["${azurerm_network_interface.nic_mgmt.*.private_ip_address}"]
     }
 }
 
