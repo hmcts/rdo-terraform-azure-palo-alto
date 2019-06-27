@@ -28,7 +28,7 @@ resource "null_resource" "update_inventory" {
 
 data "azurerm_subnet" "subnet" {
   name                                                      = "sub-hub-mgmt"
-  virtual_network_name                                      = "${azurerm_virtual_network.vnet_hub.name}"
+  virtual_network_name                                      = "hub"
   resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
 }
 
