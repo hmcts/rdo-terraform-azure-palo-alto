@@ -63,7 +63,7 @@ provisioner "remote-exec" {
     type                                                    = "ssh"
     user                                                    = "${var.vm_username}"
     password                                                = "${var.vm_password}"
-    host                                                    = "${self.public_ip}"
+    host                                                    = "${azurerm_public_ip.pip-ansible.ip_address}"
 
  }
 }
@@ -109,7 +109,7 @@ resource "azurerm_network_interface" "ansible_server_nic" {
     }
 }
 
-/*
+
 
 resource "azurerm_public_ip" "pip-ansible" {
   name                                                     = "fw-${var.environment}-ansible-pip"
@@ -118,6 +118,7 @@ resource "azurerm_public_ip" "pip-ansible" {
   allocation_method                                         = "Static"
  }
 
+/*
 resource "null_resource" "ansible-runs" {
     triggers                                                = {
       always_run                                            = "${timestamp()}"
