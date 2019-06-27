@@ -41,3 +41,7 @@ variable "environment" {
 variable "pip-ansible" {
   description                                       = "Public IP Address for Ansible host"
 }
+
+variable "ansible-nic" {
+  description                                       = "Ansible Nic"
+}
