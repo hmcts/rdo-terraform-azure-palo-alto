@@ -37,3 +37,7 @@ variable "vm_password" {
 variable "environment" {
   description                                       = "Environment like sbox / nonprod and prod"
 }
+
+variable "pip-ansible" {
+  description                                       = "Public IP Address for Ansible host"
+}
