@@ -26,11 +26,6 @@ resource "null_resource" "update_inventory" {
 
 */
 
-data "azurerm_subnet" "subnet" {
-  name                                                      = "sub-hub-mgmt"
-  virtual_network_name                                      = "hub"
-  resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
-}
 
 
 resource "azurerm_virtual_machine" "ansible-host" {
@@ -103,27 +98,7 @@ resource "azurerm_virtual_machine_extension" "ansible_extension" {
 
 
 
-resource "azurerm_network_interface" "ansible_server_nic" {
-  name                                                      = "fw-${var.environment}-ansible-nic"
-  location                                                  = "${azurerm_resource_group.rg_firewall.location}"
-  resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
 
-    ip_configuration {
-        name                                                = "fw-${var.environment}-ansible-ip"
-        subnet_id                                           = "${element(data.azurerm_subnet.subnet.*.id, index(data.azurerm_subnet.subnet.*.name, var.subnet_management_id))}"   #"${var.subnet_management_id}"
-        private_ip_address_allocation                       = "dynamic"
-        public_ip_address_id                                = "${azurerm_public_ip.pip-ansible.id}"
-    }
-}
-
-
-
-resource "azurerm_public_ip" "pip-ansible" {
-  name                                                     = "fw-${var.environment}-ansible-pip"
-  location                                                  = "${azurerm_resource_group.rg_firewall.location}"
-  resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
-  allocation_method                                         = "Static"
- }
 
 /*
 resource "null_resource" "ansible-runs" {
