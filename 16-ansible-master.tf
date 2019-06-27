@@ -26,6 +26,13 @@ resource "null_resource" "update_inventory" {
 
 */
 
+data "azurerm_subnet" "subnet" {
+  name                                                      = "sub-hub-mgmt"
+  virtual_network_name                                      = "${azurerm_virtual_network.vnet_hub.name}"
+  resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
+}
+
+
 resource "azurerm_virtual_machine" "ansible-host" {
   name                                                      = "fw-${var.environment}-ansible"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
@@ -103,7 +110,7 @@ resource "azurerm_network_interface" "ansible_server_nic" {
 
     ip_configuration {
         name                                                = "fw-${var.environment}-ansible-ip"
-        subnet_id                                           = "${element(azurerm_subnet.subnet.*.id, index(azurerm_subnet.subnet.*.name, var.subnet_management_id))}"   #"${var.subnet_management_id}"
+        subnet_id                                           = "${element(data.azurerm_subnet.subnet.*.id, index(data.azurerm_subnet.subnet.*.name, var.subnet_management_id))}"   #"${var.subnet_management_id}"
         private_ip_address_allocation                       = "dynamic"
         public_ip_address_id                                = "${azurerm_public_ip.pip-ansible.id}"
     }
