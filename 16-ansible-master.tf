@@ -32,7 +32,7 @@ resource "azurerm_virtual_machine" "ansible-host" {
   name                                                      = "fw-${var.environment}-ansible"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
-  network_interface_ids                                     = "${azurerm_network_interface.nic_mgmt.*.id}"
+  network_interface_ids                                     = "${azurerm_network_interface.ansible_server_nic.id}"
   vm_size                                                   = "Basic_A0"
   delete_os_disk_on_termination                             = true
   
