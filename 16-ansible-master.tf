@@ -111,7 +111,7 @@ resource "null_resource" "ansible-runs" {
       type                                                  = "ssh"
       user                                                  = "${var.vm_username}"
       password                                              = "${var.vm_password}"
-      host                                                  = "${azurerm_public_ip.pip-ansible.*.ip_address}"
+      host                                                  = "${var.pip-ansible}"
     }
   }
 /*
