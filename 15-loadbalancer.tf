@@ -41,7 +41,7 @@ resource "azurerm_lb_rule" "lb_rule" {
   frontend_ip_configuration_name                    = "frontend"
   backend_address_pool_id                           = "${azurerm_lb_backend_address_pool.lb_backend.id}"
   backend_port                                      = "80"  ##
-  protocol                                          = "All"
+  protocol                                          = "tcp"
   enable_floating_ip                                = "true"
   probe_id                                          = "${azurerm_lb_probe.lb_probe.id}"
 }
