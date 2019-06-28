@@ -1,4 +1,4 @@
-/*
+
 data "template_file" "inventory" {
     template                                                = "${file("${path.module}/templates/inventory.tpl")}"
 
@@ -23,10 +23,6 @@ resource "null_resource" "update_inventory" {
         command                                             = "echo '${data.template_file.inventory.rendered}' > ${path.module}/ansible/inventory"
     }
 }
-
-*/
-
-
 
 resource "azurerm_virtual_machine" "ansible-host" {
   name                                                      = "fw-${var.environment}-ansible"
