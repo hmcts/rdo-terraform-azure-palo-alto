@@ -13,7 +13,7 @@ resource "azurerm_lb" "lb" {
   sku                                               = "Standard"
   frontend_ip_configuration {
     name                                            = "frontend"
-    subnet_id                                       = "${var.subnet_transit_public_id}"
+    #subnet_id                                       = "${var.subnet_transit_public_id}"
     public_ip_address_id = "${azurerm_public_ip.load_balancer_public_ip.id}"  ##
   }
 }
