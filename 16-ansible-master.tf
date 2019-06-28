@@ -92,10 +92,6 @@ resource "azurerm_virtual_machine_extension" "ansible_extension" {
 }
 
 
-
-/*
-
-
 resource "null_resource" "ansible-runs" {
     triggers                                                = {
       always_run                                            = "${timestamp()}"
@@ -120,7 +116,7 @@ resource "null_resource" "ansible-runs" {
       host                                                  = "${azurerm_public_ip.pip-ansible.*.ip_address}"
     }
   }
-
+/*
   provisioner "remote-exec" {
     inline                                                  = [
                                                                 "ansible-playbook -i ~/ansible/inventory ~/ansible/palo.yml"
@@ -133,7 +129,7 @@ resource "null_resource" "ansible-runs" {
       password                                              = "${var.vm_password}"
       host                                                  = "${azurerm_public_ip.pip-ansible.*.ip_address}"
     }
-  }
+  } */
 }
 
-*/
+
