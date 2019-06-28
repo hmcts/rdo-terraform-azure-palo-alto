@@ -2,7 +2,7 @@ resource "azurerm_public_ip" "load_balancer_public_ip" {  ##
   name                         = "fw-${var.environment}-pip"  ##
   location                                          = "${azurerm_resource_group.rg_firewall.location}"   ##
   resource_group_name          = "${azurerm_resource_group.rg_firewall.name}"  ##
-  public_ip_address_allocation = "dynamic"  ##
+    allocation_method  = "dynamic"  ##
   domain_name_label = "${azurerm_resource_group.rg_firewall.name}"  ##
 }
 
