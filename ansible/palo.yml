@@ -3,6 +3,6 @@
   connection: local
   gather_facts: false
   roles:
-    #- paloaltonetworks.paloaltonetworks
+    - PaloAltoNetworks.paloaltonetworks
     - palo
   
