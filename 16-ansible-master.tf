@@ -78,7 +78,6 @@ resource "azurerm_virtual_machine" "ansible-host" {
 }
 
 
-/*
 resource "azurerm_virtual_machine_extension" "ansible_extension" {
   name                                                      = "Ansible-Agent-Install"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
@@ -98,7 +97,7 @@ resource "azurerm_virtual_machine_extension" "ansible_extension" {
 
 
 
-
+/*
 
 
 resource "null_resource" "ansible-runs" {
