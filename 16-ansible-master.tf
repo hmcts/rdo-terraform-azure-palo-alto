@@ -24,7 +24,7 @@ resource "null_resource" "update_inventory" {
     }
 }
 
-
+*/
 
 
 
@@ -33,6 +33,7 @@ resource "azurerm_virtual_machine" "ansible-host" {
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
   network_interface_ids                                     = ["${var.ansible-nic}"]
+  primary_network_interface_id                              = ["${var.ansible-nic}"]
   vm_size                                                   = "Basic_A0"
   delete_os_disk_on_termination                             = true
   
@@ -51,24 +52,24 @@ resource "azurerm_virtual_machine" "ansible-host" {
   }
   
   os_profile {
-    computer_name                                           = "fw-${var.environment}-vm-"
+    computer_name                                           = "fw-${var.environment}-ans-os"
     admin_username                                          = "${var.vm_username}"
     admin_password                                          = "${var.vm_password}"
   }
 
 
-provisioner "remote-exec" {
-    inline                                                  = [
-                                                                "mkdir ~/ansible"
-                                                            ]
-      connection {
-    type                                                    = "ssh"
-    user                                                    = "${var.vm_username}"
-    password                                                = "${var.vm_password}"
-    host                                                    = "${var.pip-ansible}"
+#provisioner "remote-exec" {
+#    inline                                                  = [
+#                                                                "mkdir ~/ansible"
+#                                                            ]
+#      connection {
+#    type                                                    = "ssh"
+#    user                                                    = "${var.vm_username}"
+#    password                                                = "${var.vm_password}"
+#    host                                                    = "${var.pip-ansible}"
 
- }
-}
+# }
+#}
 
   os_profile_linux_config {
     disable_password_authentication                         = false
