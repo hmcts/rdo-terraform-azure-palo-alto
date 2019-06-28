@@ -24,7 +24,7 @@ resource "null_resource" "update_inventory" {
     }
 }
 
-*/
+
 
 
 
