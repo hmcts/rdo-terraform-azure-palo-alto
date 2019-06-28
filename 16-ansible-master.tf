@@ -99,7 +99,6 @@ resource "null_resource" "ansible-runs" {
 
     depends_on                                              = [
                                                                 "azurerm_virtual_machine.pan_vm",
-                                                                "azurerm_network_interface.ansible_server_nic",
                                                                 "azurerm_public_ip.pip-ansible",
                                                                 "azurerm_virtual_machine_extension.ansible_extension",
                                                                 "azurerm_virtual_machine.ansible-host"
