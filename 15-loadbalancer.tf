@@ -1,8 +1,8 @@
-resource "azurerm_public_ip" "load_balancer_public_ip" {
-  name                         = "fw-${var.environment}-pip"
-  resource_group_name          = "${azurerm_resource_group.rg_firewall.name}"
-  public_ip_address_allocation = "dynamic"
-  domain_name_label = "${azurerm_resource_group.rg_firewall.name}"
+resource "azurerm_public_ip" "load_balancer_public_ip" {  ##
+  name                         = "fw-${var.environment}-pip"  ##
+  resource_group_name          = "${azurerm_resource_group.rg_firewall.name}"  ##
+  public_ip_address_allocation = "dynamic"  ##
+  domain_name_label = "${azurerm_resource_group.rg_firewall.name}"  ##
 }
 
 resource "azurerm_lb" "lb" {
@@ -13,7 +13,7 @@ resource "azurerm_lb" "lb" {
   frontend_ip_configuration {
     name                                            = "frontend"
     subnet_id                                       = "${var.subnet_transit_public_id}"
-    public_ip_address_id = "${azurerm_public_ip.load_balancer_public_ip.id}"
+    public_ip_address_id = "${azurerm_public_ip.load_balancer_public_ip.id}"  ##
   }
 }
 
