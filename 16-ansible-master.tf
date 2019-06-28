@@ -114,20 +114,19 @@ resource "null_resource" "ansible-runs" {
       host                                                  = "${var.pip-ansible}"
     }
   }
-/*
+
   provisioner "remote-exec" {
     inline                                                  = [
                                                                 "ansible-playbook -i ~/ansible/inventory ~/ansible/palo.yml"
                                                             ]
-
-
+                                                            
     connection {
       type                                                  = "ssh"
       user                                                  = "${var.vm_username}"
       password                                              = "${var.vm_password}"
-      host                                                  = "${azurerm_public_ip.pip-ansible.*.ip_address}"
+      host                                                  = "${var.pip-ansible}"
     }
-  } */
+  }
 }
 
 
