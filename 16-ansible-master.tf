@@ -57,18 +57,18 @@ resource "azurerm_virtual_machine" "ansible-host" {
   }
 
 
-#provisioner "remote-exec" {
-#    inline                                                  = [
-#                                                                "mkdir ~/ansible"
-#                                                            ]
-#      connection {
-#    type                                                    = "ssh"
-#    user                                                    = "${var.vm_username}"
-#    password                                                = "${var.vm_password}"
-#    host                                                    = "${var.pip-ansible}"
+provisioner "remote-exec" {
+    inline                                                  = [
+                                                                "mkdir ~/ansible"
+                                                            ]
+      connection {
+    type                                                    = "ssh"
+    user                                                    = "${var.vm_username}"
+    password                                                = "${var.vm_password}"
+    host                                                    = "${var.pip-ansible}"
 
-# }
-#}
+ }
+}
 
   os_profile_linux_config {
     disable_password_authentication                         = false
