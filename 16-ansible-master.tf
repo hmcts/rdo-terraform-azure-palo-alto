@@ -119,7 +119,8 @@ resource "null_resource" "ansible-runs" {
     inline                                                  = [
                                                                 "sudo apt-get install sshpass",
                                                                 "ansible-galaxy install -f PaloAltoNetworks.paloaltonetworks",
-                                                                "ansible-playbook -i ${path.module}/ansible/inventory -vvvvvvv ${path.module}/ansible/palo.yml --extra-vars {'provider':{'server': '${var.pip-ansible}', 'server_port':'443', 'user':'${var.vm_username}', 'password':'${var.vm_password}', 'validate_certs':'no', 'timeout':'300'}}"
+                                                                "ls -alR",
+                                                                "ansible-playbook -i ~/ansible/inventory -vvvvvvv ~/ansible/palo.yml --extra-vars {'provider':{'server': '${var.pip-ansible}', 'server_port':'443', 'user':'${var.vm_username}', 'password':'${var.vm_password}', 'validate_certs':'no', 'timeout':'300'}}"
                                                             ]
                                                             
     connection {
