@@ -1,11 +1,3 @@
-resource "azurerm_public_ip" "load_balancer_public_ip" {  ##
-  name                                  = "fw-${var.environment}-palo-pip"  ##
-  location                              = "${azurerm_resource_group.rg_firewall.location}"   ##
-  resource_group_name                   = "${azurerm_resource_group.rg_firewall.name}"  ##
-  domain_name_label                     = "${azurerm_resource_group.rg_firewall.name}"  ##
-  allocation_method   = "Static"
-  sku                          = "Standard"	
-}
 
 resource "azurerm_lb" "lb" {
   name                                              = "fw-${var.environment}-palo-lb"
@@ -14,8 +6,7 @@ resource "azurerm_lb" "lb" {
   sku                                               = "Standard"
   frontend_ip_configuration {
     name                                            = "frontend"
-    #subnet_id                                       = "${var.subnet_transit_public_id}"
-    public_ip_address_id = "${azurerm_public_ip.load_balancer_public_ip.id}"  ##
+    subnet_id                                       = "${var.subnet_transit_public_id}"
   }
 }
 
@@ -37,10 +28,10 @@ resource "azurerm_lb_rule" "lb_rule" {
   name                                              = "fw-${var.environment}-lbrules"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   loadbalancer_id                                   = "${azurerm_lb.lb.id}"  #"${element(azurerm_lb.lb.*.id, count.index)}"
-  frontend_port                                     = "80"  ##
+  frontend_port                                     = "Any" 
   frontend_ip_configuration_name                    = "frontend"
   backend_address_pool_id                           = "${azurerm_lb_backend_address_pool.lb_backend.id}"
-  backend_port                                      = "80"  ##
+  backend_port                                      = "Any"
   protocol                                          = "tcp"
   enable_floating_ip                                = "true"
   probe_id                                          = "${azurerm_lb_probe.lb_probe.id}"

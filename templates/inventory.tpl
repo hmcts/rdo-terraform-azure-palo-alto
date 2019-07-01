@@ -1,5 +1,5 @@
 [f5]
-51.145.106.79
+${public_ip}
 
 [f5:vars]
 ansible_connection=ssh
