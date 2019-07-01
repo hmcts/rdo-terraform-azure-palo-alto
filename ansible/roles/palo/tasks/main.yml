@@ -12,10 +12,7 @@
 
 - name: set dns and ntp
   panos_mgtconfig:
-    ip_address: "52.151.108.224"
-    username: "localadmin"
-    password: "hzMCf21DK30pTwa"
+    provider: '{{ provider }}'
     dns_server_primary: "8.8.8.8"
     ntp_server_primary: "8.8.8.8"
     timezone: "UTC/London"
-
