@@ -1,1 +1,18 @@
 ---
+
+  - name: checking if device ready
+    panos_check:
+      provider: '{{ provider }}'
+      register: result
+      until: not result|failed
+      retries: 10
+      delay: 10
+
+  - name: set dns and ntp
+    panos_mgtconfig:
+      provider: '{{ provider }}'
+      dns_server_primary: '{{ name_servers }}'
+      ntp_server_primary: '{{ ntp_servers }}'
+      timezone: '{{ timezone }}'
+      login_banner: '{{ bannertxt }}'
+    commit: True

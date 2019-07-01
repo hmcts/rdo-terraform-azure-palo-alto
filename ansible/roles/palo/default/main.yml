@@ -1,1 +1,15 @@
 ---
+
+ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+  - 2.pool.ntp.org
+  - 3.pool.ntp.org
+timezone: UTC
+
+name_servers:       
+  - 172.16.0.10
+  - 172.16.0.14
+
+bannertxt: "WARNING: This is a private system, only use this system if you have specific authority to do so.\n
+Otherwise you are liable to prosecution under the Computer Misuse Act 1990. Authorized uses only."
