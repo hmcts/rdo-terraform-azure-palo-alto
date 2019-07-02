@@ -1,5 +1,25 @@
 ---
 
+- name: configure ethernet1/1
+  panos_interface:
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    if_name: "ethernet1/1"
+    zone_name: "untrust"
+    create_default_route: "yes"
+    commit: False
+
+- name: configure ethernet1/2
+  panos_interface:
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    if_name: "ethernet1/2"
+    zone_name: "trust"
+    create_default_route: "no"
+    commit: False
+
 - name: set dns and ntp
   panos_mgtconfig:
     ip_address: "{{ mgmt_ip }}"
