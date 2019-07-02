@@ -1,5 +1,9 @@
 ---
 
+mgmt_ip: "52.151.108.224"
+admin_username: "localadmin"
+admin_password: "hzMCf21DK30pTwa"
+
 ntp_servers:
   - 0.pool.ntp.org
   - 1.pool.ntp.org
