@@ -1,0 +1,16 @@
+---
+
+mgmt_ip: "{{ mgmt_ip }}"
+admin_username: "{{ admin_username }}"
+admin_password: "{{ admin_password }}"
+
+ntp_servers:
+  - 0.pool.ntp.org
+  - 1.pool.ntp.org
+  - 2.pool.ntp.org
+  - 3.pool.ntp.org
+timezone: UTC
+
+name_servers:       
+  - 172.16.0.10
+  - 172.16.0.14
