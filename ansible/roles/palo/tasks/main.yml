@@ -6,8 +6,8 @@
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
     dns_server_primary: "8.8.8.8"
-    ntp_server_primary: "0.us.pool.ntp.org"
-    ntp_server_secondary: "1.us.pool.ntp.org"
-    timezone: "UTC/London"
+    ntp_server_primary: "0.pool.ntp.org"
+    ntp_server_secondary: "1.pool.ntp.org"
+    timezone: "UTC"
     login_banner: "Secure environment"
     commit: True
