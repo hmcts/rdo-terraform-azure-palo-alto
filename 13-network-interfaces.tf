@@ -41,11 +41,11 @@ resource "azurerm_network_interface" "nic_transit_private" {
   }
 }
 
-resource "azurerm_public_ip" "palo_public_ip" {  ##
-  name                                              = "fw-${var.environment}-palo-pip"  ##
-  location                                          = "${azurerm_resource_group.rg_firewall.location}"   ##
-  resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"  ##
-  domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}"  ##
+resource "azurerm_public_ip" "palo_public_ip" { 
+  name                                              = "fw-${var.environment}-palo-pip"
+  location                                          = "${azurerm_resource_group.rg_firewall.location}"
+  resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
+  domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}"
   allocation_method                                 = "Static"
   sku                                               = "Standard"	
 }
