@@ -7,8 +7,8 @@ data "template_file" "inventory" {
                                                             ]
 
     vars = {
-        admin_username                                      = "${var.vm_username}"
-        admin_password                                      = "${var.vm_password}"
+        admin_username                                      = "${var.vm_username}"  # needs removing
+        admin_password                                      = "${var.vm_password}"  # needs removing
         public_ip                                           = "${join("\n", azurerm_public_ip.palo_public_ip.*.ip_address)}"
     }
 }
@@ -120,9 +120,9 @@ resource "null_resource" "ansible-runs" {
                                                                 "sudo apt-get install sshpass",
                                                                 "ansible-galaxy install -f PaloAltoNetworks.paloaltonetworks",
                                                                 "pwd",
-                                                                "ansible-playbook -i /home/localadmin/ansible/inventory -vvvvvvv /home/localadmin/ansible/palo.yml"
+                                                                "ansible-playbook -i /home/localadmin/ansible/inventory -vvvvvvv /home/localadmin/ansible/palo.yml -e mgmt_ip=${azurerm_public_ip.palo_public_ip.*.ip_address} -e admin_username=${var.vm_username} -e admin_password=${var.vm_password}",
                                                             ]
-                                                            
+                                                         
     connection {
       type                                                  = "ssh"
       user                                                  = "${var.vm_username}"
