@@ -1,20 +1,20 @@
 ---
 
-#- name: checking if device ready
-#  panos_check:
-#    ip_address: "52.151.108.224"
-#    username: "localadmin"
-#    password: "hzMCf21DK30pTwa"
-#    register: result
-#    until: not result|failed
-#    retries: 10
-#    delay: 10
-
-- name: set dns and ntp
-  panos_mgtconfig:
+- name: checking if device ready
+  panos_check:
     ip_address: "52.151.108.224"
     username: "localadmin"
     password: "hzMCf21DK30pTwa"
-    dns_server_primary: "8.8.8.8"
-    ntp_server_primary: "8.8.8.8"
-    timezone: "UTC/London"
+    register: result
+    until: not result|failed
+    retries: 10
+    delay: 10
+
+#- name: set dns and ntp
+#  panos_mgtconfig:
+#    ip_address: "52.151.108.224"
+#    username: "localadmin"
+#    password: "hzMCf21DK30pTwa"
+#    dns_server_primary: "8.8.8.8"
+#    ntp_server_primary: "8.8.8.8"
+#    timezone: "UTC/London"
