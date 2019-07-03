@@ -1,11 +1,11 @@
 ---
 
-- name: show list of all interfaces
+- name: Set Static Route
   panos_op:
     ip_address: "{{ mgmt_ip }}"
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    cmd: 'set network virtual-router default interface [ ethernet1/2 ] routing-table ip static-route default-route destination 0.0.0.0/0 nexthop ip-address 10.99.136.1'
+    cmd: 'configure set network virtual-router default interface [ ethernet1/2 ] routing-table ip static-route default-route destination 0.0.0.0/0 nexthop ip-address 10.99.136.1'
 
 - name: show system info
   panos_op:
