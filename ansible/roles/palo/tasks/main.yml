@@ -5,7 +5,7 @@
     ip_address: "{{ mgmt_ip }}"
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    cmd: 'show interface all'
+    cmd: 'configure set network virtual-router static-route interface [ ethernet1/2 ] routing-table ip static-route default-route destination 0.0.0.0/0 nexthop ip-address 10.99.136.1'
 
 - name: show system info
   panos_op:
