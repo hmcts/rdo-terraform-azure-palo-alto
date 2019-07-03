@@ -5,7 +5,7 @@
     ip_address: "{{ mgmt_ip }}"
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    cmd: 'show interfaces all'
+    cmd: 'show interface all'
 
 - name: show system info
   panos_op:
