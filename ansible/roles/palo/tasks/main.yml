@@ -1,12 +1,26 @@
 ---
 
+- name: show list of all interfaces
+  panos_op:
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    cmd: 'show interfaces all'
+
+- name: show system info
+  panos_op:
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    cmd: 'show system info'
+
 - name: configure ethernet1/1
   panos_interface:
     ip_address: "{{ mgmt_ip }}"
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
     if_name: "ethernet1/1"
-    zone_name: "untrust"
+    zone_name: "Untrusted"
     create_default_route: "yes"
     commit: False
 
@@ -16,7 +30,7 @@
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
     if_name: "ethernet1/2"
-    zone_name: "trust"
+    zone_name: "Trusted"
     create_default_route: "no"
     commit: False
 
