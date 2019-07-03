@@ -1,19 +1,5 @@
 ---
 
-- name: show list of all interfaces
-  panos_op:
-    ip_address: "{{ mgmt_ip }}"
-    username: "{{ admin_username }}"
-    password: "{{ admin_password }}"
-    cmd: 'show interfaces all'
-
-- name: show system info
-  panos_op:
-    ip_address: "{{ mgmt_ip }}"
-    username: "{{ admin_username }}"
-    password: "{{ admin_password }}"
-    cmd: 'show system info'
-
 - name: configure ethernet1/1
   panos_interface:
     ip_address: "{{ mgmt_ip }}"
