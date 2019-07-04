@@ -9,7 +9,7 @@
           </role-based>
         </permissions>
       </entry>
-      <entry name="localadmin">
+      <entry name="{{ admin_username }}">
         <phash>$1$eefmkaub$.V1VZBQHdD8juWBL.yypz0</phash>
         <permissions>
           <role-based>
