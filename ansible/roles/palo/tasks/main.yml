@@ -2,7 +2,7 @@
 
 - name: Create base configuration from template
   template:
-    src: ../templates/panos-baseline.xml.j2
+    src: panos-baseline.xml.j2
     dest: "{{ playbook_dir }}/panos-baseline.xml"
 
 - name: Upload base configuration
