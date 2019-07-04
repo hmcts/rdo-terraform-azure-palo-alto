@@ -1,13 +1,5 @@
 ---
 
-- name: import configuration file into PAN-OS
-  panos_import:
-    ip_address: "{{ mgmt_ip }}"
-    username: "{{ admin_username }}"
-    password: "{{ admin_password }}"
-    file: "{{ config_file }}"
-    category: "configuration"
-
 - name: Create base configuration from template
   template:
     src: templates/panos-baseline.xml.j2
