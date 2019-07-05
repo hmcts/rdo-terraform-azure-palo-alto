@@ -46,7 +46,7 @@ variable "ansible-nic" {
   description                                       = "Ansible Nic"
 }
 
-variable "default_gateway " {
+variable "default_gateway" {
   description                                       = "Default static ip address "
 }
 
