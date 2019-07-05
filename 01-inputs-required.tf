@@ -45,3 +45,7 @@ variable "pip-ansible" {
 variable "ansible-nic" {
   description                                       = "Ansible Nic"
 }
+
+locals {
+  default_gateway                                   = "${var.default_gateway}" #"${cidrhost(data.azurerm_subnet.subnet.address_prefix,1)}"
+}
