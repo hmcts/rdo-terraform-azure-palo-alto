@@ -80,7 +80,7 @@
     ip_address: "{{ mgmt_ip }}"
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    sync: False
+
 
 - name: waiting for commit
   panos_check: 
