@@ -46,6 +46,9 @@ variable "ansible-nic" {
   description                                       = "Ansible Nic"
 }
 
+variable "default_gateway " {
+  description                                       = "Default static ip address "
+}
 
 locals {
   default_gateway                                   = "${cidrhost(data.azurerm_subnet.subnet.address_prefix,1)}"
