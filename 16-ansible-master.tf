@@ -86,7 +86,7 @@ resource "azurerm_virtual_machine_extension" "ansible_extension" {
   settings                                                  = <<SETTINGS
                                                                 {
                                                                     "commandToExecute": "sudo apt-add-repository --yes --update ppa:ansible/ansible",
-                                                                    "commandToExecute": "sudo apt-get update && sudo apt install -y software-properties-common ansible libssl-dev libffi-dev python-dev python-pip && sudo pip install pywinrm && sudo pip install azure-keyvault"
+                                                                    "commandToExecute": "sudo apt-get update && sudo apt install -y software-properties-common ansible libssl-dev libffi-dev python-dev python-pip && sudo pip install pywinrm && sudo pip install azure-keyvault && sudo pip install requests && sudo pip install requests-toolbelt "
                                                                 }
                                                             SETTINGS
 }
