@@ -1,5 +1,18 @@
 ---
 
+- name: wait for SSH (timeout 10min)
+  wait_for: port=22 host="{{ mgmt_ip }}" search_regex=SSH timeout=600
+
+- name: checking if device ready
+  panos_check: 
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+  register: result
+  until: not result|failed
+  retries: 10
+  delay: 10
+
 - name: Create base configuration from template
   template:
     src: panos-baseline.xml.j2
@@ -12,7 +25,7 @@
     password: "{{ admin_password }}"
     file: "{{ playbook_dir }}/panos-baseline.xml"
     category: "configuration"
-    register: result
+  register: result
 
 - name: load configuration
   panos_loadcfg:
@@ -20,7 +33,7 @@
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
     file: "{{ result.filename }}"
-    commit: false
+    commit: False
 
 
 - name: show system info
@@ -60,4 +73,41 @@
     ntp_server_secondary: "1.pool.ntp.org"
     timezone: "UTC"
     login_banner: "Secure environment"
-    commit: True
+    commit: False
+
+- name: commit
+  panos_commit:
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    sync: False
+
+- name: waiting for commit
+  panos_check: 
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    register: result
+    until: not result|failed
+    retries: 10
+    delay: 10
+
+
+
+
+     
+
+
+  - name: commit
+    panos_commit:
+      ip_address: "{{inventory_hostname}}"
+      password: "{{password}}"
+      sync: False
+  - name: waiting for commit
+    panos_check: 
+      ip_address: "{{inventory_hostname}}" 
+      password: "{{password}}"
+    register: result
+    until: not result|failed
+    retries: 10
+    delay: 10
