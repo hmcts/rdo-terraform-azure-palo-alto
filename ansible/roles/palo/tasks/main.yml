@@ -91,23 +91,3 @@
     until: not result|failed
     retries: 10
     delay: 10
-
-
-
-
-     
-
-
-  - name: commit
-    panos_commit:
-      ip_address: "{{inventory_hostname}}"
-      password: "{{password}}"
-      sync: False
-  - name: waiting for commit
-    panos_check: 
-      ip_address: "{{inventory_hostname}}" 
-      password: "{{password}}"
-    register: result
-    until: not result|failed
-    retries: 10
-    delay: 10
