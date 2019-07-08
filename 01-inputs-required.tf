@@ -46,12 +46,12 @@ variable "ansible-nic" {
   description                                       = "Ansible Nic"
 }
 
-#locals {
-#  default_gateway                                   = "${cidrhost(data.azurerm_subnet.subnet.address_prefix,1)}"
-#}
+locals {
+  default_gateway                                   = "${cidrhost(data.azurerm_subnet.subnet.address_prefix,1)}"
+}
 
-#data "azurerm_subnet" "subnet" {
-#  name                                              = "sub-hub-mgmt"
-#  virtual_network_name                              = "hub"
-#  resource_group_name                               = "hub"
-#}
+data "azurerm_subnet" "subnet" {
+  name                                              = "sub-hub-mgmt"
+  virtual_network_name                              = "hub"
+  resource_group_name                               = "hub"
+}
