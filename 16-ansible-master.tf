@@ -71,7 +71,7 @@ provisioner "remote-exec" {
 
 }
 
-
+/*
 resource "azurerm_virtual_machine_extension" "ansible_extension" {
   name                                                      = "Ansible-Agent-Install"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
@@ -127,6 +127,6 @@ resource "null_resource" "ansible-runs" {
       host                                                  = "${var.pip-ansible}"
     }
   }
-}
+}*/
 
 
