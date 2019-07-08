@@ -117,7 +117,7 @@ resource "null_resource" "ansible-runs" {
     inline                                                  = [
                                                                 "sudo apt-get install sshpass",
                                                                 "ansible-galaxy install -f PaloAltoNetworks.paloaltonetworks",
-                                                                "ansible-playbook -i /home/localadmin/ansible/inventory -vvvvvvv /home/localadmin/ansible/palo.yml -e mgmt_ip=${azurerm_public_ip.palo_public_ip.ip_address} -e admin_username=${var.vm_username} -e admin_password=${var.vm_password} -e paloname=${azurerm_virtual_machine.pan_vm.*.name}",
+                                                                "ansible-playbook -i /home/localadmin/ansible/inventory -vvvvvvv /home/localadmin/ansible/palo.yml -e mgmt_ip=${azurerm_public_ip.palo_public_ip.ip_address} -e admin_username=${var.vm_username} -e admin_password=${var.vm_password} -e paloname=${azurerm_virtual_machine.pan_vm.0.name}",
                                                             ]
                                                          
     connection {
