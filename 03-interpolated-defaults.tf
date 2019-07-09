@@ -1,9 +1,9 @@
 locals {
-  default_gateway                                   = "${cidrhost(data.azurerm_subnet.subnet.address_prefix,0)}"
+  default_gateway                                   = "${cidrhost(data.azurerm_subnet.subnet.address_prefix,1)}"
 }
 
 data "azurerm_subnet" "subnet" {
-  name                                              = "sub-hub-mgmt"
+  name                                              = "sub-hub-transit-public"
   virtual_network_name                              = "hub"
   resource_group_name                               = "hub"
 }
