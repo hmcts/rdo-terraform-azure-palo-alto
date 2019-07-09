@@ -1,16 +1,3 @@
-
-data "template_file" "inventory" {
-    template                                                = "${file("${path.module}/templates/inventory.tpl")}"
-
-    depends_on                                              = [
-                                                                "azurerm_virtual_machine.pan_vm"
-                                                            ]
-
-    vars = {
-        public_ip                                           = "${join("\n", azurerm_public_ip.palo_public_ip.*.ip_address)}"
-    }
-}
-
 resource "null_resource" "update_inventory" {
 
     triggers = {
