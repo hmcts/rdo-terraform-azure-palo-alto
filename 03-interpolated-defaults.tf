@@ -6,7 +6,7 @@ data "azurerm_subnet" "subnet" {
   name                                              = "sub-hub-transit-public"
   virtual_network_name                              = "hub"
   resource_group_name                               = "hub"
-  depends_on                                        = ["azurerm_subnet.subnet"]
+  depends_on                                        = ["azurerm_public_ip.palo_public_ip"]
 }
 
 
