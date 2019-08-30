@@ -214,7 +214,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <layer3>
                 <dhcp-client>
                   <enable>yes</enable>
-				  <create-default-route>no</create-default-route>
+                  <create-default-route>no</create-default-route>
                 </dhcp-client>
               </layer3>
             </entry>
@@ -237,7 +237,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <ping>yes</ping>
             </entry>
           </interface-management-profile>
-		  <zone-protection-profile>
+          <zone-protection-profile>
             <entry name="global">
               <flood>
                 <tcp-syn>
@@ -463,20 +463,39 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <ip>
                 <static-route>
                   <entry name="default-route">
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>
                     <nexthop>
                       <ip-address>10.99.136.1</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
                     </bfd>
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
                     <interface>ethernet1/1</interface>
                     <metric>10</metric>
                     <destination>0.0.0.0/0</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>
+                  <entry name="trust">
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>10.99.132.1</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/2</interface>
+                    <metric>10</metric>
+                    <destination>10.0.0.0/8</destination>
                     <route-table>
                       <unicast/>
                     </route-table>
@@ -606,7 +625,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
           <rulebase>
             <nat>
               <rules>
-                <entry name="inbound_nat" uuid="89386ac2-2df2-42fe-a064-5b515436bb7c">
+                <entry name="inbound_nat" uuid="26708b79-8ee1-4a1c-9a80-7f914f0d4b0a">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
@@ -628,7 +647,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </destination>
                   <service>any</service>
                 </entry>
-                <entry name="outbound_nat" uuid="a599f910-21f2-4564-8511-f874567b4afe">
+                <entry name="outbound_nat" uuid="6128e43d-cdc5-4a78-9bf5-07903537033b">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
@@ -654,7 +673,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             </nat>
             <security>
               <rules>
-                <entry name="health-probes" uuid="61963a19-6579-44a8-9a99-f06aa0bc6da4">
+                <entry name="health-probes" uuid="31a2c435-846a-41a2-bcc5-9b5faf532a5d">
                   <to>
                     <member>any</member>
                   </to>
@@ -686,7 +705,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <log-end>no</log-end>
                   <rule-type>universal</rule-type>
                 </entry>
-                <entry name="untrust-trust" uuid="912b6409-9a9e-411a-86ab-0907511881ec">
+                <entry name="temp-any" uuid="8b20d08e-f0ae-4e00-ba7a-b9d82fd0ae11">
                   <profile-setting>
                     <profiles>
                       <file-blocking>
@@ -707,10 +726,10 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     </profiles>
                   </profile-setting>
                   <to>
-                    <member>Trusted</member>
+                    <member>any</member>
                   </to>
                   <from>
-                    <member>Untrusted</member>
+                    <member>any</member>
                   </from>
                   <source>
                     <member>any</member>
@@ -725,8 +744,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </category>
                   <application>
-                    <member>ssl</member>
-                    <member>web-browsing</member>
+                    <member>any</member>
                   </application>
                   <service>
                     <member>application-default</member>
