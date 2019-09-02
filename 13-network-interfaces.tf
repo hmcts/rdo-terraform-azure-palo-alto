@@ -8,7 +8,7 @@ resource "azurerm_network_interface" "nic_mgmt" {
     name                                            = "fw-${var.environment}-nic-mgmt-ip-${count.index}"
     subnet_id                                       = "${var.subnet_management_id}"
     private_ip_address_allocation                   = "dynamic"
-    public_ip_address_id                            = "${azurerm_public_ip.palo_public_ip.id}"
+    public_ip_address_id                            = "${azurerm_public_ip.palo_mgmt_ip.id}"
   }
 }
 
@@ -23,6 +23,7 @@ resource "azurerm_network_interface" "nic_transit_public" {
     name                                            = "fw-${var.environment}-nic-transit-public-ip-${count.index}"
     subnet_id                                       = "${var.subnet_transit_public_id}"
     private_ip_address_allocation                   = "dynamic"
+    public_ip_address_id                            = "${azurerm_public_ip.palo_inet_out_pip.id}"
   }
 }
 
@@ -41,8 +42,18 @@ resource "azurerm_network_interface" "nic_transit_private" {
   }
 }
 
-resource "azurerm_public_ip" "palo_public_ip" { 
-  name                                              = "fw-${var.environment}-palo-pip"
+resource "azurerm_public_ip" "palo_mgmt_ip" { 
+  name                                              = "fw-${var.environment}-palo-mgmt-pip"
+  location                                          = "${azurerm_resource_group.rg_firewall.location}"
+  resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
+  domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}-palo"
+  allocation_method                                 = "Static"
+  sku                                               = "Standard"	
+}
+
+
+resource "azurerm_public_ip" "palo_inet_out_pip" { 
+  name                                              = "fw-${var.environment}-palo-inet-out-pip"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
   domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}-palo"

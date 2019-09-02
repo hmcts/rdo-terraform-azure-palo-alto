@@ -6,7 +6,7 @@ data "azurerm_subnet" "subnet" {
   name                                              = "sub-hub-transit-public"
   virtual_network_name                              = "hub"
   resource_group_name                               = "hub"
-  depends_on                                        = ["azurerm_public_ip.palo_public_ip"]
+  depends_on                                        = ["azurerm_public_ip.palo_mgmt_ip"]
 }
 
 
@@ -18,6 +18,6 @@ data "template_file" "inventory" {
                                                             ]
 
     vars = {
-        public_ip                                           = "${join("\n", azurerm_public_ip.palo_public_ip.*.ip_address)}"
+        public_ip                                           = "${join("\n", azurerm_public_ip.palo_mgmt_ip.*.ip_address)}"
     }
 }
