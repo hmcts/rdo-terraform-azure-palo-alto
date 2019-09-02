@@ -35,7 +35,6 @@
     file: "{{ result.filename }}"
     commit: False
 
-
 - name: show system info
   panos_op:
     ip_address: "{{ mgmt_ip }}"
@@ -43,41 +42,9 @@
     password: "{{ admin_password }}"
     cmd: 'show system info'
 
-#- name: configure ethernet1/1
-#  panos_interface:
-#    ip_address: "{{ mgmt_ip }}"
-#    username: "{{ admin_username }}"
-#    password: "{{ admin_password }}"
-#    if_name: "ethernet1/1"
-#    zone_name: "Untrusted"
-#    create_default_route: "yes"
-#    commit: False
-
-#- name: configure ethernet1/2
-#  panos_interface:
-#    ip_address: "{{ mgmt_ip }}"
-#    username: "{{ admin_username }}"
-#    password: "{{ admin_password }}"
-#    if_name: "ethernet1/2"
-#    zone_name: "Trusted"
-#    create_default_route: "no"
-#    commit: False
-
-#- name: set dns and ntp
-#  panos_mgtconfig:
-#    ip_address: "{{ mgmt_ip }}"
-#    username: "{{ admin_username }}"
-#    password: "{{ admin_password }}"
-#    dns_server_primary: "8.8.8.8"
-#    ntp_server_primary: "0.pool.ntp.org"
-#    ntp_server_secondary: "1.pool.ntp.org"
-#    timezone: "UTC"
-#    login_banner: "Secure environment"
-#    commit: False
-
-#- name: commit
-#  panos_commit:
-#    ip_address: "{{ mgmt_ip }}"
-#    username: "{{ admin_username }}"
-#    password: "{{ admin_password }}"
+- name: commit
+  panos_commit:
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
 
