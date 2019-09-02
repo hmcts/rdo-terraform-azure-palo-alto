@@ -46,7 +46,7 @@ resource "azurerm_public_ip" "palo_mgmt_ip" {
   name                                              = "fw-${var.environment}-palo-mgmt-pip"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}-palo"
+  domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}-palo-mgmt"
   allocation_method                                 = "Static"
   sku                                               = "Standard"	
 }
@@ -56,7 +56,7 @@ resource "azurerm_public_ip" "palo_inet_out_pip" {
   name                                              = "fw-${var.environment}-palo-inet-out-pip"
   location                                          = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                               = "${azurerm_resource_group.rg_firewall.name}"
-  domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}-palo"
+  domain_name_label                                 = "${azurerm_resource_group.rg_firewall.name}-palo-inet-out"
   allocation_method                                 = "Static"
   sku                                               = "Standard"	
 }
