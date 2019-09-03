@@ -192,7 +192,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <layer3>
                 <dhcp-client>
                   <enable>yes</enable>
-                  <create-default-route>yes</create-default-route>
+                  <create-default-route>no</create-default-route>
                 </dhcp-client>
                 <ipv6>
                   <neighbor-discovery>
@@ -216,6 +216,20 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <enable>yes</enable>
                   <create-default-route>no</create-default-route>
                 </dhcp-client>
+                <ipv6>
+                  <neighbor-discovery>
+                    <router-advertisement>
+                      <enable>no</enable>
+                    </router-advertisement>
+                  </neighbor-discovery>
+                </ipv6>
+                <ndp-proxy>
+                  <enabled>no</enabled>
+                </ndp-proxy>
+                <lldp>
+                  <enable>no</enable>
+                </lldp>
+                <interface-management-profile>health-probes</interface-management-profile>
               </layer3>
             </entry>
           </ethernet>
@@ -232,9 +246,11 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             <entry name="health-probes">
               <permitted-ip>
                 <entry name="168.63.129.16"/>
+                <entry name="10.0.0.0/8"/>
               </permitted-ip>
               <https>yes</https>
               <ping>yes</ping>
+              <http>yes</http>
             </entry>
           </interface-management-profile>
           <zone-protection-profile>
@@ -462,7 +478,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             <routing-table>
               <ip>
                 <static-route>
-                  <entry name="default-route">
+                  <entry name="default">
                     <nexthop>
                       <ip-address>10.99.136.1</ip-address>
                     </nexthop>
@@ -482,17 +498,17 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     </route-table>
                   </entry>
                   <entry name="trust">
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>
                     <nexthop>
                       <ip-address>10.99.132.1</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
                     </bfd>
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
                     <interface>ethernet1/2</interface>
                     <metric>10</metric>
                     <destination>10.0.0.0/8</destination>
@@ -625,7 +641,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
           <rulebase>
             <nat>
               <rules>
-                <entry name="inbound_nat" uuid="26708b79-8ee1-4a1c-9a80-7f914f0d4b0a">
+                <entry name="inbound_nat" uuid="564b3e8b-e6a0-49b5-ac78-df1ad573448d">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
@@ -647,7 +663,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </destination>
                   <service>any</service>
                 </entry>
-                <entry name="outbound_nat" uuid="6128e43d-cdc5-4a78-9bf5-07903537033b">
+                <entry name="outbound_nat" uuid="34d5bbd6-c2d5-46ca-9f79-3a34a5a5de68">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
@@ -673,7 +689,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             </nat>
             <security>
               <rules>
-                <entry name="health-probes" uuid="31a2c435-846a-41a2-bcc5-9b5faf532a5d">
+                <entry name="health-probes" uuid="8f3fdac3-3d6a-4171-b32d-7a1a1caab634">
                   <to>
                     <member>any</member>
                   </to>
@@ -705,26 +721,39 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <log-end>no</log-end>
                   <rule-type>universal</rule-type>
                 </entry>
-                <entry name="temp-any" uuid="8b20d08e-f0ae-4e00-ba7a-b9d82fd0ae11">
-                  <profile-setting>
-                    <profiles>
-                      <file-blocking>
-                        <member>FBPolicy</member>
-                      </file-blocking>
-                      <virus>
-                        <member>AVPolicy</member>
-                      </virus>
-                      <spyware>
-                        <member>default</member>
-                      </spyware>
-                      <vulnerability>
-                        <member>VPPolicy</member>
-                      </vulnerability>
-                      <wildfire-analysis>
-                        <member>default</member>
-                      </wildfire-analysis>
-                    </profiles>
-                  </profile-setting>
+                <entry name="temp-any" uuid="aec11e45-e1a2-4402-b377-91a54e2ee774">
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <source>
+                    <member>any</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <application>
+                    <member>any</member>
+                  </application>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <hip-profiles>
+                    <member>any</member>
+                  </hip-profiles>
+                  <action>allow</action>
+                  <log-start>yes</log-start>
+                  <log-setting>app_insights</log-setting>
+                </entry>
+                <entry name="deny_log" uuid="a51e32d8-12eb-4e04-a93f-46e203998c38">
                   <to>
                     <member>any</member>
                   </to>
@@ -752,9 +781,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <hip-profiles>
                     <member>any</member>
                   </hip-profiles>
-                  <action>allow</action>
+                  <action>drop</action>
                   <log-start>yes</log-start>
-                  <log-setting>app_insights</log-setting>
                 </entry>
               </rules>
             </security>
