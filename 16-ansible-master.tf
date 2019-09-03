@@ -10,7 +10,7 @@ resource "null_resource" "update_inventory" {
 }
 
 resource "azurerm_virtual_machine" "ansible-host" {
-  name                                                      = "fw-${var.environment}-ansible"
+  name                                                      = "$${var.vnet_name}-${var.environment}-palo-ansible"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
   network_interface_ids                                     = ["${var.ansible-nic}"]
@@ -25,14 +25,14 @@ resource "azurerm_virtual_machine" "ansible-host" {
   }
   
   storage_os_disk {
-    name                                                    = "fw-${var.environment}-ansible-os"
+    name                                                    = "${var.vnet_name}-${var.environment}-palo-ansible-os"
     caching                                                 = "ReadWrite"
     create_option                                           = "FromImage"
     managed_disk_type                                       = "Standard_LRS"
   }
   
   os_profile {
-    computer_name                                           = "fw-${var.environment}-ans-os"
+    computer_name                                           = "${var.vnet_name}-${var.environment}-palo-ans-os"
     admin_username                                          = "${var.vm_username}"
     admin_password                                          = "${var.vm_password}"
   }
