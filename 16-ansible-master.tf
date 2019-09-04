@@ -10,7 +10,7 @@ resource "null_resource" "update_inventory" {
 }
 
 resource "azurerm_virtual_machine" "ansible-host" {
-  name                                                      = "$${var.vnet_name}-${var.environment}-palo-ansible"
+  name                                                      = "${var.vnet_name}-${var.environment}-palo-ansible"
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
   network_interface_ids                                     = ["${var.ansible-nic}"]
