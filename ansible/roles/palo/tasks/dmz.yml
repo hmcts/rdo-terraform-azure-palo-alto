@@ -1,0 +1,15 @@
+---
+
+- name: Create base configuration from template for DMZ hosts
+  template:
+    src: dmz-pan-baseline.xml.j2
+    dest: "{{ playbook_dir }}/dmz-pan-baseline.xml"
+
+- name: Upload base configuration
+  panos_import:
+    ip_address: "{{ mgmt_ip }}"
+    username: "{{ admin_username }}"
+    password: "{{ admin_password }}"
+    file: "{{ playbook_dir }}/dmz-pan-baseline.xml"
+    category: "configuration"
+  register: result

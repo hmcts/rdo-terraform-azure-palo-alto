@@ -13,37 +13,13 @@
   retries: 10
   delay: 10
 
-- name: Create base configuration from template for Hub Hosts
-  template:
-    src: hub-pan-baseline.xml.j2
-    dest: "{{ playbook_dir }}/hub-pan-baseline.xml"
-    when: paloname is match("hub*")
+- name: Hub Config Deployment
+  include_tasks: hub.yml
+  when: paloname is match("hub*")
 
-- name: Upload base configuration for HUB Hosts
-  panos_import:
-    ip_address: "{{ mgmt_ip }}"
-    username: "{{ admin_username }}"
-    password: "{{ admin_password }}"
-    file: "{{ playbook_dir }}/hub-pan-baseline.xml"
-    category: "configuration"
-    when: paloname is match("hub*")
-  register: result
-
-- name: Create base configuration from template for DMZ hosts
-  template:
-    src: dmz-pan-baseline.xml.j2
-    dest: "{{ playbook_dir }}/dmz-pan-baseline.xml"
-    when: paloname is match("dmz*")
-
-- name: Upload base configuration
-  panos_import:
-    ip_address: "{{ mgmt_ip }}"
-    username: "{{ admin_username }}"
-    password: "{{ admin_password }}"
-    file: "{{ playbook_dir }}/dmz-pan-baseline.xml"
-    category: "configuration"
-    when: paloname is match("dmz*")
-  register: result
+- name: Dmz Config Deployment
+  include_tasks: dmz.yml
+  when: paloname is match("dmz*")
 
 - name: load configuration
   panos_loadcfg:
