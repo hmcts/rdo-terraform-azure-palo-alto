@@ -40,6 +40,6 @@ resource "azurerm_lb_rule" "lb_rule" {
 resource "azurerm_network_interface_backend_address_pool_association" "lbmap" {
   count                                             = "${var.replicas}"
   network_interface_id                              = "${element(azurerm_network_interface.nic_transit_public.*.id, count.index)}"
-  ip_configuration_name                             = "fw-${var.environment}-nic-transit-public-ip-${count.index}"
+  ip_configuration_name                             = "${var.vnet_name}-${var.environment}-nic-transit-public-ip-${count.index}"
   backend_address_pool_id                           = "${azurerm_lb_backend_address_pool.lb_backend.id}"
 }
