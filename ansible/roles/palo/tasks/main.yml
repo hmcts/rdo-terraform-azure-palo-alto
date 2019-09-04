@@ -15,7 +15,7 @@
 
 - name: Create base configuration from template for Hub Hosts
   template:
-    src: panos-baseline.xml.j2
+    src: hub-pan-baseline.xml.j2
     dest: "{{ playbook_dir }}/hub-pan-baseline.xml"
     when: paloname is match("hub*")
 
@@ -31,7 +31,7 @@
 
 - name: Create base configuration from template for DMZ hosts
   template:
-    src: panos-baseline.xml.j2
+    src: dmz-pan-baseline.xml.j2
     dest: "{{ playbook_dir }}/dmz-pan-baseline.xml"
     when: paloname is match("dmz*")
 
