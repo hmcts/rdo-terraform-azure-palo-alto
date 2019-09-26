@@ -549,7 +549,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
       </network>
       <deviceconfig>
         <system>
-          <hostname>fw-sbox-palo-vm-0</hostname>
+          <hostname>{{ paloname }}</hostname>
           <dns-setting>
             <servers>
               <primary>8.8.8.8</primary>
@@ -619,8 +619,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <accept-dhcp-domain>no</accept-dhcp-domain>
                 </dhcp-client>
               </type>
-              <hostname>"{{ paloname }}"</hostname>
-              <username>"{{ admin_username }}"</username>
+              <hostname>{{ paloname }}</hostname>
+              <username>{{ admin_username }}</username>
             </initcfg>
           </management>
           <session>
