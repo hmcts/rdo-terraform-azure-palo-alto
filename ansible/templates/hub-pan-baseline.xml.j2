@@ -9,7 +9,7 @@
           </role-based>
         </permissions>
       </entry>
-      <entry name="localadmin">
+      <entry name="{{ admin_username }}">
         <phash>$1$eefmkaub$.V1VZBQHdD8juWBL.yypz0</phash>
         <permissions>
           <role-based>
@@ -480,7 +480,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <static-route>
                   <entry name="default">
                     <nexthop>
-                      <ip-address>10.99.136.1</ip-address>
+                      <ip-address>"{{ gateway }}"</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -499,7 +499,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </entry>
                   <entry name="trust">
                     <nexthop>
-                      <ip-address>10.99.132.1</ip-address>
+                      <ip-address>"{{ gateway_trust }}"</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -523,7 +523,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <hold-time>2</hold-time>
                     </path-monitor>
                     <nexthop>
-                      <ip-address>10.99.136.1</ip-address>
+                      <ip-address>"{{ gateway }}"</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
