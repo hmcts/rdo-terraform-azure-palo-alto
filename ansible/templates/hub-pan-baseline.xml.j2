@@ -9,7 +9,7 @@
           </role-based>
         </permissions>
       </entry>
-      <entry name="localadmin">
+      <entry name="{{ admin_username }}">
         <phash>$1$eefmkaub$.V1VZBQHdD8juWBL.yypz0</phash>
         <permissions>
           <role-based>
@@ -480,7 +480,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <static-route>
                   <entry name="default">
                     <nexthop>
-                      <ip-address>10.99.136.1</ip-address>
+                      <ip-address>{{ gateway }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -499,7 +499,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </entry>
                   <entry name="trust">
                     <nexthop>
-                      <ip-address>10.99.132.1</ip-address>
+                      <ip-address>{{ gateway_trust }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -512,6 +512,25 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <interface>ethernet1/2</interface>
                     <metric>10</metric>
                     <destination>10.0.0.0/8</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>
+                  <entry name="proxy">
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>{{ gateway }}</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/1</interface>
+                    <metric>10</metric>
+                    <destination>10.99.73.0/24</destination>
                     <route-table>
                       <unicast/>
                     </route-table>
@@ -529,7 +548,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
       </network>
       <deviceconfig>
         <system>
-          <hostname>fw-sbox-palo-vm-0</hostname>
+          <hostname>{{ paloname }}</hostname>
           <dns-setting>
             <servers>
               <primary>8.8.8.8</primary>
@@ -599,7 +618,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <accept-dhcp-domain>no</accept-dhcp-domain>
                 </dhcp-client>
               </type>
-              <hostname>fw-sbox-palo-vm-0</hostname>
+              <hostname>{{ paloname }}</hostname>
               <username>localadmin</username>
             </initcfg>
           </management>
@@ -641,7 +660,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
           <rulebase>
             <nat>
               <rules>
-                <entry name="inbound_nat" uuid="564b3e8b-e6a0-49b5-ac78-df1ad573448d">
+                <entry name="inbound_nat" uuid="3ffdd31c-5a92-4d97-a113-d8322dc6f6c9">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
@@ -663,7 +682,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </destination>
                   <service>any</service>
                 </entry>
-                <entry name="outbound_nat" uuid="34d5bbd6-c2d5-46ca-9f79-3a34a5a5de68">
+                <entry name="outbound_nat" uuid="7687cebc-12d6-4a2e-aa11-a1f121664708">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
@@ -685,11 +704,34 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </destination>
                   <service>any</service>
                 </entry>
+                <entry name="proxy" uuid="da9d4143-5fc9-4c97-944f-188ca1131d82">
+                  <source-translation>
+                    <dynamic-ip-and-port>
+                      <interface-address>
+                        <interface>ethernet1/1</interface>
+                      </interface-address>
+                    </dynamic-ip-and-port>
+                  </source-translation>
+                  <to>
+                    <member>Trusted</member>
+                  </to>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <source>
+                    <member>any</member>
+                  </source>
+                  <destination>
+                    <member>10.99.73.4</member>
+                  </destination>
+                  <service>any</service>
+                  <disabled>no</disabled>
+                </entry>
               </rules>
             </nat>
             <security>
               <rules>
-                <entry name="health-probes" uuid="8f3fdac3-3d6a-4171-b32d-7a1a1caab634">
+                <entry name="health-probes" uuid="15a50d0d-296b-496f-b171-2b505e434cf6">
                   <to>
                     <member>any</member>
                   </to>
@@ -721,7 +763,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <log-end>no</log-end>
                   <rule-type>universal</rule-type>
                 </entry>
-                <entry name="temp-any" uuid="aec11e45-e1a2-4402-b377-91a54e2ee774">
+                <entry name="temp-any" uuid="38e98e00-53f6-4842-b56e-921df433a603">
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -753,7 +795,38 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <log-start>yes</log-start>
                   <log-setting>app_insights</log-setting>
                 </entry>
-                <entry name="deny_log" uuid="a51e32d8-12eb-4e04-a93f-46e203998c38">
+                <entry name="proxy" uuid="a658b0bf-8cda-4de1-8afa-bbeaa4804eb4">
+                  <to>
+                    <member>Trusted</member>
+                  </to>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <source>
+                    <member>any</member>
+                  </source>
+                  <destination>
+                    <member>10.99.73.4</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <application>
+                    <member>any</member>
+                  </application>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <hip-profiles>
+                    <member>any</member>
+                  </hip-profiles>
+                  <action>allow</action>
+                  <log-start>yes</log-start>
+                </entry>
+                <entry name="deny_log" uuid="5be49317-f636-4b67-be10-463dbe0351ed">
                   <to>
                     <member>any</member>
                   </to>

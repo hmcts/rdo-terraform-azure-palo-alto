@@ -10,7 +10,7 @@
           </role-based>
         </permissions>
       </entry>
-      <entry name="localadmin">
+      <entry name="{{ admin_username }}">
         <phash>$1$eefmkaub$.V1VZBQHdD8juWBL.yypz0</phash>
         <permissions>
           <role-based>
@@ -481,7 +481,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <static-route>
                   <entry name="default">
                     <nexthop>
-                      <ip-address>10.99.75.1</ip-address>
+                      <ip-address>{{ gateway_dmz }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -500,7 +500,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </entry>
                   <entry name="trust">
                     <nexthop>
-                      <ip-address>10.99.75.129</ip-address>
+                      <ip-address>{{ gateway_dmz_trust }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -524,7 +524,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <hold-time>2</hold-time>
                     </path-monitor>
                     <nexthop>
-                      <ip-address>10.99.75.1</ip-address>
+                      <ip-address>{{ gateway_dmz }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -549,7 +549,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
       </network>
       <deviceconfig>
         <system>
-          <hostname>fw-sbox-palo-vm-0</hostname>
+          <hostname>{{ paloname }}</hostname>
           <dns-setting>
             <servers>
               <primary>8.8.8.8</primary>
@@ -619,8 +619,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <accept-dhcp-domain>no</accept-dhcp-domain>
                 </dhcp-client>
               </type>
-              <hostname>fw-sbox-palo-vm-0</hostname>
-              <username>localadmin</username>
+              <hostname>{{ paloname }}</hostname>
+              <username>{{ admin_username }}</username>
             </initcfg>
           </management>
           <session>
