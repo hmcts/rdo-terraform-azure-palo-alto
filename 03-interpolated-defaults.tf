@@ -13,23 +13,23 @@ data "azurerm_subnet" "subnet" {
 }
 
 data "azurerm_subnet" "subnet_trust" {
-  name                                              = "sub-hub-transit-private"
-  virtual_network_name                              = "hub"
-  resource_group_name                               = "hub"
+  name                                              = "hub-transit-private"
+  virtual_network_name                              = "hmcts-hub-${var.environment}"
+  resource_group_name                               = "hmcts-hub-${var.environment}"
   depends_on                                        = ["azurerm_public_ip.palo_mgmt_ip"]
 }
 
 data "azurerm_subnet" "subnet_dmz" {
   name                                              = "dmz-palo-public"
-  virtual_network_name                              = "dmz"
-  resource_group_name                               = "dmz"
+  virtual_network_name                              = "hmcts-dmz-${var.environment}"
+  resource_group_name                               = "hmcts-dmz-${var.environment}"
   depends_on                                        = ["azurerm_public_ip.palo_mgmt_ip"]
 }
 
 data "azurerm_subnet" "subnet_dmz_trust" {
   name                                              = "dmz-palo-private"
-  virtual_network_name                              = "dmz"
-  resource_group_name                               = "dmz"
+  virtual_network_name                              = "hmcts-dmz-${var.environment}"
+  resource_group_name                               = "hmcts-dmz-${var.environment}"
   depends_on                                        = ["azurerm_public_ip.palo_mgmt_ip"]
 }
 
