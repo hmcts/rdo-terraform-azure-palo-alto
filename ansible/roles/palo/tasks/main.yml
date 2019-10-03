@@ -15,11 +15,11 @@
 
 - name: Hub Config Deployment
   include_tasks: hub.yml
-  when: paloname is match("hub*")
+  when: paloname is match("hmcts-hub*")
 
 - name: Dmz Config Deployment
   include_tasks: dmz.yml
-  when: paloname is match("dmz*")
+  when: paloname is match("hmcts-dmz*")
 
 - name: load configuration
   panos_loadcfg:
