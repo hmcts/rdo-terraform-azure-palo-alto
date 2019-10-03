@@ -14,7 +14,7 @@ resource "azurerm_virtual_machine" "ansible-host" {
   location                                                  = "${azurerm_resource_group.rg_firewall.location}"
   resource_group_name                                       = "${azurerm_resource_group.rg_firewall.name}"
   network_interface_ids                                     = ["${var.ansible-nic}"]
-  vm_size                                                   = "Basic_A0"
+  vm_size                                                   = "Standard_A0"
   delete_os_disk_on_termination                             = true
   
   storage_image_reference {
