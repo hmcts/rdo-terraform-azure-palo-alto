@@ -2,7 +2,7 @@ variable "rg_name" {
   description                                       = "Resource group ID"
 }
 
-variable "vnet-name" {
+variable "vnet_name" {
   description                                       = "VNET Name"
 }
 
