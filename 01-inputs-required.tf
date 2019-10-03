@@ -1,4 +1,4 @@
-variable "rg-name" {
+variable "rg_name" {
   description                                       = "Resource group ID"
 }
 
