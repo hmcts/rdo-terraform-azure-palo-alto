@@ -1,13 +1,9 @@
-variable "rg_name" {
+variable "rg-name" {
   description                                       = "Resource group ID"
 }
 
-variable "vnet_name" {
+variable "vnet-name" {
   description                                       = "VNET Name"
-}
-
-variable "vnet_rg" {
-  description                                       = "Resource group name that contains the vnet"
 }
 
 variable "subnet_management_id" {
