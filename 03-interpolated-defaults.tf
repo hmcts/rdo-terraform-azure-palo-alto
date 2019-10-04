@@ -3,7 +3,7 @@ locals {
   default_gateway_trust                             = "${cidrhost(data.azurerm_subnet.subnet_trust.address_prefix,1)}"
   default_gateway_dmz                               = "${cidrhost(data.azurerm_subnet.subnet_dmz.address_prefix,1)}"
   default_gateway_dmz_trust                         = "${cidrhost(data.azurerm_subnet.subnet_dmz_trust.address_prefix,1)}"
-  f5_data_subnet                                    = "${data.azurerm_subnet.subnet_f5_data.address_prefix.value}"
+  f5_data_subnet                                    = "${data.azurerm_subnet.subnet_f5_data.address_prefix}"
 }
 
 data "azurerm_subnet" "subnet" {
