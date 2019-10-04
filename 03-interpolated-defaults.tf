@@ -3,6 +3,7 @@ locals {
   default_gateway_trust                             = "${cidrhost(data.azurerm_subnet.subnet_trust.address_prefix,1)}"
   default_gateway_dmz                               = "${cidrhost(data.azurerm_subnet.subnet_dmz.address_prefix,1)}"
   default_gateway_dmz_trust                         = "${cidrhost(data.azurerm_subnet.subnet_dmz_trust.address_prefix,1)}"
+  f5_data_subnet                                    = "${data.azurerm_subnet.subnet_f5_data.address_prefix.value}"
 }
 
 data "azurerm_subnet" "subnet" {
@@ -28,6 +29,13 @@ data "azurerm_subnet" "subnet_dmz" {
 
 data "azurerm_subnet" "subnet_dmz_trust" {
   name                                              = "dmz-palo-private"
+  virtual_network_name                              = "hmcts-dmz-${var.environment}"
+  resource_group_name                               = "hmcts-dmz-${var.environment}"
+  depends_on                                        = ["azurerm_public_ip.palo_mgmt_ip"]
+}
+
+data "azurerm_subnet" "subnet_f5_data" {
+  name                                              = "dmz-loadbalancer"
   virtual_network_name                              = "hmcts-dmz-${var.environment}"
   resource_group_name                               = "hmcts-dmz-${var.environment}"
   depends_on                                        = ["azurerm_public_ip.palo_mgmt_ip"]
