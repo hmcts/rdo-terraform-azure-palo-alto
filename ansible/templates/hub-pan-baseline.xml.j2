@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <config version="9.0.0" urldb="paloaltonetworks">
   <mgt-config>
     <users>
@@ -17,6 +18,14 @@
           </role-based>
         </permissions>
       </entry>
+							
+														 
+					 
+					  
+									  
+					   
+					  
+			  
     </users>
   </mgt-config>
   <shared>
@@ -208,6 +217,10 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <lldp>
                   <enable>no</enable>
                 </lldp>
+																					   
+					
+												  
+											 
               </layer3>
             </entry>
             <entry name="ethernet1/2">
@@ -229,6 +242,9 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <lldp>
                   <enable>no</enable>
                 </lldp>
+							 
+																 
+							  
                 <interface-management-profile>health-probes</interface-management-profile>
               </layer3>
             </entry>
@@ -251,6 +267,9 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <https>yes</https>
               <ping>yes</ping>
               <http>yes</http>
+							
+							  
+								
             </entry>
           </interface-management-profile>
           <zone-protection-profile>
@@ -475,6 +494,13 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <member>ethernet1/1</member>
               <member>ethernet1/2</member>
             </interface>
+				  
+						 
+							
+						  
+								 
+													 
+				   
             <routing-table>
               <ip>
                 <static-route>
@@ -517,17 +543,36 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     </route-table>
                   </entry>
                   <entry name="proxy">
+							 
+																	
+							  
+						 
+											 
+						  
                     <path-monitor>
                       <enable>no</enable>
                       <failure-condition>any</failure-condition>
                       <hold-time>2</hold-time>
                     </path-monitor>
+													  
+									   
+																		
+								 
+								
+								  
+						  
+								   
                     <nexthop>
                       <ip-address>{{ gateway }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
                     </bfd>
+								  
+										 
+																
+											  
+								   
                     <interface>ethernet1/1</interface>
                     <metric>10</metric>
                     <destination>10.99.73.0/24</destination>
@@ -556,6 +601,11 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
           </dns-setting>
           <timezone>Europe/London</timezone>
           <login-banner>Secure environment</login-banner>
+					   
+								
+																	   
+								 
+						
           <update-server>updates.paloaltonetworks.com</update-server>
           <update-schedule>
             <threats>
@@ -600,8 +650,98 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             </primary-ntp-server>
             <secondary-ntp-server>
               <ntp-server-address>1.pool.ntp.org</ntp-server-address>
+								 
+						
+													   
+													
+						 
+					  
+										
+						
+													   
+													
+						 
+					  
+								
+						
+													   
+													
+						 
+					  
+										
+						
+													   
+													
+						 
+					  
+								 
+						
+													   
+													
+						 
+					  
+								
+						
+													   
+													
+						 
+					  
+													   
+						
+													   
+													
+						 
+					  
+									 
+						
+													   
+													
+						 
+					  
+								  
+						
+													   
+													
+						 
+					  
+								 
+						
+													   
+													
+						 
+					  
+									  
+						
+													   
+													
+						 
+					  
+										
+						
+													   
+													
+						 
+					  
+									  
+						
+													   
+													
+						 
+					  
+											 
+						
+													   
+													
+						 
+					  
+					  
+				  
+					   
+					 
+										
             </secondary-ntp-server>
           </ntp-servers>
+																		 
         </system>
         <setting>
           <config>
@@ -681,6 +821,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </destination>
                   <service>any</service>
+										
                 </entry>
                 <entry name="outbound_nat" uuid="7687cebc-12d6-4a2e-aa11-a1f121664708">
                   <source-translation>
@@ -690,6 +831,23 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       </interface-address>
                     </dynamic-ip-and-port>
                   </source-translation>
+														  
+												 
+										 
+										
+												 
+								
+						   
+														
+							
+								
+										
+								 
+										
+											
+												  
+							  
+																						
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -702,7 +860,24 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <destination>
                     <member>any</member>
                   </destination>
+							   
+										
+								
+							
+										
+							 
+							   
+										
+								
+						   
+														
                   <service>any</service>
+								
+										
+								 
+										
+									   
+										   
                 </entry>
                 <entry name="proxy" uuid="da9d4143-5fc9-4c97-944f-188ca1131d82">
                   <source-translation>
@@ -724,8 +899,43 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <destination>
                     <member>10.99.73.4</member>
                   </destination>
+							   
+										
+								
+							
+										
+							 
+							   
+										  
+								
+						   
+										
                   <service>any</service>
                   <disabled>no</disabled>
+										
+								 
+										
+											
+								   
+							  
+									 
+												 
+									  
+							 
+												 
+							  
+							   
+												
+								
+									 
+												 
+									  
+										 
+												
+										  
+							   
+									
+																							  
                 </entry>
               </rules>
             </nat>
@@ -752,6 +962,12 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </category>
                   <application>
                     <member>any</member>
+										 
+											  
+										 
+										 
+										
+												 
                   </application>
                   <service>
                     <member>application-default</member>
@@ -762,6 +978,26 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <action>allow</action>
                   <log-end>no</log-end>
                   <rule-type>universal</rule-type>
+								   
+							  
+									 
+												 
+									  
+							 
+												 
+							  
+									 
+												 
+									  
+										 
+												
+										  
+							   
+												
+								
+							   
+									
+																  
                 </entry>
                 <entry name="temp-any" uuid="38e98e00-53f6-4842-b56e-921df433a603">
                   <to>
@@ -783,6 +1019,10 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </category>
                   <application>
+											 
+										 
+											  
+										 
                     <member>any</member>
                   </application>
                   <service>
@@ -793,6 +1033,26 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </hip-profiles>
                   <action>allow</action>
                   <log-start>yes</log-start>
+												  
+								   
+							  
+									 
+												 
+									  
+							 
+												 
+							  
+									 
+												 
+									  
+										 
+												
+										  
+							   
+												
+								
+							   
+									
                   <log-setting>app_insights</log-setting>
                 </entry>
                 <entry name="proxy" uuid="a658b0bf-8cda-4de1-8afa-bbeaa4804eb4">
@@ -815,7 +1075,15 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </category>
                   <application>
+											
+										
+											 
+												
+												
+										
+										
                     <member>any</member>
+												 
                   </application>
                   <service>
                     <member>any</member>
@@ -825,6 +1093,27 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </hip-profiles>
                   <action>allow</action>
                   <log-start>yes</log-start>
+												  
+								   
+							  
+									 
+												 
+									  
+							 
+												 
+							  
+							   
+												
+								
+									 
+												 
+									  
+										 
+												
+										  
+							   
+									
+																  
                 </entry>
                 <entry name="deny_log" uuid="5be49317-f636-4b67-be10-463dbe0351ed">
                   <to>
@@ -859,6 +1148,57 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 </entry>
               </rules>
             </security>
+				 
+					 
+																				 
+									  
+										 
+										 
+														  
+										  
+										  
+									   
+					  
+										  
+					   
+						
+											
+						 
+						  
+										
+						   
+							   
+										
+								
+										
+						
+																				  
+									  
+										 
+										 
+														  
+										  
+										  
+									   
+					  
+											
+					   
+						
+										  
+						 
+						  
+										
+						   
+							   
+										
+								
+										
+						
+					  
+				  
+								  
+					  
+								   
           </rulebase>
           <import>
             <network>
@@ -1186,16 +1526,50 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
           </profiles>
           <log-settings>
             <profiles>
-              <entry name="app_insights">
+              <entry name="azure_security_center">
                 <match-list>
-                  <entry name="app_insights">
-                    <send-http>
-                      <member>app_insights</member>
-                    </send-http>
-                    <log-type>traffic</log-type>
-                    <filter>All Logs</filter>
+                  <entry name="ASC-CriticalThreatLogs">
+                    <actions>
+                      <entry name="CriticalThreatLogs">
+                        <type>
+                          <integration>
+                            <action>Azure-Security-Center-Integration</action>
+                          </integration>
+                        </type>
+                      </entry>
+                    </actions>
+                    <log-type>threat</log-type>
+                    <filter>(severity eq critical)</filter>
                     <send-to-panorama>no</send-to-panorama>
                   </entry>
+                  <entry name="ASC-CriticalWildfireLogs">
+                    <actions>
+                      <entry name="CriticalWildfireLogs">
+                        <type>
+                          <integration>
+                            <action>Azure-Security-Center-Integration</action>
+                          </integration>
+                        </type>
+                      </entry>
+                    </actions>
+                    <log-type>wildfire</log-type>
+                    <filter>(severity eq critical)</filter>
+                    <send-to-panorama>no</send-to-panorama>
+                  </entry>
+                  <entry name="ASC-CriticalDataLogs">
+                    <actions>
+                      <entry name="CriticalDataLogs">
+                        <type>
+                          <integration>
+                            <action>Azure-Security-Center-Integration</action>
+                          </integration>
+                        </type>
+                      </entry>
+                    </actions>
+                    <log-type>data</log-type>
+                    <filter>(severity eq critical)</filter>
+                    <send-to-panorama>no</send-to-panorama>
+                  </entry>						  
                 </match-list>
               </entry>
             </profiles>
