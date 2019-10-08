@@ -9,7 +9,7 @@
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
   register: result
-  until: not result|failed
+  until: result is failed
   retries: 10
   delay: 15
 
