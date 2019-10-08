@@ -9,9 +9,9 @@
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
   register: result
-  until: result is failed
+  until: not result|failed
   retries: 10
-  delay: 10
+  delay: 15
 
 - name: Hub Config Deployment
   include_tasks: hub.yml
