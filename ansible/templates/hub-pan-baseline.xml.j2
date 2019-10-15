@@ -17,7 +17,7 @@
             <superuser>yes</superuser>
           </role-based>
         </permissions>
-      </entry>		  
+      </entry>
     </users>
   </mgt-config>
   <shared>
@@ -208,7 +208,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <interface-management-profile>health-probes</interface-management-profile>
                 <lldp>
                   <enable>no</enable>
-                </lldp>									 
+                </lldp>
               </layer3>
             </entry>
             <entry name="ethernet1/2">
@@ -229,7 +229,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 </ndp-proxy>
                 <lldp>
                   <enable>no</enable>
-                </lldp>					  
+                </lldp>
                 <interface-management-profile>health-probes</interface-management-profile>
               </layer3>
             </entry>
@@ -251,7 +251,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               </permitted-ip>
               <https>yes</https>
               <ping>yes</ping>
-              <http>yes</http>							
+              <http>yes</http>
             </entry>
           </interface-management-profile>
           <zone-protection-profile>
@@ -764,7 +764,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <log-end>no</log-end>
                   <rule-type>universal</rule-type>														  
                 </entry>
-                <entry name="temp-any" uuid="38e98e00-53f6-4842-b56e-921df433a603">
+                <entry name="trusted" uuid="38e98e00-53f6-4842-b56e-921df433a603">
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -795,10 +795,27 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <action>allow</action>
                   <log-start>yes</log-start>								
                   <log-setting>azure_security_center</log-setting>
+                  <rule-type>universal</rule-type>
+                  <profile-setting>
+                    <profiles>
+                      <file-blocking>
+                        <member>FBPolicy</member>
+                      </file-blocking>
+                      <virus>
+                        <member>AVPolicy</member>
+                      </virus>
+                      <spyware>
+                        <member>default</member>
+                      </spyware>
+                      <vulnerability>
+                        <member>VPPolicy</member>
+                      </vulnerability>
+                    </profiles>
+                  </profile-setting>							
                 </entry>
-                <entry name="proxy" uuid="a658b0bf-8cda-4de1-8afa-bbeaa4804eb4">
+                <entry name="internet_out" uuid="4d6b525f-21e6-4504-85c9-ff0d830ac11f">
                   <to>
-                    <member>Trusted</member>
+                    <member>Untrusted</member>
                   </to>
                   <from>
                     <member>Trusted</member>
@@ -807,7 +824,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </source>
                   <destination>
-                    <member>{{ proxy_ip }}</member>
+                    <member>any</member>
                   </destination>
                   <source-user>
                     <member>any</member>
@@ -815,8 +832,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <category>
                     <member>any</member>
                   </category>
-                  <application>									
-                    <member>any</member>												 
+                  <application>
+                    <member>any</member>
                   </application>
                   <service>
                     <member>any</member>
@@ -825,7 +842,24 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </hip-profiles>
                   <action>allow</action>
-                  <log-start>yes</log-start>															  
+                  <log-start>yes</log-start>
+                  <log-setting>azure_security_center</log-setting>
+                  <profile-setting>
+                    <profiles>
+                      <file-blocking>
+                        <member>FBPolicy</member>
+                      </file-blocking>
+                      <virus>
+                        <member>AVPolicy</member>
+                      </virus>
+                      <spyware>
+                        <member>default</member>
+                      </spyware>
+                      <vulnerability>
+                        <member>VPPolicy</member>
+                      </vulnerability>
+                    </profiles>
+                  </profile-setting>
                 </entry>
                 <entry name="deny_log" uuid="5be49317-f636-4b67-be10-463dbe0351ed">
                   <to>
