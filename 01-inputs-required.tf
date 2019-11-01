@@ -42,10 +42,5 @@ variable "ansible-nic" {
   description                                       = "Ansible Nic"
 }
 
-variable "proxy_subnet" {
-  description                                       = "Ansible Nic"
-}
 
-variable "proxy_ip" {
-  
-}
+
