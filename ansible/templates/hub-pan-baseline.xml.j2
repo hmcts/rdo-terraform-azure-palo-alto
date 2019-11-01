@@ -517,25 +517,6 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <unicast/>
                     </route-table>
                   </entry>
-                  <entry name="proxy">					  
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>						   
-                    <nexthop>
-                      <ip-address>{{ gateway }}</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>						   
-                    <interface>ethernet1/1</interface>
-                    <metric>10</metric>
-                    <destination>{{ proxy_subnet }}</destination>
-                    <route-table>
-                      <unicast/>
-                    </route-table>
-                  </entry>
                 </static-route>
               </ip>
             </routing-table>
@@ -704,30 +685,6 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </destination>											
                   <service>any</service>						   
-                </entry>
-                <entry name="proxy" uuid="da9d4143-5fc9-4c97-944f-188ca1131d82">
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/1</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
-                  <to>
-                    <member>Trusted</member>
-                  </to>
-                  <from>
-                    <member>Trusted</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>{{ proxy_ip }}</member>
-                  </destination>						
-                  <service>any</service>
-                  <disabled>no</disabled>																				  
-                </entry>
               </rules>
             </nat>
             <security>
