@@ -49,6 +49,6 @@ data "template_file" "inventory" {
                                                     ]
 
     vars = {
-        public_ip                                   = "${join("\n", azurerm_public_ip.palo_mgmt_ip.*.ip_address)}"
+        public_ip                                   = "${join("\n", azurerm_network_interface.nic_mgmt.*.private_ip_address)}"
     }
 }
