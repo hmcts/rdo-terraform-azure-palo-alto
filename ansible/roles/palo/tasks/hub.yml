@@ -3,7 +3,7 @@
 - name: Create base configuration from template for Hub Hosts
   template:
     src: hub-pan-baseline.xml.j2
-    dest: "{{ playbook_dir }}/hub-pan-baseline.xml"
+    dest: "{{ playbook_dir }}/hub-pan-baseline-{{ environment }}.xml"
 
 
 - name: Upload base configuration for HUB Hosts
@@ -11,6 +11,6 @@
     ip_address: "{{ mgmt_ip }}"
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    file: "{{ playbook_dir }}/hub-pan-baseline.xml"
+    file: "{{ playbook_dir }}/hub-pan-baseline-{{ environment }}.xml"
     category: "configuration"
   register: result
