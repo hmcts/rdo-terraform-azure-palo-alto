@@ -2,7 +2,7 @@
 
 - name: Create base configuration from template for Hub Hosts
   template:
-    src: hub-pan-baseline-'{{ environment }}'.xml.j2
+    src: hub-pan-baseline-{{ environment }}.j2
     dest: "{{ playbook_dir }}/hub-pan-baseline-{{ environment }}.xml"
 
 
