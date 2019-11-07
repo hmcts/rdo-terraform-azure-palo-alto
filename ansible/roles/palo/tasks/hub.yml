@@ -1,14 +1,5 @@
 ---
 
-- name: Debug message
-  debug:
-    msg: Environment is {{ env_subscripton }}
-
-- name: Debug message 1
-  debug:
-    msg: username is {{ admin_username }}
-
-
 - name: Create base configuration from template for Hub Hosts
   template:
     src: hub-pan-baseline-{{ env_subscripton }}.j2
