@@ -1,5 +1,9 @@
 ---
 
+- name: Debug message
+  debug:
+    msg: Environment is {{ environment }}
+
 - name: Create base configuration from template for Hub Hosts
   template:
     src: hub-pan-baseline-{{ environment }}.j2
@@ -14,3 +18,4 @@
     file: "{{ playbook_dir }}/hub-pan-baseline-{{ environment }}.xml"
     category: "configuration"
   register: result
+
