@@ -513,6 +513,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             <interface>
               <member>ethernet1/1</member>
               <member>ethernet1/2</member>
+              <member>ethernet1/3</member>
+              <member>ethernet1/4</member>		  
             </interface>			   
             <routing-table>
               <ip>
@@ -562,7 +564,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <hold-time>2</hold-time>
                     </path-monitor>
                     <nexthop>
-                      <ip-address>10.11.8.1</ip-address>
+                      <ip-address>{{ gateway_trust }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -581,7 +583,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <hold-time>2</hold-time>
                     </path-monitor>
                     <nexthop>
-                      <ip-address>10.11.8.1</ip-address>
+                      <ip-address>{{ gateway_trust }}</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
