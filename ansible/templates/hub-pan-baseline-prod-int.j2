@@ -233,6 +233,44 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <interface-management-profile>health-probes</interface-management-profile>
               </layer3>
             </entry>
+            <entry name="ethernet1/3">
+              <layer3>
+                <ipv6>
+                  <neighbor-discovery>
+                    <router-advertisement>
+                      <enable>no</enable>
+                    </router-advertisement>
+                  </neighbor-discovery>
+                </ipv6>
+                <ndp-proxy>
+                  <enabled>no</enabled>
+                </ndp-proxy>
+                <lldp>
+                  <enable>no</enable>
+                </lldp>
+                <dhcp-client/>
+              </layer3>
+              <comment>Prod</comment>
+            </entry>
+            <entry name="ethernet1/4">
+              <layer3>
+                <ipv6>
+                  <neighbor-discovery>
+                    <router-advertisement>
+                      <enable>no</enable>
+                    </router-advertisement>
+                  </neighbor-discovery>
+                </ipv6>
+                <ndp-proxy>
+                  <enabled>no</enabled>
+                </ndp-proxy>
+                <lldp>
+                  <enable>no</enable>
+                </lldp>
+                <dhcp-client/>
+              </layer3>
+              <comment>Stage</comment>
+            </entry>				
           </ethernet>
         </interface>
         <profiles>
@@ -517,6 +555,44 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <unicast/>
                     </route-table>
                   </entry>
+                  <entry name="Azure-FW-stage">
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>10.11.8.1</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/1</interface>
+                    <metric>10</metric>
+                    <destination>10.11.8.4/32</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>
+                  <entry name="Azure-FW-Prod">
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>10.11.8.1</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/1</interface>
+                    <metric>10</metric>
+                    <destination>10.11.8.6/32</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>					  
                 </static-route>
               </ip>
             </routing-table>
@@ -632,6 +708,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <network>
                 <layer3>
                   <member>ethernet1/2</member>
+                  <member>ethernet1/3</member>
+                  <member>ethernet1/4</member>										  
                 </layer3>
               </network>
             </entry>
@@ -661,7 +739,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Untrusted</member>
                   </from>
                   <source>
-                    <member>51.145.126.105</member>
+                    <member>10.11.8.6</member>
                   </source>
                   <destination>
                     <member>any</member>
@@ -687,7 +765,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Untrusted</member>
                   </from>
                   <source>
-                    <member>51.145.126.105</member>
+                    <member>10.11.8.4</member>
                   </source>
                   <destination>
                     <member>any</member>
@@ -831,7 +909,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Untrusted</member>
                   </from>
                   <source>
-                    <member>51.145.126.105</member>
+                    <member>10.11.8.4</member>
+                    <member>10.11.8.6</member>									  
                   </source>
                   <destination>
                     <member>any</member>
@@ -960,6 +1039,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <interface>
                 <member>ethernet1/1</member>
                 <member>ethernet1/2</member>
+                <member>ethernet1/3</member>
+                <member>ethernet1/4</member>										
               </interface>
             </network>
           </import>
@@ -968,18 +1049,18 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <ip-netmask>168.63.129.16</ip-netmask>
               <description>Azure Load Balancer</description>
             </entry>
-            <entry name="aks-00">
+            <entry name="prod-aks-00">
               <ip-netmask>10.13.15.250</ip-netmask>
             </entry>
-            <entry name="aks-01">
+            <entry name="prod-aks-01">
               <ip-netmask>10.13.31.250</ip-netmask>
-            </entry>							 				
+            </entry>
             <entry name="stg-aks-00">
               <ip-netmask>10.10.19.250</ip-netmask>
             </entry>
             <entry name="stg-aks-01">
               <ip-netmask>10.10.23.250</ip-netmask>
-            </entry>		
+            </entry>
           </address>
           <profiles>
             <virus>
