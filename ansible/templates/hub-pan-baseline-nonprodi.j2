@@ -233,6 +233,44 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <interface-management-profile>health-probes</interface-management-profile>
               </layer3>
             </entry>
+            <entry name="ethernet1/3">
+              <layer3>
+                <ipv6>
+                  <neighbor-discovery>
+                    <router-advertisement>
+                      <enable>no</enable>
+                    </router-advertisement>
+                  </neighbor-discovery>
+                </ipv6>
+                <ndp-proxy>
+                  <enabled>no</enabled>
+                </ndp-proxy>
+                <lldp>
+                  <enable>no</enable>
+                </lldp>
+                <dhcp-client/>
+              </layer3>
+              <comment>ithc</comment>
+            </entry>
+            <entry name="ethernet1/4">
+              <layer3>
+                <ipv6>
+                  <neighbor-discovery>
+                    <router-advertisement>
+                      <enable>no</enable>
+                    </router-advertisement>
+                  </neighbor-discovery>
+                </ipv6>
+                <ndp-proxy>
+                  <enabled>no</enabled>
+                </ndp-proxy>
+                <lldp>
+                  <enable>no</enable>
+                </lldp>
+                <dhcp-client/>
+              </layer3>
+              <comment>Test</comment>
+            </entry>				
           </ethernet>
         </interface>
         <profiles>
@@ -475,6 +513,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             <interface>
               <member>ethernet1/1</member>
               <member>ethernet1/2</member>
+              <member>ethernet1/3</member>
+              <member>ethernet1/4</member>		  
             </interface>			   
             <routing-table>
               <ip>
@@ -517,6 +557,44 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <unicast/>
                     </route-table>
                   </entry>
+                  <entry name="Azure-FW-Test">
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>{{ gateway_trust }}</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/1</interface>
+                    <metric>10</metric>
+                    <destination>10.11.72.6/32</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>
+                  <entry name="Azure-FW-ITHC">
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>{{ gateway_trust }}</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/1</interface>
+                    <metric>10</metric>
+                    <destination>10.11.72.4/32</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>					  
                 </static-route>
               </ip>
             </routing-table>
@@ -632,6 +710,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <network>
                 <layer3>
                   <member>ethernet1/2</member>
+                  <member>ethernet1/3</member>
+                  <member>ethernet1/4</member>										  
                 </layer3>
               </network>
             </entry>
@@ -642,7 +722,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
           <rulebase>
             <nat>
               <rules>
-                <entry name="AKS" uuid="d5695489-189e-4c96-8625-6fff7771204b">
+                <entry name="AKS-ITHC" uuid="f04a57ea-ee45-458f-8814-d71123440533">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
@@ -652,7 +732,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </source-translation>
                   <dynamic-destination-translation>
                     <distribution>round-robin</distribution>
-                    <translated-address>AKS</translated-address>
+                    <translated-address>AKS-ITHC</translated-address>
                   </dynamic-destination-translation>
                   <to>
                     <member>Trusted</member>
@@ -661,7 +741,33 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Untrusted</member>
                   </from>
                   <source>
+                    <member>10.11.72.4</member>
+                  </source>
+                  <destination>
                     <member>any</member>
+                  </destination>
+                  <service>any</service>
+                </entry>
+                <entry name="AKS-TEST" uuid="88c0c225-155d-4228-8c05-27227d9d05db">
+                  <source-translation>
+                    <dynamic-ip-and-port>
+                      <interface-address>
+                        <interface>ethernet1/2</interface>
+                      </interface-address>
+                    </dynamic-ip-and-port>
+                  </source-translation>
+                  <dynamic-destination-translation>
+                    <distribution>round-robin</distribution>
+                    <translated-address>AKS-TEST</translated-address>
+                  </dynamic-destination-translation>
+                  <to>
+                    <member>Trusted</member>
+                  </to>
+                  <from>
+                    <member>Untrusted</member>
+                  </from>
+                  <source>
+                    <member>10.11.72.6</member>
                   </source>
                   <destination>
                     <member>any</member>
@@ -797,6 +903,56 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     </profiles>
                   </profile-setting>							
                 </entry>
+                <entry name="To-AKS" uuid="5b529f3e-8777-40e8-9038-72d58cbadff9">
+                  <to>
+                    <member>Trusted</member>
+                  </to>
+                  <from>
+                    <member>Untrusted</member>
+                  </from>
+                  <source>
+                    <member>10.11.72.6</member>
+                    <member>10.11.72.4</member>									  
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <application>
+                    <member>any</member>
+                  </application>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <hip-profiles>
+                    <member>any</member>
+                  </hip-profiles>
+                  <action>allow</action>
+                  <log-start>yes</log-start>
+                  <log-setting>azure_security_center</log-setting>
+                  <rule-type>universal</rule-type>
+                  <profile-setting>
+                    <profiles>
+                      <file-blocking>
+                        <member>FBPolicy</member>
+                      </file-blocking>
+                      <virus>
+                        <member>AVPolicy</member>
+                      </virus>
+                      <spyware>
+                        <member>default</member>
+                      </spyware>
+                      <vulnerability>
+                        <member>VPPolicy</member>
+                      </vulnerability>
+                    </profiles>
+                  </profile-setting>
+                </entry>																				 					
                 <entry name="internet_out" uuid="4d6b525f-21e6-4504-85c9-ff0d830ac11f">
                   <to>
                     <member>Untrusted</member>
@@ -885,6 +1041,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <interface>
                 <member>ethernet1/1</member>
                 <member>ethernet1/2</member>
+                <member>ethernet1/3</member>
+                <member>ethernet1/4</member>										
               </interface>
             </network>
           </import>
@@ -893,12 +1051,18 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <ip-netmask>168.63.129.16</ip-netmask>
               <description>Azure Load Balancer</description>
             </entry>
-            <entry name="aks-00">
+            <entry name="ithc-aks-00">
               <ip-netmask>10.10.33.250</ip-netmask>
             </entry>
-            <entry name="aks-01">
+            <entry name="ithc-aks-01">
               <ip-netmask>10.10.35.250</ip-netmask>
-            </entry>							 				
+            </entry>
+            <entry name="test-aks-00">
+              <ip-netmask>10.10.41.250</ip-netmask>
+            </entry>
+            <entry name="test-aks-01">
+              <ip-netmask>10.10.45.250</ip-netmask>
+            </entry>
           </address>
           <profiles>
             <virus>
@@ -1261,13 +1425,19 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             </profiles>
           </log-settings>
           <address-group>
-            <entry name="AKS">
+            <entry name="AKS-ITHC">
               <static>
-                <member>aks-00</member>
-                <member>aks-01</member>
+                <member>ithc-aks-00</member>
+                <member>ithc-aks-01</member>
               </static>
             </entry>
-          </address-group>				  
+            <entry name="AKS-TEST">
+              <static>
+                <member>test-aks-00</member>
+                <member>test-aks-01</member>
+              </static>
+            </entry>
+          </address-group>
         </entry>
       </vsys>
     </entry>
