@@ -557,44 +557,6 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <unicast/>
                     </route-table>
                   </entry>
-                  <entry name="Azure-FW-Test">
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>
-                    <nexthop>
-                      <ip-address>{{ gateway_trust }}</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>
-                    <interface>ethernet1/1</interface>
-                    <metric>10</metric>
-                    <destination>10.11.72.6/32</destination>
-                    <route-table>
-                      <unicast/>
-                    </route-table>
-                  </entry>
-                  <entry name="Azure-FW-ITHC">
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>
-                    <nexthop>
-                      <ip-address>{{ gateway_trust }}</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>
-                    <interface>ethernet1/1</interface>
-                    <metric>10</metric>
-                    <destination>10.11.72.4/32</destination>
-                    <route-table>
-                      <unicast/>
-                    </route-table>
-                  </entry>					  
                 </static-route>
               </ip>
             </routing-table>
@@ -603,6 +565,114 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <ip-modulo/>
               </algorithm>
             </ecmp>
+          </entry>
+          <entry name="aks-ithc">
+            <ecmp>
+              <algorithm>
+                <ip-modulo/>
+              </algorithm>
+            </ecmp>
+            <protocol>
+              <bgp>
+                <routing-options>
+                  <graceful-restart>
+                    <enable>yes</enable>
+                  </graceful-restart>
+                </routing-options>
+                <enable>no</enable>
+              </bgp>
+              <rip>
+                <enable>no</enable>
+              </rip>
+              <ospf>
+                <enable>no</enable>
+              </ospf>
+              <ospfv3>
+                <enable>no</enable>
+              </ospfv3>
+            </protocol>
+            <interface>
+              <member>ethernet1/3</member>
+            </interface>
+            <routing-table>
+              <ip>
+                <static-route>
+                  <entry name="aks-ithc">					 
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>{{ gateway_trust }}</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/3</interface>
+                    <metric>10</metric>
+                    <destination>10.0.0.0/8</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>
+                </static-route>
+              </ip>
+            </routing-table>
+          </entry>
+          <entry name="aks-test">
+            <ecmp>
+              <algorithm>
+                <ip-modulo/>
+              </algorithm>
+            </ecmp>
+            <protocol>
+              <bgp>
+                <routing-options>
+                  <graceful-restart>
+                    <enable>yes</enable>
+                  </graceful-restart>
+                </routing-options>
+                <enable>no</enable>
+              </bgp>
+              <rip>
+                <enable>no</enable>
+              </rip>
+              <ospf>
+                <enable>no</enable>
+              </ospf>
+              <ospfv3>
+                <enable>no</enable>
+              </ospfv3>
+            </protocol>
+            <routing-table>
+              <ip>
+                <static-route>
+                  <entry name="aks-test">									 
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <nexthop>
+                      <ip-address>{{ gateway_trust }}</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <interface>ethernet1/4</interface>
+                    <metric>10</metric>
+                    <destination>10.0.0.0/8</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>					  
+                </static-route>
+              </ip>
+            </routing-table>
+            <interface>
+              <member>ethernet1/4</member>
+            </interface>
           </entry>
         </virtual-router>
       </network>
@@ -726,7 +796,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
-                        <interface>ethernet1/2</interface>
+                        <interface>ethernet1/3</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
                   </source-translation>
@@ -738,21 +808,22 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Trusted</member>
                   </to>
                   <from>
-                    <member>Untrusted</member>
+                    <member>Trusted</member>
                   </from>
                   <source>
-                    <member>10.11.72.4</member>
+                    <member>any</member>
                   </source>
                   <destination>
                     <member>any</member>
                   </destination>
                   <service>any</service>
+                  <to-interface>ethernet1/3</to-interface>													  
                 </entry>
                 <entry name="AKS-TEST" uuid="88c0c225-155d-4228-8c05-27227d9d05db">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
-                        <interface>ethernet1/2</interface>
+                        <interface>ethernet1/4</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
                   </source-translation>
@@ -764,15 +835,16 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Trusted</member>
                   </to>
                   <from>
-                    <member>Untrusted</member>
+                    <member>Trusted</member>
                   </from>
                   <source>
-                    <member>10.11.72.6</member>
+                    <member>any</member>
                   </source>
                   <destination>
                     <member>any</member>
                   </destination>
                   <service>any</service>
+                  <to-interface>ethernet1/4</to-interface>														  
                 </entry>
                 <entry name="inbound_nat" uuid="3ffdd31c-5a92-4d97-a113-d8322dc6f6c9">
                   <source-translation>
