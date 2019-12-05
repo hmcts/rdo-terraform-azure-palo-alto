@@ -270,7 +270,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <dhcp-client/>
               </layer3>
               <comment>Stage</comment>
-            </entry>				
+            </entry>
           </ethernet>
         </interface>
         <profiles>
@@ -513,9 +513,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             <interface>
               <member>ethernet1/1</member>
               <member>ethernet1/2</member>
-              <member>ethernet1/3</member>
-              <member>ethernet1/4</member>		  
-            </interface>			   
+            </interface>
             <routing-table>
               <ip>
                 <static-route>
@@ -557,44 +555,6 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <unicast/>
                     </route-table>
                   </entry>
-                  <entry name="Azure-FW-stage">
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>
-                    <nexthop>
-                      <ip-address>{{ gateway_trust }}</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>
-                    <interface>ethernet1/1</interface>
-                    <metric>10</metric>
-                    <destination>10.11.8.4/32</destination>
-                    <route-table>
-                      <unicast/>
-                    </route-table>
-                  </entry>
-                  <entry name="Azure-FW-Prod">
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>
-                    <nexthop>
-                      <ip-address>{{ gateway_trust }}</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>
-                    <interface>ethernet1/1</interface>
-                    <metric>10</metric>
-                    <destination>10.11.8.6/32</destination>
-                    <route-table>
-                      <unicast/>
-                    </route-table>
-                  </entry>					  
                 </static-route>
               </ip>
             </routing-table>
@@ -603,6 +563,122 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <ip-modulo/>
               </algorithm>
             </ecmp>
+          </entry>
+          <entry name="aks-prod">
+            <ecmp>
+              <algorithm>
+                <ip-modulo/>
+              </algorithm>
+            </ecmp>
+            <protocol>
+              <bgp>
+                <routing-options>
+                  <graceful-restart>
+                    <enable>yes</enable>
+                  </graceful-restart>
+                </routing-options>
+                <enable>no</enable>
+              </bgp>
+              <rip>
+                <enable>no</enable>
+              </rip>
+              <ospf>
+                <enable>no</enable>
+              </ospf>
+              <ospfv3>
+                <enable>no</enable>
+              </ospfv3>
+            </protocol>
+					   
+										  
+						
+            <routing-table>
+              <ip>
+                <static-route>
+                  <entry name="aks-prod">					   
+                    <nexthop>
+                      <ip-address>{{ gateway }}</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <interface>ethernet1/3</interface>
+                    <metric>10</metric>
+                    <destination>10.0.0.0/8</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>
+                </static-route>
+              </ip>
+            </routing-table>
+            <interface>
+              <member>ethernet1/3</member>
+            </interface>
+          </entry>
+          <entry name="aks-stage">
+            <ecmp>
+              <algorithm>
+                <ip-modulo/>
+              </algorithm>
+            </ecmp>
+            <protocol>
+              <bgp>
+                <routing-options>
+                  <graceful-restart>
+                    <enable>yes</enable>
+                  </graceful-restart>
+                </routing-options>
+                <enable>no</enable>
+              </bgp>
+              <rip>
+                <enable>no</enable>
+              </rip>
+              <ospf>
+                <enable>no</enable>
+              </ospf>
+              <ospfv3>
+                <enable>no</enable>
+              </ospfv3>
+            </protocol>
+            <routing-table>
+              <ip>
+                <static-route>
+                  <entry name="aks-stage">
+								  
+										 
+																
+											  
+								   
+                    <nexthop>
+                      <ip-address>{{ gateway }}</ip-address>
+                    </nexthop>
+                    <bfd>
+                      <profile>None</profile>
+                    </bfd>
+                    <path-monitor>
+                      <enable>no</enable>
+                      <failure-condition>any</failure-condition>
+                      <hold-time>2</hold-time>
+                    </path-monitor>
+                    <interface>ethernet1/4</interface>
+                    <metric>10</metric>
+                    <destination>10.0.0.0/8</destination>
+                    <route-table>
+                      <unicast/>
+                    </route-table>
+                  </entry>
+                </static-route>
+              </ip>
+            </routing-table>
+            <interface>
+              <member>ethernet1/4</member>
+            </interface>
           </entry>
         </virtual-router>
       </network>
@@ -615,7 +691,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             </servers>
           </dns-setting>
           <timezone>Europe/London</timezone>
-          <login-banner>Secure environment</login-banner>					
+          <login-banner>Secure environment</login-banner>
           <update-server>updates.paloaltonetworks.com</update-server>
           <update-schedule>
             <threats>
@@ -659,9 +735,9 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <ntp-server-address>0.pool.ntp.org</ntp-server-address>
             </primary-ntp-server>
             <secondary-ntp-server>
-              <ntp-server-address>1.pool.ntp.org</ntp-server-address>									
+              <ntp-server-address>1.pool.ntp.org</ntp-server-address>
             </secondary-ntp-server>
-          </ntp-servers>																		 
+          </ntp-servers>
         </system>
         <setting>
           <config>
@@ -711,7 +787,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <layer3>
                   <member>ethernet1/2</member>
                   <member>ethernet1/3</member>
-                  <member>ethernet1/4</member>										  
+                  <member>ethernet1/4</member>
                 </layer3>
               </network>
             </entry>
@@ -722,11 +798,11 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
           <rulebase>
             <nat>
               <rules>
-                <entry name="AKS-PROD" uuid="f04a57ea-ee45-458f-8814-d71123440533">
+                <entry name="AKS-PROD" uuid="eb621f31-9230-4f92-b3d4-42ba63901256">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
-                        <interface>ethernet1/2</interface>
+                        <interface>ethernet1/3</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
                   </source-translation>
@@ -738,21 +814,22 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Trusted</member>
                   </to>
                   <from>
-                    <member>Untrusted</member>
+                    <member>Trusted</member>
                   </from>
                   <source>
-                    <member>10.11.8.6</member>
+                    <member>any</member>
                   </source>
                   <destination>
                     <member>any</member>
                   </destination>
                   <service>any</service>
+                  <to-interface>ethernet1/3</to-interface>
                 </entry>
-                <entry name="AKS-STG" uuid="88c0c225-155d-4228-8c05-27227d9d05db">
+                <entry name="AKS-STG" uuid="a111661c-968d-4d3d-958f-13bcaba82102">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
-                        <interface>ethernet1/2</interface>
+                        <interface>ethernet1/4</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
                   </source-translation>
@@ -764,24 +841,25 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>Trusted</member>
                   </to>
                   <from>
-                    <member>Untrusted</member>
+                    <member>Trusted</member>
                   </from>
                   <source>
-                    <member>10.11.8.4</member>
+                    <member>any</member>
                   </source>
                   <destination>
                     <member>any</member>
                   </destination>
                   <service>any</service>
+                  <to-interface>ethernet1/4</to-interface>
                 </entry>
-                <entry name="inbound_nat" uuid="3ffdd31c-5a92-4d97-a113-d8322dc6f6c9">
+                <entry name="inbound_nat" uuid="5b7b63b9-f19b-4024-8807-d8478fc78b54">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
                         <interface>ethernet1/2</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
-                  </source-translation>												
+                  </source-translation>
                   <to>
                     <member>Trusted</member>
                   </to>
@@ -794,16 +872,16 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   <destination>
                     <member>any</member>
                   </destination>
-                  <service>any</service>									
-                </entry>					
-                <entry name="outbound_nat" uuid="7687cebc-12d6-4a2e-aa11-a1f121664708">
+                  <service>any</service>
+                </entry>
+                <entry name="outbound_nat" uuid="fba38455-d29d-45a5-bbd8-276c6976d15f">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
                         <interface>ethernet1/1</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
-                  </source-translation>														 																				
+                  </source-translation>
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -815,14 +893,14 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </source>
                   <destination>
                     <member>any</member>
-                  </destination>											
+                  </destination>
                   <service>any</service>
-                </entry>						   
+                </entry>
               </rules>
             </nat>
             <security>
               <rules>
-                <entry name="health-probes" uuid="15a50d0d-296b-496f-b171-2b505e434cf6">
+                <entry name="health-probes" uuid="1b2426f7-2728-40c5-9bc7-d128addf5f24">
                   <to>
                     <member>any</member>
                   </to>
@@ -842,7 +920,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <member>any</member>
                   </category>
                   <application>
-                    <member>any</member>										 
+                    <member>any</member>
                   </application>
                   <service>
                     <member>application-default</member>
@@ -852,67 +930,17 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </hip-profiles>
                   <action>allow</action>
                   <log-end>no</log-end>
-                  <rule-type>universal</rule-type>														  
-                </entry>
-                <entry name="trusted" uuid="38e98e00-53f6-4842-b56e-921df433a603">
-                  <to>
-                    <member>Trusted</member>
-                  </to>
-                  <from>
-                    <member>Trusted</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>any</member>
-                  </destination>
-                  <source-user>
-                    <member>any</member>
-                  </source-user>
-                  <category>
-                    <member>any</member>
-                  </category>
-                  <application>								 
-                    <member>any</member>
-                  </application>
-                  <service>
-                    <member>any</member>
-                  </service>
-                  <hip-profiles>
-                    <member>any</member>
-                  </hip-profiles>
-                  <action>allow</action>
-                  <log-start>yes</log-start>								
-                  <log-setting>azure_security_center</log-setting>
                   <rule-type>universal</rule-type>
-                  <profile-setting>
-                    <profiles>
-                      <file-blocking>
-                        <member>FBPolicy</member>
-                      </file-blocking>
-                      <virus>
-                        <member>AVPolicy</member>
-                      </virus>
-                      <spyware>
-                        <member>default</member>
-                      </spyware>
-                      <vulnerability>
-                        <member>VPPolicy</member>
-                      </vulnerability>
-                    </profiles>
-                  </profile-setting>							
                 </entry>
-                <entry name="To-AKS" uuid="5b529f3e-8777-40e8-9038-72d58cbadff9">
+                <entry name="trusted" uuid="c6e56c11-a7ec-4f38-8962-3481e40e5c04">
                   <to>
                     <member>Trusted</member>
                   </to>
                   <from>
-                    <member>Untrusted</member>
+                    <member>Trusted</member>
                   </from>
                   <source>
-                    <member>10.11.8.4</member>
-                    <member>10.11.8.6</member>									  
+                    <member>any</member>
                   </source>
                   <destination>
                     <member>any</member>
@@ -952,8 +980,58 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       </vulnerability>
                     </profiles>
                   </profile-setting>
-                </entry>																				 					
-                <entry name="internet_out" uuid="4d6b525f-21e6-4504-85c9-ff0d830ac11f">
+                </entry>
+                <entry name="To-AKS" uuid="0170b483-ea9d-4550-b4fd-07b303a2f3e8">
+                  <to>
+                    <member>Trusted</member>
+                  </to>
+                  <from>
+                    <member>Untrusted</member>
+                  </from>
+                  <source>
+                    <member>10.11.8.5</member>
+                    <member>10.11.8.6</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <application>
+                    <member>any</member>
+                  </application>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <hip-profiles>
+                    <member>any</member>
+                  </hip-profiles>
+                  <action>allow</action>
+                  <log-start>yes</log-start>
+                  <log-setting>azure_security_center</log-setting>
+                  <rule-type>universal</rule-type>
+                  <profile-setting>
+                    <profiles>
+                      <file-blocking>
+                        <member>FBPolicy</member>
+                      </file-blocking>
+                      <virus>
+                        <member>AVPolicy</member>
+                      </virus>
+                      <spyware>
+                        <member>default</member>
+                      </spyware>
+                      <vulnerability>
+                        <member>VPPolicy</member>
+                      </vulnerability>
+                    </profiles>
+                  </profile-setting>
+                </entry>
+                <entry name="internet_out" uuid="d326559a-be13-468f-ad44-8779e6700cb2">
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -1001,7 +1079,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     </profiles>
                   </profile-setting>
                 </entry>
-                <entry name="deny_log" uuid="5be49317-f636-4b67-be10-463dbe0351ed">
+                <entry name="deny_log" uuid="95ca62be-dfc1-409f-8989-d86be8d1bd7c">
                   <to>
                     <member>any</member>
                   </to>
@@ -1042,7 +1120,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <member>ethernet1/1</member>
                 <member>ethernet1/2</member>
                 <member>ethernet1/3</member>
-                <member>ethernet1/4</member>										
+                <member>ethernet1/4</member>
               </interface>
             </network>
           </import>
@@ -1419,7 +1497,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <log-type>data</log-type>
                     <filter>(severity eq critical)</filter>
                     <send-to-panorama>no</send-to-panorama>
-                  </entry>						  
+                  </entry>
                 </match-list>
               </entry>
             </profiles>
