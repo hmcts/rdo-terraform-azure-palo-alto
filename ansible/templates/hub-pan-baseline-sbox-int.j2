@@ -251,24 +251,6 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 <dhcp-client/>
               </layer3>
               <comment>sbox</comment>
-            </entry>
-            <entry name="ethernet1/4">
-              <layer3>
-                <ipv6>
-                  <neighbor-discovery>
-                    <router-advertisement>
-                      <enable>no</enable>
-                    </router-advertisement>
-                  </neighbor-discovery>
-                </ipv6>
-                <ndp-proxy>
-                  <enabled>no</enabled>
-                </ndp-proxy>
-                <lldp>
-                  <enable>no</enable>
-                </lldp>
-                <dhcp-client/>
-              </layer3>
             </entry>				
           </ethernet>
         </interface>
@@ -512,8 +494,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
             <interface>
               <member>ethernet1/1</member>
               <member>ethernet1/2</member>
-              <member>ethernet1/3</member>
-              <member>ethernet1/4</member>		  
+              <member>ethernet1/3</member> 
             </interface>			   
             <routing-table>
               <ip>
@@ -556,7 +537,44 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                       <unicast/>
                     </route-table>
                   </entry>
-                  <entry name="Azure-FW-Sbox">
+                </static-route>
+              </ip>
+            </routing-table>
+            <ecmp>
+              <algorithm>
+                <ip-modulo/>
+              </algorithm>
+            </ecmp>
+          </entry>
+          <entry name="aks-sbox">
+            <ecmp>
+              <algorithm>
+                <ip-modulo/>
+              </algorithm>
+            </ecmp>
+            <protocol>
+              <bgp>
+                <routing-options>
+                  <graceful-restart>
+                    <enable>yes</enable>
+                  </graceful-restart>
+                </routing-options>
+                <enable>no</enable>
+              </bgp>
+              <rip>
+                <enable>no</enable>
+              </rip>
+              <ospf>
+                <enable>no</enable>
+              </ospf>
+              <ospfv3>
+                <enable>no</enable>
+              </ospfv3>
+            </protocol>
+            <routing-table>
+              <ip>
+                <static-route>
+                  <entry name="aks-sbox">
                     <path-monitor>
                       <enable>no</enable>
                       <failure-condition>any</failure-condition>
@@ -568,9 +586,9 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     <bfd>
                       <profile>None</profile>
                     </bfd>
-                    <interface>ethernet1/1</interface>
+                    <interface>ethernet1/3</interface>
                     <metric>10</metric>
-                    <destination>10.10.200.4/32</destination>
+                    <destination>10.0.0.0/8</destination>
                     <route-table>
                       <unicast/>
                     </route-table>
@@ -578,11 +596,9 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                 </static-route>
               </ip>
             </routing-table>
-            <ecmp>
-              <algorithm>
-                <ip-modulo/>
-              </algorithm>
-            </ecmp>
+            <interface>
+              <member>ethernet1/3</member>
+            </interface>
           </entry>
         </virtual-router>
       </network>
@@ -690,8 +706,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <network>
                 <layer3>
                   <member>ethernet1/2</member>
-                  <member>ethernet1/3</member>
-                  <member>ethernet1/4</member>										  
+                  <member>ethernet1/3</member>								  
                 </layer3>
               </network>
             </entry>
@@ -712,21 +727,22 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                   </source-translation>
                   <dynamic-destination-translation>
                     <distribution>round-robin</distribution>
-                    <translated-address>AKS-SBOX</translated-address>
+                    <translated-address>AKS-SBOX-APPGW</translated-address>
                   </dynamic-destination-translation>
                   <to>
                     <member>Trusted</member>
                   </to>
                   <from>
-                    <member>Untrusted</member>
+                    <member>Trusted</member>
                   </from>
                   <source>
-                    <member>10.10.200.4</member>
+                    <member>any</member>
                   </source>
                   <destination>
                     <member>any</member>
                   </destination>
                   <service>any</service>
+                  <to-interface>ethernet1/3</to-interface>
                 </entry>
                 <entry name="inbound_nat" uuid="3ffdd31c-5a92-4d97-a113-d8322dc6f6c9">
                   <source-translation>
@@ -857,56 +873,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
                     </profiles>
                   </profile-setting>							
                 </entry>
-                <entry name="To-AKS" uuid="5b529f3e-8777-40e8-9038-72d58cbadff9">
-                  <to>
-                    <member>Trusted</member>
-                  </to>
-                  <from>
-                    <member>Untrusted</member>
-                  </from>
-                  <source>
-                    <member>10.10.200.4</member>								  
-                  </source>
-                  <destination>
-                    <member>any</member>
-                  </destination>
-                  <source-user>
-                    <member>any</member>
-                  </source-user>
-                  <category>
-                    <member>any</member>
-                  </category>
-                  <application>
-                    <member>any</member>
-                  </application>
-                  <service>
-                    <member>any</member>
-                  </service>
-                  <hip-profiles>
-                    <member>any</member>
-                  </hip-profiles>
-                  <action>allow</action>
-                  <log-start>yes</log-start>
-                  <log-setting>azure_security_center</log-setting>
-                  <rule-type>universal</rule-type>
-                  <profile-setting>
-                    <profiles>
-                      <file-blocking>
-                        <member>FBPolicy</member>
-                      </file-blocking>
-                      <virus>
-                        <member>AVPolicy</member>
-                      </virus>
-                      <spyware>
-                        <member>default</member>
-                      </spyware>
-                      <vulnerability>
-                        <member>VPPolicy</member>
-                      </vulnerability>
-                    </profiles>
-                  </profile-setting>
-                </entry>																				 					
-                <entry name="internet_out" uuid="4d6b525f-21e6-4504-85c9-ff0d830ac11f">
+                <entry name="internet_out" uuid="4fd42e15-7138-4587-9788-a3edbad6741f">
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -994,8 +961,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <interface>
                 <member>ethernet1/1</member>
                 <member>ethernet1/2</member>
-                <member>ethernet1/3</member>
-                <member>ethernet1/4</member>										
+                <member>ethernet1/3</member>								
               </interface>
             </network>
           </import>
@@ -1004,11 +970,8 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               <ip-netmask>168.63.129.16</ip-netmask>
               <description>Azure Load Balancer</description>
             </entry>
-            <entry name="sbox-aks-00">
-              <ip-netmask>10.10.1.250</ip-netmask>
-            </entry>
-            <entry name="sbox-aks-01">
-              <ip-netmask>10.10.3.250</ip-netmask>
+            <entry name="AKS-SBOX-APPGW">
+              <ip-netmask>10.10.7.124</ip-netmask>
             </entry>
           </address>
           <profiles>
@@ -1371,14 +1334,7 @@ IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
               </entry>
             </profiles>
           </log-settings>
-          <address-group>
-            <entry name="AKS-SBOX">
-              <static>
-                <member>sbox-aks-00</member>
-                <member>sbox-aks-01</member>
-              </static>
-            </entry>
-          </address-group>
+          <address-group/>
         </entry>
       </vsys>
     </entry>
