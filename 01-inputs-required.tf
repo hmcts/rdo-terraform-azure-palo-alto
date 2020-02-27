@@ -42,5 +42,7 @@ variable "ansible-nic" {
   description                                       = "Ansible Nic"
 }
 
-
+variable "cert-privkey" {
+  description                                       = "Certificate private key"
+}
 
