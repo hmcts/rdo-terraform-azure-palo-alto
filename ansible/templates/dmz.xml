@@ -10,7 +10,7 @@
           </role-based>
         </permissions>
       </entry>
-      <entry name="{{ admin_username }}">
+      <entry name="localadmin">
         <phash>$1$eefmkaub$.V1VZBQHdD8juWBL.yypz0</phash>
         <permissions>
           <role-based>
@@ -125,8 +125,97 @@
         </role>
       </entry>
     </admin-role>
+    <certificate>
+      <entry name="wildcard-sandbox">
+        <subject-hash>96aa9dc9</subject-hash>
+        <issuer-hash>01017373</issuer-hash>
+        <not-valid-before>Apr 18 00:00:00 2018 GMT</not-valid-before>
+        <issuer>/C=GB/ST=Greater Manchester/L=Salford/O=COMODO CA Limited/CN=COMODO RSA Domain Validation Secure Server CA</issuer>
+        <not-valid-after>Apr 17 23:59:59 2020 GMT</not-valid-after>
+        <common-name>sandbox.platform.hmcts.net</common-name>
+        <expiry-epoch>1587167999</expiry-epoch>
+        <ca>no</ca>
+        <subject>/OU=Domain Control Validated/OU=PositiveSSL Multi-Domain/CN=sandbox.platform.hmcts.net</subject>
+        <public-key>-----BEGIN CERTIFICATE-----
+MIIHVTCCBj2gAwIBAgIRAJmjsmMVMVcDZnYzP1CL7FowDQYJKoZIhvcNAQELBQAwgZAxCzAJBgNV
+BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
+BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMTYwNAYDVQQDEy1DT01PRE8gUlNBIERvbWFpbiBWYWxp
+ZGF0aW9uIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMTgwNDE4MDAwMDAwWhcNMjAwNDE3MjM1OTU5WjBr
+MSEwHwYDVQQLExhEb21haW4gQ29udHJvbCBWYWxpZGF0ZWQxITAfBgNVBAsTGFBvc2l0aXZlU1NM
+IE11bHRpLURvbWFpbjEjMCEGA1UEAxMac2FuZGJveC5wbGF0Zm9ybS5obWN0cy5uZXQwggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDi4OndvsiGYg1Y+NuwOXTJtg5Fp+RH6z+1IJXCybwW
+pMJnI2bPtlGj5+YXra1V3njNHHlJwMjBuKtEaoPd02s371WdMe3JeqvN8vhp3Vpr5QxotXyHbfQX
+Jl6Z3ky1icQ2Y7UB36lrNPwa3ERlW/UPihBjq22ISU+aSi4f5nkb9CGEy/TojvKefOH1994gsrye
+Fl7kfB5BhQn9mkTv45fDfLw68GCcqfnQ0jefhrcoNWWwl6fUndBegzu+QdiSAc2A8Oel2YhPuV40
+JJd+MixB0NXXvgRfITkHeAXAf3meYvPBydSM50L6H/FSBjNoB6aojISvRyXv8h/7zduwwU4RAgMB
+AAGjggPMMIIDyDAfBgNVHSMEGDAWgBSQr2o6lFoL2JDqElZz30O0Oija5zAdBgNVHQ4EFgQUcD27
+PXXSM4y7ibGuaYlZOmp7CdwwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwEGCCsGAQUFBwMCME8GA1UdIARIMEYwOgYLKwYBBAGyMQECAgcwKzApBggrBgEF
+BQcCARYdaHR0cHM6Ly9zZWN1cmUuY29tb2RvLmNvbS9DUFMwCAYGZ4EMAQIBMFQGA1UdHwRNMEsw
+SaBHoEWGQ2h0dHA6Ly9jcmwuY29tb2RvY2EuY29tL0NPTU9ET1JTQURvbWFpblZhbGlkYXRpb25T
+ZWN1cmVTZXJ2ZXJDQS5jcmwwgYUGCCsGAQUFBwEBBHkwdzBPBggrBgEFBQcwAoZDaHR0cDovL2Ny
+dC5jb21vZG9jYS5jb20vQ09NT0RPUlNBRG9tYWluVmFsaWRhdGlvblNlY3VyZVNlcnZlckNBLmNy
+dDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2RvY2EuY29tMIGVBgNVHREEgY0wgYqCGnNh
+bmRib3gucGxhdGZvcm0uaG1jdHMubmV0ghwqLnNhbmRib3gucGxhdGZvcm0uaG1jdHMubmV0gigq
+LnNjbS5zZXJ2aWNlLnNhbmRib3gucGxhdGZvcm0uaG1jdHMubmV0giQqLnNlcnZpY2Uuc2FuZGJv
+eC5wbGF0Zm9ybS5obWN0cy5uZXQwggGABgorBgEEAdZ5AgQCBIIBcASCAWwBagB3AO5Lvbd1zmC6
+4UJpH6vhnmajD35fsHLYgwDEe4l6qP3LAAABYtlvlA8AAAQDAEgwRgIhAMvxb9AkZmrkXh7r9doq
+cdC9u+eXQ+3gEIqtpC7f828HAiEAqqxN/M6zPeFkK1/4z6p5HYsnmjMV2FXl5NF1N8F5yDcAdwBe
+p3P531bA57U2SH3QSeAyepGaDIShEhKEGHWWgXFFWAAAAWLZb5RkAAAEAwBIMEYCIQC3yB/GOqU9
+9e9Np7+3+lSEu7mWwiaXzsKMOHlZQeb20AIhAOY99ZFgGkRJlJDrK11Mbka82HWLY2+XnQNccxDK
+IKObAHYAb1N2rDHwMRnYmQCkURX/dxUcEdkCwQApBo2yCJo32RMAAAFi2W+UoQAABAMARzBFAiA+
+vQJYybdH3qmvoUf/lmfyZnG6Z9mHCEJCL+pgKgLATQIhANISvOFUzWUSTUdnMTIt/54/Q/vnr4WQ
+d7+Fd1FcY9swMA0GCSqGSIb3DQEBCwUAA4IBAQAfn61/Qo6C39g4uT/uUD0t7EHEp4trJVbFsN4F
+QzuMTwFLoPw8wU3054zjWw9vOJBpWbAgTL63jrUxGJQphMffj85t3Nc3YKPKfAZUgDWn5i0J769d
+zqkgPOGrFxAY/IAP2NUOFqMMVibOAZtdyoBtDgLjtlpcTPUycJUMS8pw42Zoqah+iMaWbiovvEbT
+mnXEC12Y6aMrxy4GNBgZmqVgDPB7m1R3x4gb2V8JTvfRL+DK2wvdUNY52MjKPdMKZsxfsT10zC5T
+IIux8kkv5nfDXqgjRp5YUJCc+pIkaXm5DhQpBvCiSzateHTkqKRFz1fvxWTs7LbrR4eMI8+/BcUq
+-----END CERTIFICATE-----
+</public-key>
+        <algorithm>RSA</algorithm>
+        <private-key>-AQ==+5P2zFJfmkSRBKNxgF03Lj2KQis=wfL5Zc+wUAak+B7CnAVY6NdutYWtt67XvF+yGHFGS+v3hQ6NGerTNEn2/C/2TE21SkpB8E5WvwWCKeJVCl28qoFofW8M6Y6G5G0GQiTrWRXcHBB2dkoYLQ2qA32nBUNMh8lipAjpOYqyKzRWGjwv35eadq5Yhp06RDhl5r5iCptfWKPQOqdgcgveG85heehjoEJiKFyrOhPC42kCmHJEuefh4E5dy6igUG8yxpZ9butHZfTxz7YNkmVBivGfraSt2CJCTtWDmhc32JDTqP0+ZM+NIvM+89n3qQEykP+7J+g+KsHbXBoM5qzRRE4Tl2J4go5O0+Vwny/v4nsDfB2pqDrWFItUIix3NP1tMl9TwyMwsNp7X2JtKBpzNUbg3ypZ+HFTwrvsqhLv2lrTbWWdlBPxxhHu+Bqz+6Q10vQ/wv17vuYKUs846SgjoOZS0IWfxCuUUFHIWpK+lJR/bQQhgnYmVuYAzedxtfvqbc0lTe5WrfDwZ5mJfni+LIGMjf7Ad0uVIB8yU+BBuX/3YBA6Zes2L+PLPUFxo9I0dfPo8CEHh+Yo+k/RWPfrJFHZWmfm0vc8YgHBOzozsZMklrc0rmbhMnvH8L0zwV2+DUETbohnVOlCd6Nnz47mLOoXHLMg8OK5ru2HHP3xOgzo6q2UO5RFxyyhhdMRIuQGm3lwfgF9/dAKqcz6hXk2ri6HjhyULrTlhQ5vvEr+DdTmdwjIuxR6y1pKMnMdSKj/8emB60SYU5jf15tPwvfVjsd62zPIaRrUiubAoy7GN30Aa8R1xJDt+FBWSrmka4tVJsePiprJqxdBEmTsnZmhLfCYfFdBiN2m2FyjJF5A20trkJnF/vtbweOTa0yIdcumA3BMIsCSKTgmRxf+f0qeD9JVuRpqnvX8tCoMTG+2pWiBo8JPXj06SuhPkkTsXTf58J8UJpfmaVy8N9/EiziQM1YZwp3b6VpLAomTHeG94WvT7C+wAvBHc2SpMJAsOTIg3KBaS+HBrpLMXvn5isDoHwpa1OTsPO06qdMdJxxMjrzwNhxunhNElsrX9zO2QjxWGVxxGo7P31L6aFvoqk+v8pBDsDroBNZTkaBOGLnnjCTYzSKFdSOyYXz2bEkhmjncFAxs4KYJqCeFVmvWcuzrBYdHcpNV1v7ucuwUHqIMBltz4HtqMEduNhQ6OYR0TkQ+FERegHkIwJWrXVA5YIDlsZ17nswQAb7zZFi3QrNzoxRJ7w3c8sCgrsdHkhFBlBzkDu5YAx6RlkR1OQUIAKDD2KjXWZZRhejX1+CHi0Tt7UbDY3FOuUWFLMdLuttfJdkA7v6jICYTuhf7lJYxQrUtaQKTXKZEkRPh6aOqMoZkhfdP1lsfsaVqB5OQJ5uesGcqPl3olXPSS/SsWReQPBZTluhfmLPXB4Os5/l9XWZSXoJS9N1gPiSqYddIBaIRJY8wszFTFcGFPeZ4EN/UvExSX64WiduYM21OLQYwcz2Ujm957hRDwoNawyBJm6p25j9ldZwCbggAx+6MJqSrQFdnsXCivKhOrEBoagft7n1nedP7TDc2ir1exm4Q9zsZHBvWfrLjEignNOJTUBbMYEwd0AZq/l7d8u9lxRZiicVICE3Fol+N3z8p5Cae7g0mnM9hJu1Iv3m1zyCBQABUqXOurA/aMb3OSFDCnnAKC13CHoIIeAYWAeMT5n/lEE4XsqqUVBZ2JTH4BG1fo6Ltxox7ibOExl20aMv5fcWXTrJO65QvfQMkHuohGKkgZwhqSGMQYitqPX9+Vs1m8OtCZvwt07oHsuqUG6R/0ASSu527z3sBmvmWrr5CI46U9t4h2OJCnOkpOk7ZIN65FcbDUPTueDO5j86VEO/t1qwc6wgznyzgsWqMzTcp6Va19SR0P/bP8b6g6lKhTsQR0CIYg204zNQmMJKJy6/jjfCvC2NEr4Mxs1SPz4ikdMARnvwbb8JcJyNInWqmr3xN9ELR0icQ522CzyzID43Xj4DUCDwH1MVEdVZaDDdVAdX7J6Djx4N2hkfJ4DqOMwhQt+dZhYmILMLmKQY9HvOj9tujhz10xkRsNHOj9cEqmzeVpyEaqg+2FDh5eRcT2/V1mjjCknPkjM2JtzPiZQ1acWF9fQT8QNd2TxhK/YmM6DxtmwDiM2vH8fT+8PYu0gYSvBnjfLpRYj/Dp0TjJorAe+uJ3i07BT/hAVwHajW+cJBwqXgPCCzBlxJqpiLnUI3bPGNBBdvr7hJvX3Xi</private-key>
+      </entry>
+      <entry name="globalscape-fwdtrust">
+        <subject-hash>1ce8e900</subject-hash>
+        <issuer-hash>1ce8e900</issuer-hash>
+        <not-valid-before>Feb 27 13:09:08 2020 GMT</not-valid-before>
+        <issuer>/CN=globalscape-fwdtrust</issuer>
+        <not-valid-after>Feb 26 13:09:08 2021 GMT</not-valid-after>
+        <common-name>globalscape-fwdtrust</common-name>
+        <expiry-epoch>1614344948</expiry-epoch>
+        <ca>yes</ca>
+        <subject>/CN=globalscape-fwdtrust</subject>
+        <public-key>-----BEGIN CERTIFICATE-----
+MIIC3jCCAcagAwIBAgIJAIkdGlYZ4PARMA0GCSqGSIb3DQEBCwUAMB8xHTAbBgNV
+BAMTFGdsb2JhbHNjYXBlLWZ3ZHRydXN0MB4XDTIwMDIyNzEzMDkwOFoXDTIxMDIy
+NjEzMDkwOFowHzEdMBsGA1UEAxMUZ2xvYmFsc2NhcGUtZndkdHJ1c3QwggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9+ME97mxBTOa0CK6CfG14QQTPEXW3
+evW+QknPuGZuPT1VtmEg95SjB+/4bM3sdK3wIVTPB8EB6RlzDEjQtB/m2T9fXLxM
++NL7+xRtFvSt4ilEABuiU3SaYMeP/isBt9yJ05eJdikbDKDVYyx8eHL6kZToRqGr
+6lDo9eLAjRGSNDpcupqFhOrGuleNpJ3DqLr1yzOckjQ52Ke4XsVuw42STUCpOv/W
+q2bzWlpguWvMq/ckE/4FDpEwc3PyjWmCkXOndopCacs1t6s6dBhEo8pZ+y02SR7k
+TOicNVdVZ2AC7nwjskID2i3ht8W+jlM59CV9W5S3nF+yrY8S8d538cpHAgMBAAGj
+HTAbMAwGA1UdEwQFMAMBAf8wCwYDVR0PBAQDAgIEMA0GCSqGSIb3DQEBCwUAA4IB
+AQBIEBEPZAVd43sT8CrzjDagjYOHtt0WC7cuTi37i424aTXytGahJRTcj5ZWe+Z8
+1ljSR5Kcd4vRAdTCtSb6nXBuO9N2xi2ByqRzIjPEM8Fu2rctSjZB3MAinIWNjAni
+rxtCBT02wYKQ68SZ8gTn0Ss1lTFXEHEWRCLsvrrSLN270ejSl1OZTEE5VWq8m9+E
+1HW4fn4A0kkpodbSFzFipuzVfu3WSS2Qiw2sQTf8kSmT4noMkr5mPkQvyNTHunlM
+RPwv8CO9JtLituH1qhgP32MQDJ40WJ2ykGbRjAeOm8abaQeJ720NQqUHPHqfkKX3
+9nj8loqzrug+Vt/fW4yWtIG1
+-----END CERTIFICATE-----
+</public-key>
+        <algorithm>RSA</algorithm>
+        <private-key>-AQ==0WxYcmzvSE4IK2PZMsJeuOVZI8A=wfL5Zc+wUAak+B7CnAVY6NdutYWtt67XvF+yGHFGS+s9JXWq/ZS2hGmEWv7PpHogrfEnJh5LNieJH7QWzdru/ht9omhG//6LxlRR74Z0495MeYlyvZZZ4V9ZD96vI+AVBMbkaHpW2/HchBXLKnUm3iSd5Igi51L/EwhsawThv42D/Rdl50X16JmOvCei7qhJbZOQt587m0bs1vUb+QvXvun3TCNKS2CYToFtei1wU/ozbDUAjs9e3ynU0ELX0xp+rb06vrc/087i5XAVTl8KvLfAiZTcLYnThY7pDUhRfovrlE5ll9sZFLfUNd8UgfRPVSttYaNACxUoifCGjQFnWtIjttQ298APPf24Y4eJ3l/t6ZwGQA30d5OppDCsrDOkXxwcgpPeIw6EDnQfcrcBOuvsebl6bAerb+1DWlxc/EiN5J2VRnONrzPH/7yTS7ZaaG6v/gBszwFDepPF8Ohw0RCy6Pm1uMtQLzMJmnKJsyTMQb9T3H6ERKcvJ8poZ0iVQxi2D7x136isB/3WyC5KXZ2WCkNxHSGVMN+N6cBF/api5WbhB6RAMXjzOFlEQQI+JOrAHYVqzBE/Uc/Tru3iDZFE8XaUYFTTwZ2YXhoCC+3df9MyQTQE1HRQk5sZhcnH+zbMM4kRjR83D5RfRx+dIgwBVlHs5aP6lncHjYJkj98zPnI1a16FMsOzmGVQprmPXnmQ8b3gQfC/rBkNxiA9PvLCtKIeLpZsfSVyKI7CEEDeA95kOTgoyyxPs0lMe8X/Q/fGj85YroPIKlGfwdUhUqidYivz7g8tq/QzKyO0YyZvFRZc2fwFBSvLxtuk/S+NvB2gYmZa3E53u4foSjz8jM0+0EXlTR4efTwaScKvvqXyMo50GFBqfFMGogN5XjnwqnBYYYU7sFEUzW4zkp+2UWUwDoze0dm05/ENX2r1p3SFONBPwWwy3DEuODMLEHz1r/jSe2iRVZ5selk1SEnjZ36LepComqrsNGpawD7D/hmn1nE9PTtIE9EJi4KZuMZ4i3ZugFVl+NNK/wlcF+frLE4T48r4/tcRW+j6E+pG/VZ+OkaKF1EztRuKf+cQVDkMA7JwZunyXT5brTcAKbn2Gql23FQxvmdeABbuKwmdOoDXDBFhLPAxI9fbTAIfNLYQUphfF4x6vNlPnI93zwWxqk5iZb1A5qV1kn0rST25FnBeuiBZdXehXompObAzC87Yi/wnICc1k8DaAYzTZy+4Xvat3LQcQtLHkgTonPJ47bA6l3/LbWJ7NROIUXpJ9Pw48+RV3W2PDT0peSVzNTrHLSaFvAW8NuyrhuggSNVznWsk6TTCY7Efyi3IAfYHFQIza8g1uiY32Q/lhaTQSbWbmHSyuynhlNAyzYJHeJ9/5vH3cyIjpEKyl9X52HjMSHiB8jd65X3qse/ecfopU3aNFgDvmPk1rh9aClK5I10GsqUxxfbhuZILwGmI6cW2l6tBabYUnwU83tc2dpReFhxGuWiMaTysSo287aYRIXptOAq9HkWY6nSL7zxg/S+hTRINIzEAAjrYLlV9obBLR6iOHDnRRxptxeTaM8uwy41bCRM2Gv8TaQthKJ0rULUJ+zxg4vziwzuy2zOGPya7hnxt8icusloj9ic/yBW8I6k5dWUwtDhCXA9xTxLqLCP8RxDAV/ytiAd8Ox+ZH3zZkakOlkiuqJn5mKiVgyhXFtTHurGfad9ixD9bwJokXaPpmeIIpOZe+NEH+5BzI23HBDpVhtK4Ou70Oth3hs1H6NcnmLNyh8RuF6Huf06sJdo72vJJOwJlUtxQmC83xtm0u74H0USrQ+Pt/ryf5CDAySof2fVF818vOXunvIVyxIn/ifeIEM//X1tD9UPwGFTXDVukL11x+hBCrFeD2qZpZtaZMLalfy+SSu9+uU5LuLXIE10ytpKcpyxYdm6cYmz0g/HFn4zz34SKsbtElxNTKAkKUQYjqHB6Y/yugSDzEXIOitG+Woobhe6qAiFGhufHHaGyKKAMjzOdDvHvpBGJjGWiOxL1rZIrFFLrpqHQph52JuP0pvRWxw5bKCZZ7ZDuSoOd290fL05Ci8xpyyFhhS3L27ncj/vO34tovV/HkqomzvBZPTktSvYj5h2oiMdo/VJjxF13EjeUMzpAYlwzvidJeIAC4nOrtfDlDeglHhk9nPnaaxGHpyY8YQobAZ3/DZDxQKIYuYc7k/m/z2w5ZxPb5FaJTTyrbyW2goS3ZpFlhvs6</private-key>
+      </entry>
+    </certificate>
     <ssl-decrypt>
       <ssl-exclude-cert/>
+      <forward-trust-certificate>
+        <rsa>globalscape-fwdtrust</rsa>
+      </forward-trust-certificate>
+      <forward-untrust-certificate>
+        <rsa>globalscape-fwdtrust</rsa>
+      </forward-untrust-certificate>
     </ssl-decrypt>
     <ssl-tls-service-profile/>
     <local-user-database>
@@ -182,44 +271,6 @@
                 <interface-management-profile>health-probes</interface-management-profile>
               </layer3>
             </entry>
-            <entry name="ethernet1/3">
-              <layer3>
-                <ipv6>
-                  <neighbor-discovery>
-                    <router-advertisement>
-                      <enable>no</enable>
-                    </router-advertisement>
-                  </neighbor-discovery>
-                </ipv6>
-                <ndp-proxy>
-                  <enabled>no</enabled>
-                </ndp-proxy>
-                <lldp>
-                  <enable>no</enable>
-                </lldp>
-                <dhcp-client/>
-              </layer3>
-              <comment>ithc</comment>
-            </entry>
-            <entry name="ethernet1/4">
-              <layer3>
-                <ipv6>
-                  <neighbor-discovery>
-                    <router-advertisement>
-                      <enable>no</enable>
-                    </router-advertisement>
-                  </neighbor-discovery>
-                </ipv6>
-                <ndp-proxy>
-                  <enabled>no</enabled>
-                </ndp-proxy>
-                <lldp>
-                  <enable>no</enable>
-                </lldp>
-                <dhcp-client/>
-              </layer3>
-              <comment>Test</comment>
-            </entry>				
           </ethernet>
         </interface>
         <profiles>
@@ -462,13 +513,13 @@
             <interface>
               <member>ethernet1/1</member>
               <member>ethernet1/2</member>
-            </interface>			   
+            </interface>
             <routing-table>
               <ip>
                 <static-route>
                   <entry name="default">
                     <nexthop>
-                      <ip-address>{{ gateway }}</ip-address>
+                      <ip-address>10.11.4.1</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -487,7 +538,7 @@
                   </entry>
                   <entry name="trust">
                     <nexthop>
-                      <ip-address>{{ gateway_trust }}</ip-address>
+                      <ip-address>10.11.4.9</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
@@ -504,61 +555,21 @@
                       <unicast/>
                     </route-table>
                   </entry>
-                </static-route>
-              </ip>
-            </routing-table>
-            <ecmp>
-              <algorithm>
-                <ip-modulo/>
-              </algorithm>
-            </ecmp>
-          </entry>
-          <entry name="aks-ithc">
-            <ecmp>
-              <algorithm>
-                <ip-modulo/>
-              </algorithm>
-            </ecmp>
-            <protocol>
-              <bgp>
-                <routing-options>
-                  <graceful-restart>
-                    <enable>yes</enable>
-                  </graceful-restart>
-                </routing-options>
-                <enable>no</enable>
-              </bgp>
-              <rip>
-                <enable>no</enable>
-              </rip>
-              <ospf>
-                <enable>no</enable>
-              </ospf>
-              <ospfv3>
-                <enable>no</enable>
-              </ospfv3>
-            </protocol>
-            <interface>
-              <member>ethernet1/3</member>
-            </interface>
-            <routing-table>
-              <ip>
-                <static-route>
-                  <entry name="aks-ithc">					 
+                  <entry name="f5">
                     <path-monitor>
                       <enable>no</enable>
                       <failure-condition>any</failure-condition>
                       <hold-time>2</hold-time>
                     </path-monitor>
                     <nexthop>
-                      <ip-address>{{ gateway }}</ip-address>
+                      <ip-address>10.11.4.1</ip-address>
                     </nexthop>
                     <bfd>
                       <profile>None</profile>
                     </bfd>
-                    <interface>ethernet1/3</interface>
+                    <interface>ethernet1/1</interface>
                     <metric>10</metric>
-                    <destination>10.0.0.0/8</destination>
+                    <destination>10.11.0.0/22</destination>
                     <route-table>
                       <unicast/>
                     </route-table>
@@ -566,73 +577,24 @@
                 </static-route>
               </ip>
             </routing-table>
-          </entry>
-          <entry name="aks-test">
             <ecmp>
               <algorithm>
                 <ip-modulo/>
               </algorithm>
             </ecmp>
-            <protocol>
-              <bgp>
-                <routing-options>
-                  <graceful-restart>
-                    <enable>yes</enable>
-                  </graceful-restart>
-                </routing-options>
-                <enable>no</enable>
-              </bgp>
-              <rip>
-                <enable>no</enable>
-              </rip>
-              <ospf>
-                <enable>no</enable>
-              </ospf>
-              <ospfv3>
-                <enable>no</enable>
-              </ospfv3>
-            </protocol>
-            <routing-table>
-              <ip>
-                <static-route>
-                  <entry name="aks-test">									 
-                    <path-monitor>
-                      <enable>no</enable>
-                      <failure-condition>any</failure-condition>
-                      <hold-time>2</hold-time>
-                    </path-monitor>
-                    <nexthop>
-                      <ip-address>{{ gateway }}</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>
-                    <interface>ethernet1/4</interface>
-                    <metric>10</metric>
-                    <destination>10.0.0.0/8</destination>
-                    <route-table>
-                      <unicast/>
-                    </route-table>
-                  </entry>					  
-                </static-route>
-              </ip>
-            </routing-table>
-            <interface>
-              <member>ethernet1/4</member>
-            </interface>
           </entry>
         </virtual-router>
       </network>
       <deviceconfig>
         <system>
-          <hostname>{{ paloname }}</hostname>
+          <hostname>hmcts-dmz-prod-int-palo-vm-0</hostname>
           <dns-setting>
             <servers>
               <primary>8.8.8.8</primary>
             </servers>
           </dns-setting>
           <timezone>Europe/London</timezone>
-          <login-banner>Secure environment</login-banner>					
+          <login-banner>Secure environment</login-banner>
           <update-server>updates.paloaltonetworks.com</update-server>
           <update-schedule>
             <threats>
@@ -676,9 +638,9 @@
               <ntp-server-address>0.pool.ntp.org</ntp-server-address>
             </primary-ntp-server>
             <secondary-ntp-server>
-              <ntp-server-address>1.pool.ntp.org</ntp-server-address>									
+              <ntp-server-address>1.pool.ntp.org</ntp-server-address>
             </secondary-ntp-server>
-          </ntp-servers>																		 
+          </ntp-servers>
         </system>
         <setting>
           <config>
@@ -695,7 +657,7 @@
                   <accept-dhcp-domain>no</accept-dhcp-domain>
                 </dhcp-client>
               </type>
-              <hostname>{{ paloname }}</hostname>
+              <hostname>hmcts-dmz-prod-int-palo-vm-00</hostname>
               <username>localadmin</username>
             </initcfg>
           </management>
@@ -727,8 +689,6 @@
               <network>
                 <layer3>
                   <member>ethernet1/2</member>
-                  <member>ethernet1/3</member>
-                  <member>ethernet1/4</member>										  
                 </layer3>
               </network>
             </entry>
@@ -739,68 +699,40 @@
           <rulebase>
             <nat>
               <rules>
-                <entry name="AKS-ITHC" uuid="f04a57ea-ee45-458f-8814-d71123440533">
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/3</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
+                <entry name="to-aks" uuid="5ae321b2-02df-4581-bbd7-43c10caf6a92">
                   <dynamic-destination-translation>
-                    <distribution>round-robin</distribution>
-                    <translated-address>AKS-ITHC</translated-address>
+                    <distribution>ip-modulo</distribution>
+                    <translated-address>AKS</translated-address>
                   </dynamic-destination-translation>
                   <to>
-                    <member>Trusted</member>
+                    <member>Untrusted</member>
                   </to>
                   <from>
-                    <member>Trusted</member>
+                    <member>Untrusted</member>
                   </from>
                   <source>
                     <member>any</member>
                   </source>
                   <destination>
-                    <member>any</member>
+                    <member>10.11.132.5</member>
                   </destination>
                   <service>any</service>
-                  <to-interface>ethernet1/3</to-interface>													  
-                </entry>
-                <entry name="AKS-TEST" uuid="88c0c225-155d-4228-8c05-27227d9d05db">
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/4</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
-                  <dynamic-destination-translation>
-                    <distribution>round-robin</distribution>
-                    <translated-address>AKS-TEST</translated-address>
-                  </dynamic-destination-translation>
-                  <to>
-                    <member>Trusted</member>
-                  </to>
-                  <from>
-                    <member>Trusted</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>any</member>
-                  </destination>
-                  <service>any</service>
-                  <to-interface>ethernet1/4</to-interface>														  
-                </entry>
-                <entry name="inbound_nat" uuid="3ffdd31c-5a92-4d97-a113-d8322dc6f6c9">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
                         <interface>ethernet1/2</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
-                  </source-translation>												
+                  </source-translation>
+                </entry>
+                <entry name="inbound_nat" uuid="e928f2ac-3c6e-435d-807a-a675ac81cef6">
+                  <source-translation>
+                    <dynamic-ip-and-port>
+                      <interface-address>
+                        <interface>ethernet1/2</interface>
+                      </interface-address>
+                    </dynamic-ip-and-port>
+                  </source-translation>
                   <to>
                     <member>Trusted</member>
                   </to>
@@ -813,16 +745,16 @@
                   <destination>
                     <member>any</member>
                   </destination>
-                  <service>any</service>									
-                </entry>					
-                <entry name="outbound_nat" uuid="7687cebc-12d6-4a2e-aa11-a1f121664708">
+                  <service>any</service>
+                </entry>
+                <entry name="outbound_nat" uuid="c2e426bb-1485-4f05-9e78-2220f0b516ba">
                   <source-translation>
                     <dynamic-ip-and-port>
                       <interface-address>
                         <interface>ethernet1/1</interface>
                       </interface-address>
                     </dynamic-ip-and-port>
-                  </source-translation>														 																				
+                  </source-translation>
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -834,14 +766,14 @@
                   </source>
                   <destination>
                     <member>any</member>
-                  </destination>											
+                  </destination>
                   <service>any</service>
-                </entry>						   
+                </entry>
               </rules>
             </nat>
             <security>
               <rules>
-                <entry name="health-probes" uuid="15a50d0d-296b-496f-b171-2b505e434cf6">
+                <entry name="health-probes" uuid="dd7a392e-2e32-4ab0-963f-f261a029b308">
                   <to>
                     <member>any</member>
                   </to>
@@ -861,7 +793,7 @@
                     <member>any</member>
                   </category>
                   <application>
-                    <member>any</member>										 
+                    <member>any</member>
                   </application>
                   <service>
                     <member>application-default</member>
@@ -871,67 +803,17 @@
                   </hip-profiles>
                   <action>allow</action>
                   <log-end>no</log-end>
-                  <rule-type>universal</rule-type>														  
-                </entry>
-                <entry name="trusted" uuid="38e98e00-53f6-4842-b56e-921df433a603">
-                  <to>
-                    <member>Trusted</member>
-                  </to>
-                  <from>
-                    <member>Trusted</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>any</member>
-                  </destination>
-                  <source-user>
-                    <member>any</member>
-                  </source-user>
-                  <category>
-                    <member>any</member>
-                  </category>
-                  <application>								 
-                    <member>any</member>
-                  </application>
-                  <service>
-                    <member>any</member>
-                  </service>
-                  <hip-profiles>
-                    <member>any</member>
-                  </hip-profiles>
-                  <action>allow</action>
-                  <log-start>yes</log-start>								
-                  <log-setting>azure_security_center</log-setting>
                   <rule-type>universal</rule-type>
-                  <profile-setting>
-                    <profiles>
-                      <file-blocking>
-                        <member>FBPolicy</member>
-                      </file-blocking>
-                      <virus>
-                        <member>AVPolicy</member>
-                      </virus>
-                      <spyware>
-                        <member>default</member>
-                      </spyware>
-                      <vulnerability>
-                        <member>VPPolicy</member>
-                      </vulnerability>
-                    </profiles>
-                  </profile-setting>							
                 </entry>
-                <entry name="To-AKS" uuid="5b529f3e-8777-40e8-9038-72d58cbadff9">
+                <entry name="dmz-inbound" uuid="a531fd05-a8c8-4239-8d49-539aaccb8209">
                   <to>
-                    <member>Trusted</member>
+                    <member>any</member>
                   </to>
                   <from>
                     <member>Untrusted</member>
                   </from>
                   <source>
-                    <member>10.11.72.6</member>
-                    <member>10.11.72.4</member>									  
+                    <member>any</member>
                   </source>
                   <destination>
                     <member>any</member>
@@ -943,7 +825,8 @@
                     <member>any</member>
                   </category>
                   <application>
-                    <member>any</member>
+                    <member>ssl</member>
+                    <member>web-browsing</member>
                   </application>
                   <service>
                     <member>any</member>
@@ -953,10 +836,12 @@
                   </hip-profiles>
                   <action>allow</action>
                   <log-start>yes</log-start>
-                  <log-setting>azure_security_center</log-setting>
-                  <rule-type>universal</rule-type>
+                  <log-setting>app_insights</log-setting>
                   <profile-setting>
                     <profiles>
+                      <url-filtering>
+                        <member>URLFPolicy</member>
+                      </url-filtering>
                       <file-blocking>
                         <member>FBPolicy</member>
                       </file-blocking>
@@ -971,8 +856,27 @@
                       </vulnerability>
                     </profiles>
                   </profile-setting>
-                </entry>																				 					
-                <entry name="internet_out" uuid="4d6b525f-21e6-4504-85c9-ff0d830ac11f">
+                </entry>
+                <entry name="internet-out" uuid="3b612189-c1cb-47c3-be87-e94e632f4a1a">
+                  <profile-setting>
+                    <profiles>
+                      <url-filtering>
+                        <member>URLFPolicy</member>
+                      </url-filtering>
+                      <file-blocking>
+                        <member>FBPolicy</member>
+                      </file-blocking>
+                      <virus>
+                        <member>AVPolicy</member>
+                      </virus>
+                      <spyware>
+                        <member>default</member>
+                      </spyware>
+                      <vulnerability>
+                        <member>VPPolicy</member>
+                      </vulnerability>
+                    </profiles>
+                  </profile-setting>
                   <to>
                     <member>Untrusted</member>
                   </to>
@@ -995,32 +899,15 @@
                     <member>any</member>
                   </application>
                   <service>
-                    <member>any</member>
+                    <member>application-default</member>
                   </service>
                   <hip-profiles>
                     <member>any</member>
                   </hip-profiles>
                   <action>allow</action>
                   <log-start>yes</log-start>
-                  <log-setting>azure_security_center</log-setting>
-                  <profile-setting>
-                    <profiles>
-                      <file-blocking>
-                        <member>FBPolicy</member>
-                      </file-blocking>
-                      <virus>
-                        <member>AVPolicy</member>
-                      </virus>
-                      <spyware>
-                        <member>default</member>
-                      </spyware>
-                      <vulnerability>
-                        <member>VPPolicy</member>
-                      </vulnerability>
-                    </profiles>
-                  </profile-setting>
                 </entry>
-                <entry name="deny_log" uuid="5be49317-f636-4b67-be10-463dbe0351ed">
+                <entry name="deny_log" uuid="d74cc013-08b8-43c6-bdbe-9cf26d94cd36">
                   <to>
                     <member>any</member>
                   </to>
@@ -1049,19 +936,82 @@
                     <member>any</member>
                   </hip-profiles>
                   <action>drop</action>
-                  <log-end>no</log-end>
-                  <log-start>no</log-start>
+                  <log-start>yes</log-start>
                 </entry>
               </rules>
             </security>
+            <decryption>
+              <rules>
+                <entry name="Globalscape-Decrypt-SSH" uuid="b271517c-55cc-4f9f-b6ac-4a4dbd7b88e0">
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <type>
+                    <ssh-proxy/>
+                  </type>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <source>
+                    <member>10.197.196.4</member>
+                    <member>10.197.196.5</member>
+                    <member>10.197.197.4</member>
+                    <member>10.197.197.5</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <action>decrypt</action>
+                  <profile>default</profile>
+                </entry>
+                <entry name="Globalscape-Decrypt-SSL" uuid="f559b743-8b6f-498a-adfd-1ed0b8bac807">
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <type>
+                    <ssl-forward-proxy/>
+                  </type>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <source>
+                    <member>10.197.196.4</member>
+                    <member>10.197.196.5</member>
+                    <member>10.197.197.4</member>
+                    <member>10.197.197.5</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <action>decrypt</action>
+                  <profile>default</profile>
+                </entry>
+              </rules>
+            </decryption>
           </rulebase>
           <import>
             <network>
               <interface>
                 <member>ethernet1/1</member>
                 <member>ethernet1/2</member>
-                <member>ethernet1/3</member>
-                <member>ethernet1/4</member>										
               </interface>
             </network>
           </import>
@@ -1070,17 +1020,11 @@
               <ip-netmask>168.63.129.16</ip-netmask>
               <description>Azure Load Balancer</description>
             </entry>
-            <entry name="ithc-aks-00">
-              <ip-netmask>10.10.33.250</ip-netmask>
-            </entry>
-            <entry name="ithc-aks-01">
+            <entry name="aks-01">
               <ip-netmask>10.10.35.250</ip-netmask>
             </entry>
-            <entry name="test-aks-00">
-              <ip-netmask>10.10.41.250</ip-netmask>
-            </entry>
-            <entry name="test-aks-01">
-              <ip-netmask>10.10.45.250</ip-netmask>
+            <entry name="aks-02">
+              <ip-netmask>10.10.33.250</ip-netmask>
             </entry>
           </address>
           <profiles>
@@ -1395,65 +1339,25 @@
           </profiles>
           <log-settings>
             <profiles>
-              <entry name="azure_security_center">
+              <entry name="app_insights">
                 <match-list>
-                  <entry name="ASC-CriticalThreatLogs">
-                    <actions>
-                      <entry name="CriticalThreatLogs">
-                        <type>
-                          <integration>
-                            <action>Azure-Security-Center-Integration</action>
-                          </integration>
-                        </type>
-                      </entry>
-                    </actions>
-                    <log-type>threat</log-type>
-                    <filter>(severity eq critical)</filter>
+                  <entry name="app_insights">
+                    <send-http>
+                      <member>app_insights</member>
+                    </send-http>
+                    <log-type>traffic</log-type>
+                    <filter>All Logs</filter>
                     <send-to-panorama>no</send-to-panorama>
                   </entry>
-                  <entry name="ASC-CriticalWildfireLogs">
-                    <actions>
-                      <entry name="CriticalWildfireLogs">
-                        <type>
-                          <integration>
-                            <action>Azure-Security-Center-Integration</action>
-                          </integration>
-                        </type>
-                      </entry>
-                    </actions>
-                    <log-type>wildfire</log-type>
-                    <filter>(severity eq critical)</filter>
-                    <send-to-panorama>no</send-to-panorama>
-                  </entry>
-                  <entry name="ASC-CriticalDataLogs">
-                    <actions>
-                      <entry name="CriticalDataLogs">
-                        <type>
-                          <integration>
-                            <action>Azure-Security-Center-Integration</action>
-                          </integration>
-                        </type>
-                      </entry>
-                    </actions>
-                    <log-type>data</log-type>
-                    <filter>(severity eq critical)</filter>
-                    <send-to-panorama>no</send-to-panorama>
-                  </entry>						  
                 </match-list>
               </entry>
             </profiles>
           </log-settings>
           <address-group>
-            <entry name="AKS-ITHC">
+            <entry name="AKS">
               <static>
-                <member>ithc-aks-00</member>
-                <member>ithc-aks-01</member>
-              </static>
-            </entry>
-            <entry name="AKS-TEST">
-              <static>
-                <member>test-aks-00</member>
-                <member>test-aks-01</member>
+                <member>aks-01</member>
+                <member>aks-02</member>
               </static>
             </entry>
           </address-group>
