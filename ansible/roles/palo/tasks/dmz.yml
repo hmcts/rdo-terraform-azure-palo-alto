@@ -10,6 +10,6 @@
     ip_address: "{{ mgmt_ip }}"
     username: "{{ admin_username }}"
     password: "{{ admin_password }}"
-    file: "{{ playbook_dir }}/dmz-pan-baseline.xml"
+    file: "{{ playbook_dir }}/dmz-pan-baseline-{{ env_subscripton }}.xml"
     category: "configuration"
   register: result
