@@ -127,6 +127,12 @@
     </admin-role>
     <ssl-decrypt>
       <ssl-exclude-cert/>
+      <forward-trust-certificate>
+        <rsa>globalscape-fwdtrust</rsa>
+      </forward-trust-certificate>
+      <forward-untrust-certificate>
+        <rsa>globalscape-fwdtrust</rsa>
+      </forward-untrust-certificate>
     </ssl-decrypt>
     <ssl-tls-service-profile/>
     <local-user-database>
@@ -609,33 +615,7 @@
           <schedule/>
           <rulebase>
             <nat>
-              <rules>
-                <entry name="to-aks" uuid="49535610-a7db-4aa4-bf7f-9da9172f2eff">
-                  <dynamic-destination-translation>
-                    <distribution>ip-modulo</distribution>
-                    <translated-address>AKS</translated-address>
-                  </dynamic-destination-translation>
-                  <to>
-                    <member>Untrusted</member>
-                  </to>
-                  <from>
-                    <member>Untrusted</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>10.11.132.5</member>
-                  </destination>
-                  <service>any</service>
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/2</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
-                </entry>					
+              <rules>				
                 <entry name="inbound_nat" uuid="712f1f8c-213e-47ef-97f1-f1c591978b71">
                   <source-translation>
                     <dynamic-ip-and-port>
@@ -768,6 +748,56 @@
                     </profiles>
                   </profile-setting>
                 </entry>
+                <entry name="internet-out" uuid="3b612189-c1cb-47c3-be87-e94e632f4a1a">
+                  <profile-setting>
+                    <profiles>
+                      <url-filtering>
+                        <member>URLFPolicy</member>
+                      </url-filtering>
+                      <file-blocking>
+                        <member>FBPolicy</member>
+                      </file-blocking>
+                      <virus>
+                        <member>AVPolicy</member>
+                      </virus>
+                      <spyware>
+                        <member>default</member>
+                      </spyware>
+                      <vulnerability>
+                        <member>VPPolicy</member>
+                      </vulnerability>
+                    </profiles>
+                  </profile-setting>
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <source>
+                    <member>any</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <application>
+                    <member>any</member>
+                  </application>
+                  <service>
+                    <member>application-default</member>
+                  </service>
+                  <hip-profiles>
+                    <member>any</member>
+                  </hip-profiles>
+                  <action>allow</action>
+                  <log-start>yes</log-start>
+                </entry>
                 <entry name="deny_log" uuid="e5da7352-7822-4033-890c-addf69584f6e">
                   <to>
                     <member>any</member>
@@ -801,6 +831,72 @@
                 </entry>
               </rules>
             </security>
+            <decryption>
+              <rules>
+                <entry name="Globalscape-Decrypt-SSH" uuid="b271517c-55cc-4f9f-b6ac-4a4dbd7b88e0">
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <type>
+                    <ssh-proxy/>
+                  </type>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <source>
+                    <member>10.197.196.4</member>
+                    <member>10.197.196.5</member>
+                    <member>10.197.197.4</member>
+                    <member>10.197.197.5</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <action>decrypt</action>
+                  <profile>default</profile>
+                </entry>
+                <entry name="Globalscape-Decrypt-SSL" uuid="f559b743-8b6f-498a-adfd-1ed0b8bac807">
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <type>
+                    <ssl-forward-proxy/>
+                  </type>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <source>
+                    <member>10.197.196.4</member>
+                    <member>10.197.196.5</member>
+                    <member>10.197.197.4</member>
+                    <member>10.197.197.5</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <action>decrypt</action>
+                  <profile>default</profile>
+                </entry>
+              </rules>
+            </decryption>
           </rulebase>
           <import>
             <network>
@@ -814,13 +910,7 @@
             <entry name="h-168.63.129.16">
               <ip-netmask>168.63.129.16</ip-netmask>
               <description>Azure Load Balancer</description>
-            </entry>
-            <entry name="aks-01">
-              <ip-netmask>10.10.35.250</ip-netmask>
-            </entry>
-            <entry name="aks-02">
-              <ip-netmask>10.10.33.250</ip-netmask>
-            </entry>					
+            </entry>			
           </address>
           <profiles>
             <virus>
@@ -1149,12 +1239,6 @@
             </profiles>
           </log-settings>
           <address-group>
-            <entry name="AKS">
-              <static>
-                <member>aks-01</member>
-                <member>aks-02</member>
-              </static>
-            </entry>
           </address-group>						  
         </entry>
       </vsys>
