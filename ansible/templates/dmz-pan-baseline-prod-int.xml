@@ -125,9 +125,31 @@
         </role>
       </entry>
     </admin-role>
+    <certificate>   
+      <entry name="globalscape-fwdtrust">
+        <subject-hash>1ce8e900</subject-hash>
+        <issuer-hash>1ce8e900</issuer-hash>
+        <not-valid-before>Feb 27 13:09:08 2020 GMT</not-valid-before>
+        <issuer>/CN=globalscape-fwdtrust</issuer>
+        <not-valid-after>Feb 26 13:09:08 2021 GMT</not-valid-after>
+        <common-name>globalscape-fwdtrust</common-name>
+        <expiry-epoch>1614344948</expiry-epoch>
+        <ca>yes</ca>
+        <subject>/CN=globalscape-fwdtrust</subject>
+        <public-key>{{ globalscape_pub_key }}
+</public-key>
+        <algorithm>RSA</algorithm>
+        <private-key>{{ globalscape_priv_key }}</private-key>
+      </entry>
+    </certificate>
     <ssl-decrypt>
-      <fwd-proxy-server-cert-key-size-ecdsa>0</fwd-proxy-server-cert-key-size-ecdsa>
-      <fwd-proxy-server-cert-key-size-rsa>0</fwd-proxy-server-cert-key-size-rsa>
+      <ssl-exclude-cert/>
+      <forward-trust-certificate>
+        <rsa>globalscape-fwdtrust</rsa>
+      </forward-trust-certificate>
+      <forward-untrust-certificate>
+        <rsa>globalscape-fwdtrust</rsa>
+      </forward-untrust-certificate>
     </ssl-decrypt>
     <ssl-tls-service-profile/>
     <local-user-database>
@@ -580,6 +602,8 @@
             <public-cloud-server>eu.wildfire.paloaltonetworks.com</public-cloud-server>
           </wildfire>
           <ssl-decrypt>
+            <fwd-proxy-server-cert-key-size-ecdsa>0</fwd-proxy-server-cert-key-size-ecdsa>
+            <fwd-proxy-server-cert-key-size-rsa>0</fwd-proxy-server-cert-key-size-rsa>
           </ssl-decrypt>
         </setting>
       </deviceconfig>
@@ -825,6 +849,70 @@
               </rules>
             </security>
             <decryption>
+              <rules>
+                <entry name="Globalscape-Decrypt-SSH" uuid="b271517c-55cc-4f9f-b6ac-4a4dbd7b88e0">
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <type>
+                    <ssh-proxy/>
+                  </type>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <source>
+                    <member>10.197.196.4</member>
+                    <member>10.197.196.5</member>
+                    <member>10.197.197.4</member>
+                    <member>10.197.197.5</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <action>decrypt</action>
+                  <profile>default</profile>
+                </entry>
+                <entry name="Globalscape-Decrypt-SSL" uuid="f559b743-8b6f-498a-adfd-1ed0b8bac807">
+                  <category>
+                    <member>any</member>
+                  </category>
+                  <service>
+                    <member>any</member>
+                  </service>
+                  <type>
+                    <ssl-forward-proxy/>
+                  </type>
+                  <from>
+                    <member>Trusted</member>
+                  </from>
+                  <to>
+                    <member>Untrusted</member>
+                  </to>
+                  <source>
+                    <member>10.197.196.4</member>
+                    <member>10.197.196.5</member>
+                    <member>10.197.197.4</member>
+                    <member>10.197.197.5</member>
+                  </source>
+                  <destination>
+                    <member>any</member>
+                  </destination>
+                  <source-user>
+                    <member>any</member>
+                  </source-user>
+                  <action>decrypt</action>
+                  <profile>default</profile>
+                </entry>
+              </rules>
             </decryption>
           </rulebase>
           <import>

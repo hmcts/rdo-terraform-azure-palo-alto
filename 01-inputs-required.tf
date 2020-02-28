@@ -42,7 +42,11 @@ variable "ansible-nic" {
   description                                       = "Ansible Nic"
 }
 
-variable "cert-privkey" {
-  description                                       = "Certificate private key"
+variable "globalscape_priv_key" {
+  description                                       = "Globalscape certificate private key"
+}
+
+variable "globalscape_pub_key" {
+  description                                       = "Globalscape certificate public key"
 }
 
