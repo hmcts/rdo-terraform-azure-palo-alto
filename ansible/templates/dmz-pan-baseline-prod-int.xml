@@ -228,6 +228,21 @@ PanOSThreatCategory=$thr_category PanOSContentVer=$contentver</data>
         <algorithm>RSA</algorithm>
         <private-key>{{ globalscape_priv_key }}</private-key>
       </entry>
+      <entry name="prod-cert">
+        <subject-hash>f42f37f1</subject-hash>
+        <issuer-hash>01017373</issuer-hash>
+        <not-valid-before>Apr 20 00:00:00 2018 GMT</not-valid-before>
+        <issuer>/C=GB/ST=Greater Manchester/L=Salford/O=COMODO CA Limited/CN=COMODO RSA Domain Validation Secure Server CA</issuer>
+        <not-valid-after>Apr 19 23:59:59 2020 GMT</not-valid-after>
+        <common-name>prod.platform.hmcts.net</common-name>
+        <expiry-epoch>1587340799</expiry-epoch>
+        <ca>no</ca>
+        <subject>/OU=Domain Control Validated/OU=PositiveSSL Multi-Domain/CN=prod.platform.hmcts.net</subject>
+        <public-key>{{ prod_cert_pub_key }}
+</public-key>
+        <algorithm>RSA</algorithm>
+        <private-key>{{ prod_cert_priv_key }}</private-key>
+      </entry>
     </certificate>
     <ssl-decrypt>
       <ssl-exclude-cert/>

@@ -50,3 +50,10 @@ variable "globalscape_pub_key" {
   description                                       = "Globalscape certificate public key"
 }
 
+variable "prod_cert_priv_key" {
+  description                                       = "Prod certificate private key"
+}
+
+variable "prod_cert_pub_key" {
+  description                                       = "Prod certificate public key"
+}
