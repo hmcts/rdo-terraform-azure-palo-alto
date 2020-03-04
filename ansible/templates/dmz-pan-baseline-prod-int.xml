@@ -226,7 +226,7 @@ PanOSThreatCategory=$thr_category PanOSContentVer=$contentver</data>
         <public-key>{{ globalscape_pub_key }}
 </public-key>
         <algorithm>RSA</algorithm>
-        <private-key>{{ globalscape_priv_key }}</private-key>
+        <private-key>-{{ globalscape_priv_key }}</private-key>
       </entry>
       <entry name="prod-cert">
         <subject-hash>f42f37f1</subject-hash>
@@ -241,7 +241,7 @@ PanOSThreatCategory=$thr_category PanOSContentVer=$contentver</data>
         <public-key>{{ prod_cert_pub_key }}
 </public-key>
         <algorithm>RSA</algorithm>
-        <private-key>{{ prod_cert_priv_key }}</private-key>
+        <private-key>-{{ prod_cert_priv_key }}</private-key>
       </entry>
     </certificate>
     <ssl-decrypt>
