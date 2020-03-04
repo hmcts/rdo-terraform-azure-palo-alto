@@ -2,8 +2,8 @@
 
 - name: Create base configuration from template for DMZ hosts
   template:
-    src: dmz-pan-baseline.xml.j2
-    dest: "{{ playbook_dir }}/dmz-pan-baseline.xml"
+    src: dmz-pan-baseline-{{ env_subscripton }}.j2
+    dest: "{{ playbook_dir }}/dmz-pan-baseline-{{ env_subscripton }}.xml"
 
 - name: Upload base configuration
   panos_import:
