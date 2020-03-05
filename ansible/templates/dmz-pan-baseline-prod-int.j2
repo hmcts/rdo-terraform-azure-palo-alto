@@ -84,7 +84,94 @@
       </application-type>
     </content-preview>
     <log-settings>
-      <syslog/>
+      <syslog>
+        <entry name="Azure">
+          <server>
+            <entry name="azure">
+              <transport>UDP</transport>
+              <port>514</port>
+              <format>BSD</format>
+              <server>10.11.8.68</server>
+              <facility>LOG_USER</facility>
+            </entry>
+          </server>
+          <format>
+            <config>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$result|$type|1|rt=$cefformatted-receive_time deviceExternalId=$serial shost=$host cs3Label=Virtual
+System cs3=$vsys act=$cmd duser=$admin destinationServiceName=$client
+msg=$path externalId=$seqno PanOSDGl1=$dg_hier_level_1
+PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3
+PanOSDGl4=$dg_hier_level_4 PanOSVsysName=$vsys_name dvchost=$device_name
+PanOSActionFlags=$actionflags
+Optional: cs1Label=Before Change Detail cs1=$before-change-detail
+cs2Label=After Change Detail cs2=$after-change-detail
+</config>
+            <system>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|$numberof-severity|rt=$cef-formatted-receive_time deviceExternalId=$serial
+cs3Label=Virtual System cs3=$vsys fname=$object flexString2Label=Module
+flexString2=$module msg=$opaque externalId=$seqno cat=$eventid
+PanOSDGl1=$dg_hier_level_1 PanOSDGl2=$dg_hier_level_2
+PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+PanOSVsysName=$vsys_name dvchost=$device_name PanOSActionFlags=$actionflags</system>
+            <threat>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|$numberof-severity|rt=$cef-formatted-receive_time deviceExternalId=$serial src=$src
+dst=$dst sourceTranslatedAddress=$natsrc
+destinationTranslatedAddress=$natdst cs1Label=Rule cs1=$rule suser=$srcuser
+duser=$dstuser app=$app cs3Label=Virtual System cs3=$vsys cs4Label=Source
+Zone cs4=$from cs5Label=Destination Zone cs5=$to
+deviceInboundInterface=$inbound_if deviceOutboundInterface=$outbound_if
+cs6Label=LogProfile cs6=$logset cn1Label=SessionID cn1=$sessionid
+cnt=$repeatcnt spt=$sport dpt=$dport sourceTranslatedPort=$natsport
+destinationTranslatedPort=$natdport flexString1Label=Flags
+flexString1=$flags proto=$proto act=$action request=$misc cs2Label=URL
+Category cs2=$category flexString2Label=Direction flexString2=$direction
+PanOSActionFlags=$actionflags externalId=$seqno cat=$threatid
+fileId=$pcap_id PanOSDGl1=$dg_hier_level_1 PanOSDGl2=$dg_hier_level_2
+PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+PanOSVsysName=$vsys_name dvchost=$device_name PanOSSrcUUID=$src_uuid
+PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
+PanOSParentSessionID=$parent_session_id
+PanOSParentStartTime=$parent_start_time PanOSTunnelType=$tunnel
+PanOSThreatCategory=$thr_category PanOSContentVer=$contentver</threat>
+            <traffic>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|1|rt=$cefformatted-receive_time deviceExternalId=$serial src=$src dst=$dst
+sourceTranslatedAddress=$natsrc destinationTranslatedAddress=$natdst
+cs1Label=Rule cs1=$rule suser=$srcuser duser=$dstuser app=$app
+cs3Label=Virtual System cs3=$vsys cs4Label=Source Zone cs4=$from
+cs5Label=Destination Zone cs5=$to deviceInboundInterface=$inbound_if
+deviceOutboundInterface=$outbound_if cs6Label=LogProfile cs6=$logset
+cn1Label=SessionID cn1=$sessionid cnt=$repeatcnt spt=$sport dpt=$dport
+sourceTranslatedPort=$natsport destinationTranslatedPort=$natdport
+flexString1Label=Flags flexString1=$flags proto=$proto act=$action
+flexNumber1Label=Total bytes flexNumber1=$bytes in=$bytes_sent
+out=$bytes_received cn2Label=Packets cn2=$packets
+PanOSPacketsReceived=$pkts_received PanOSPacketsSent=$pkts_sent start=$cefformatted-time_generated cn3Label=Elapsed time in seconds cn3=$elapsed
+cs2Label=URL Category cs2=$category externalId=$seqno
+reason=$session_end_reason PanOSDGl1=$dg_hier_level_1
+PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3
+PanOSDGl4=$dg_hier_level_4 PanOSVsysName=$vsys_name dvchost=$device_name
+cat=$action_source PanOSActionFlags=$actionflags PanOSSrcUUID=$src_uuid
+PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
+PanOSParentSessionID=$parent_session_id
+PanOSParentStartTime=$parent_start_time PanOSTunnelType=$tunnel</traffic>
+            <data>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|$numberof-severity|rt=$cef-formatted-receive_time deviceExternalId=$serial src=$src
+dst=$dst sourceTranslatedAddress=$natsrc
+destinationTranslatedAddress=$natdst cs1Label=Rule cs1=$rule suser=$srcuser
+duser=$dstuser app=$app cs3Label=Virtual System cs3=$vsys cs4Label=Source
+Zone cs4=$from cs5Label=Destination Zone cs5=$to
+deviceInboundInterface=$inbound_if deviceOutboundInterface=$outbound_if
+cs6Label=LogProfile cs6=$logset cn1Label=SessionID cn1=$sessionid
+cnt=$repeatcnt spt=$sport dpt=$dport sourceTranslatedPort=$natsport
+destinationTranslatedPort=$natdport flexString1Label=Flags
+flexString1=$flags proto=$proto act=$action request=$misc cs2Label=URL
+Category cs2=$category flexString2Label=Direction flexString2=$direction
+PanOSActionFlags=$actionflags externalId=$seqno cat=$threatid
+fileId=$pcap_id PanOSDGl1=$dg_hier_level_1 PanOSDGl2=$dg_hier_level_2
+PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+PanOSVsysName=$vsys_name dvchost=$device_name PanOSSrcUUID=$src_uuid
+PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
+PanOSParentSessionID=$parent_session_id
+PanOSParentStartTime=$parent_start_time PanOSTunnelType=$tunnel
+PanOSThreatCategory=$thr_category PanOSContentVer=$contentver</data>
+          </format>
+        </entry>
+      </syslog>
       <http>
         <entry name="app_insights">
           <server>
@@ -97,6 +184,26 @@
           </server>
         </entry>
       </http>
+      <system>
+        <match-list>
+          <entry name="system-logs-syslog">
+            <send-syslog>
+              <member>Azure</member>
+            </send-syslog>
+            <filter>All Logs</filter>
+          </entry>
+        </match-list>
+      </system>
+      <config>
+        <match-list>
+          <entry name="config-logs-syslog">
+            <send-syslog>
+              <member>Azure</member>
+            </send-syslog>
+            <filter>All Logs</filter>
+          </entry>
+        </match-list>
+      </config>
     </log-settings>
     <admin-role>
       <entry name="monitor_readonly">
@@ -139,7 +246,22 @@
         <public-key>{{ globalscape_pub_key }}
 </public-key>
         <algorithm>RSA</algorithm>
-        <private-key>{{ globalscape_priv_key }}</private-key>
+        <private-key>-{{ globalscape_priv_key }}</private-key>
+      </entry>
+      <entry name="prod-cert">
+        <subject-hash>f42f37f1</subject-hash>
+        <issuer-hash>01017373</issuer-hash>
+        <not-valid-before>Apr 20 00:00:00 2018 GMT</not-valid-before>
+        <issuer>/C=GB/ST=Greater Manchester/L=Salford/O=COMODO CA Limited/CN=COMODO RSA Domain Validation Secure Server CA</issuer>
+        <not-valid-after>Apr 19 23:59:59 2020 GMT</not-valid-after>
+        <common-name>prod.platform.hmcts.net</common-name>
+        <expiry-epoch>1587340799</expiry-epoch>
+        <ca>no</ca>
+        <subject>/OU=Domain Control Validated/OU=PositiveSSL Multi-Domain/CN=prod.platform.hmcts.net</subject>
+        <public-key>{{ prod_cert_pub_key }}
+</public-key>
+        <algorithm>RSA</algorithm>
+        <private-key>-{{ prod_cert_priv_key }}</private-key>
       </entry>
     </certificate>
     <ssl-decrypt>
@@ -575,13 +697,14 @@
               <ntp-server-address>1.pool.ntp.org</ntp-server-address>
             </secondary-ntp-server>
           </ntp-servers>
+          <syslog-certificate>prod-cert</syslog-certificate>
         </system>
         <setting>
           <config>
             <rematch>yes</rematch>
           </config>
           <management>
-            <hostname-type-in-syslog>FQDN</hostname-type-in-syslog>
+            <hostname-type-in-syslog>ipv4-address</hostname-type-in-syslog>
             <initcfg>
               <type>
                 <dhcp-client>
@@ -594,6 +717,28 @@
               <hostname>{{ paloname }}</hostname>
               <username>{{ admin_username }}</username>
             </initcfg>
+            <quota-settings>
+              <disk-quota>
+                <alarm>3</alarm>
+                <appstat>4</appstat>
+                <trsum>7</trsum>
+                <thsum>2</thsum>
+                <sctpsum>0</sctpsum>
+                <hourlysctpsum>0</hourlysctpsum>
+                <dailysctpsum>0</dailysctpsum>
+                <weeklysctpsum>0</weeklysctpsum>
+                <hipmatch>3</hipmatch>
+                <dlp-logs>1</dlp-logs>
+                <application-pcaps>1</application-pcaps>
+                <debug-filter-pcaps>1</debug-filter-pcaps>
+                <hip-reports>1</hip-reports>
+                <sctp>0</sctp>
+                <traffic>30</traffic>
+                <threat>16</threat>
+                <config>4</config>
+                <system>4</system>
+              </disk-quota>
+            </quota-settings>
           </management>
           <session>
             <tcp-reject-non-syn>no</tcp-reject-non-syn>
@@ -744,7 +889,7 @@
                   </hip-profiles>
                   <action>allow</action>
                   <log-start>yes</log-start>
-                  <log-setting>app_insights</log-setting>
+                  <log-setting>azure_sentinel</log-setting>
                   <profile-setting>
                     <profiles>
                       <url-filtering>
@@ -814,6 +959,7 @@
                   </hip-profiles>
                   <action>allow</action>
                   <log-start>yes</log-start>
+                  <log-setting>azure_sentinel</log-setting>
                 </entry>
                 <entry name="deny_log" uuid="e5da7352-7822-4033-890c-addf69584f6e">
                   <to>
@@ -1241,13 +1387,29 @@
           </profiles>
           <log-settings>
             <profiles>
-              <entry name="app_insights">
+              <entry name="azure_sentinel">
                 <match-list>
-                  <entry name="app_insights">
-                    <send-http>
-                      <member>app_insights</member>
-                    </send-http>
+                  <entry name="azure_sentinel_traffic">
+                    <send-syslog>
+                      <member>Azure</member>
+                    </send-syslog>
                     <log-type>traffic</log-type>
+                    <filter>All Logs</filter>
+                    <send-to-panorama>no</send-to-panorama>
+                  </entry>
+                  <entry name="azure_sentinel_threat">
+                    <send-syslog>
+                      <member>Azure</member>
+                    </send-syslog>
+                    <log-type>threat</log-type>
+                    <filter>All Logs</filter>
+                    <send-to-panorama>no</send-to-panorama>
+                  </entry>
+                  <entry name="azure_sentinel_data">
+                    <send-syslog>
+                      <member>Azure</member>
+                    </send-syslog>
+                    <log-type>data</log-type>
                     <filter>All Logs</filter>
                     <send-to-panorama>no</send-to-panorama>
                   </entry>
@@ -1256,7 +1418,7 @@
             </profiles>
           </log-settings>
           <address-group>
-          </address-group>						  
+          </address-group>
         </entry>
       </vsys>
     </entry>
