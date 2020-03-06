@@ -96,79 +96,72 @@
             </entry>
           </server>
           <format>
-            <config>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$result|$type|1|rt=$cefformatted-receive_time deviceExternalId=$serial shost=$host cs3Label=Virtual
-System cs3=$vsys act=$cmd duser=$admin destinationServiceName=$client
-msg=$path externalId=$seqno PanOSDGl1=$dg_hier_level_1
-PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3
-PanOSDGl4=$dg_hier_level_4 PanOSVsysName=$vsys_name dvchost=$device_name
-PanOSActionFlags=$actionflags
-Optional: cs1Label=Before Change Detail cs1=$before-change-detail
-cs2Label=After Change Detail cs2=$after-change-detail
-</config>
-            <system>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|$numberof-severity|rt=$cef-formatted-receive_time deviceExternalId=$serial
-cs3Label=Virtual System cs3=$vsys fname=$object flexString2Label=Module
-flexString2=$module msg=$opaque externalId=$seqno cat=$eventid
-PanOSDGl1=$dg_hier_level_1 PanOSDGl2=$dg_hier_level_2
-PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+            <config>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$result|$type|1|rt=$cef-formatted-receive_time
+deviceExternalId=$serial shost=$host cs3Label=Virtual System cs3=$vsys act=$cmd duser=$admin
+destinationServiceName=$client msg=$path externalId=$seqno PanOSDGl1=$dg_hier_level_1
+PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+PanOSVsysName=$vsys_name dvchost=$device_name PanOSActionFlags=$actionflags
+ cs1Label=Before Change Detail cs1=$before-change-detail cs2Label=After Change Detail
+cs2=$after-change-detail</config>
+            <system>CEF:0|Palo Alto
+Networks|PAN-OS|$sender_sw_version|$subtype|$type|$number-of-severity|rt=$cef-formatted-receive_time
+deviceExternalId=$serial cs3Label=Virtual System cs3=$vsys fname=$object flexString2Label=Module
+flexString2=$module msg=$opaque externalId=$seqno cat=$eventid PanOSDGl1=$dg_hier_level_1
+PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
 PanOSVsysName=$vsys_name dvchost=$device_name PanOSActionFlags=$actionflags</system>
-            <threat>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|$numberof-severity|rt=$cef-formatted-receive_time deviceExternalId=$serial src=$src
-dst=$dst sourceTranslatedAddress=$natsrc
-destinationTranslatedAddress=$natdst cs1Label=Rule cs1=$rule suser=$srcuser
-duser=$dstuser app=$app cs3Label=Virtual System cs3=$vsys cs4Label=Source
-Zone cs4=$from cs5Label=Destination Zone cs5=$to
-deviceInboundInterface=$inbound_if deviceOutboundInterface=$outbound_if
-cs6Label=LogProfile cs6=$logset cn1Label=SessionID cn1=$sessionid
-cnt=$repeatcnt spt=$sport dpt=$dport sourceTranslatedPort=$natsport
-destinationTranslatedPort=$natdport flexString1Label=Flags
-flexString1=$flags proto=$proto act=$action request=$misc cs2Label=URL
-Category cs2=$category flexString2Label=Direction flexString2=$direction
-PanOSActionFlags=$actionflags externalId=$seqno cat=$threatid
-fileId=$pcap_id PanOSDGl1=$dg_hier_level_1 PanOSDGl2=$dg_hier_level_2
-PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
-PanOSVsysName=$vsys_name dvchost=$device_name PanOSSrcUUID=$src_uuid
-PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
-PanOSParentSessionID=$parent_session_id
-PanOSParentStartTime=$parent_start_time PanOSTunnelType=$tunnel
-PanOSThreatCategory=$thr_category PanOSContentVer=$contentver</threat>
-            <traffic>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|1|rt=$cefformatted-receive_time deviceExternalId=$serial src=$src dst=$dst
-sourceTranslatedAddress=$natsrc destinationTranslatedAddress=$natdst
-cs1Label=Rule cs1=$rule suser=$srcuser duser=$dstuser app=$app
-cs3Label=Virtual System cs3=$vsys cs4Label=Source Zone cs4=$from
-cs5Label=Destination Zone cs5=$to deviceInboundInterface=$inbound_if
-deviceOutboundInterface=$outbound_if cs6Label=LogProfile cs6=$logset
-cn1Label=SessionID cn1=$sessionid cnt=$repeatcnt spt=$sport dpt=$dport
-sourceTranslatedPort=$natsport destinationTranslatedPort=$natdport
-flexString1Label=Flags flexString1=$flags proto=$proto act=$action
-flexNumber1Label=Total bytes flexNumber1=$bytes in=$bytes_sent
-out=$bytes_received cn2Label=Packets cn2=$packets
-PanOSPacketsReceived=$pkts_received PanOSPacketsSent=$pkts_sent start=$cefformatted-time_generated cn3Label=Elapsed time in seconds cn3=$elapsed
-cs2Label=URL Category cs2=$category externalId=$seqno
-reason=$session_end_reason PanOSDGl1=$dg_hier_level_1
-PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3
-PanOSDGl4=$dg_hier_level_4 PanOSVsysName=$vsys_name dvchost=$device_name
-cat=$action_source PanOSActionFlags=$actionflags PanOSSrcUUID=$src_uuid
-PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
-PanOSParentSessionID=$parent_session_id
-PanOSParentStartTime=$parent_start_time PanOSTunnelType=$tunnel</traffic>
-            <data>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|$numberof-severity|rt=$cef-formatted-receive_time deviceExternalId=$serial src=$src
-dst=$dst sourceTranslatedAddress=$natsrc
-destinationTranslatedAddress=$natdst cs1Label=Rule cs1=$rule suser=$srcuser
-duser=$dstuser app=$app cs3Label=Virtual System cs3=$vsys cs4Label=Source
-Zone cs4=$from cs5Label=Destination Zone cs5=$to
-deviceInboundInterface=$inbound_if deviceOutboundInterface=$outbound_if
-cs6Label=LogProfile cs6=$logset cn1Label=SessionID cn1=$sessionid
-cnt=$repeatcnt spt=$sport dpt=$dport sourceTranslatedPort=$natsport
-destinationTranslatedPort=$natdport flexString1Label=Flags
-flexString1=$flags proto=$proto act=$action request=$misc cs2Label=URL
-Category cs2=$category flexString2Label=Direction flexString2=$direction
-PanOSActionFlags=$actionflags externalId=$seqno cat=$threatid
-fileId=$pcap_id PanOSDGl1=$dg_hier_level_1 PanOSDGl2=$dg_hier_level_2
-PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
-PanOSVsysName=$vsys_name dvchost=$device_name PanOSSrcUUID=$src_uuid
-PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
-PanOSParentSessionID=$parent_session_id
-PanOSParentStartTime=$parent_start_time PanOSTunnelType=$tunnel
-PanOSThreatCategory=$thr_category PanOSContentVer=$contentver</data>
+            <threat>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|1|rt=$cef-formatted-receive_time
+deviceExternalId=$serial src=$src dst=$dst sourceTranslatedAddress=$natsrc
+destinationTranslatedAddress=$natdst cs1Label=Rule cs1=$rule suser=$srcuser duser=$dstuser app=$app
+cs3Label=Virtual System cs3=$vsys cs4Label=Source Zone cs4=$from cs5Label=Destination Zone cs5=$to
+deviceInboundInterface=$inbound_if deviceOutboundInterface=$outbound_if cs6Label=LogProfile cs6=$logset
+cn1Label=SessionID cn1=$sessionid cnt=$repeatcnt spt=$sport dpt=$dport sourceTranslatedPort=$natsport
+destinationTranslatedPort=$natdport flexString1Label=Flags flexString1=$flags proto=$proto act=$action
+flexNumber1Label=Total bytes flexNumber1=$bytes in=$bytes_sent out=$bytes_received cn2Label=Packets
+cn2=$packets PanOSPacketsReceived=$pkts_received PanOSPacketsSent=$pkts_sent
+start=$cef-formatted-time_generated cn3Label=Elapsed time in seconds cn3=$elapsed cs2Label=URL Category
+cs2=$category externalId=$seqno reason=$session_end_reason PanOSDGl1=$dg_hier_level_1
+PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+PanOSVsysName=$vsys_name dvchost=$device_name cat=$action_source PanOSActionFlags=$actionflags
+PanOSSrcUUID=$src_uuid PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
+PanOSParentSessionID=$parent_session_id PanOSParentStartTime=$parent_start_time
+PanOSTunnelType=$tunnel PanOSSCTPAssocID=$assoc_id PanOSSCTPChunks=$chunks
+PanOSSCTPChunkSent=$chunks_sent PanOSSCTPChunksRcv=$chunks_received PanOSRuleUUID=$rule_uuid
+PanOSHTTP2Con=$http2_connection</threat>
+            <traffic>CEF:0|Palo Alto Networks|PAN-OS|$sender_sw_version|$subtype|$type|1|rt=$cef-formatted-receive_time
+deviceExternalId=$serial src=$src dst=$dst sourceTranslatedAddress=$natsrc
+destinationTranslatedAddress=$natdst cs1Label=Rule cs1=$rule suser=$srcuser duser=$dstuser app=$app
+cs3Label=Virtual System cs3=$vsys cs4Label=Source Zone cs4=$from cs5Label=Destination Zone cs5=$to
+deviceInboundInterface=$inbound_if deviceOutboundInterface=$outbound_if cs6Label=LogProfile cs6=$logset
+cn1Label=SessionID cn1=$sessionid cnt=$repeatcnt spt=$sport dpt=$dport sourceTranslatedPort=$natsport
+destinationTranslatedPort=$natdport flexString1Label=Flags flexString1=$flags proto=$proto act=$action
+flexNumber1Label=Total bytes flexNumber1=$bytes in=$bytes_sent out=$bytes_received cn2Label=Packets
+cn2=$packets PanOSPacketsReceived=$pkts_received PanOSPacketsSent=$pkts_sent
+start=$cef-formatted-time_generated cn3Label=Elapsed time in seconds cn3=$elapsed cs2Label=URL Category
+cs2=$category externalId=$seqno reason=$session_end_reason PanOSDGl1=$dg_hier_level_1
+PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+PanOSVsysName=$vsys_name dvchost=$device_name cat=$action_source PanOSActionFlags=$actionflags
+PanOSSrcUUID=$src_uuid PanOSDstUUID=$dst_uuid PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag
+PanOSParentSessionID=$parent_session_id PanOSParentStartTime=$parent_start_time
+PanOSTunnelType=$tunnel PanOSSCTPAssocID=$assoc_id PanOSSCTPChunks=$chunks
+PanOSSCTPChunkSent=$chunks_sent PanOSSCTPChunksRcv=$chunks_received PanOSRuleUUID=$rule_uuid
+PanOSHTTP2Con=$http2_connection
+</traffic>
+            <data>CEF:0|Palo Alto
+Networks|PAN-OS|$sender_sw_version|$subtype|$type|$number-of-severity|rt=$cef-formatted-receive_time
+deviceExternalId=$serial src=$src dst=$dst sourceTranslatedAddress=$natsrc
+destinationTranslatedAddress=$natdst cs1Label=Rule cs1=$rule suser=$srcuser duser=$dstuser app=$app
+cs3Label=Virtual System cs3=$vsys cs4Label=Source Zone cs4=$from cs5Label=Destination Zone cs5=$to
+deviceInboundInterface=$inbound_if deviceOutboundInterface=$outbound_if cs6Label=LogProfile cs6=$logset
+cn1Label=SessionID cn1=$sessionid cnt=$repeatcnt spt=$sport dpt=$dport sourceTranslatedPort=$natsport
+destinationTranslatedPort=$natdport flexString1Label=Flags flexString1=$flags proto=$proto act=$action
+request=$misc cs2Label=URL Category cs2=$category flexString2Label=Direction flexString2=$direction
+PanOSActionFlags=$actionflags externalId=$seqno cat=$threatid fileId=$pcap_id PanOSDGl1=$dg_hier_level_1
+PanOSDGl2=$dg_hier_level_2 PanOSDGl3=$dg_hier_level_3 PanOSDGl4=$dg_hier_level_4
+PanOSVsysName=$vsys_name dvchost=$device_name PanOSSrcUUID=$src_uuid PanOSDstUUID=$dst_uuid
+PanOSTunnelID=$tunnelid PanOSMonitorTag=$monitortag PanOSParentSessionID=$parent_session_id
+PanOSParentStartTime=$parent_start_time PanOSTunnelType=$tunnel PanOSThreatCategory=$thr_category
+PanOSContentVer=$contentver PanOSAssocID=$assoc_id PanOSPPID=$ppid PanOSHTTPHeader=$http_headers
+PanOSRuleUUID=$rule_uuid</data>
           </format>
         </entry>
       </syslog>
